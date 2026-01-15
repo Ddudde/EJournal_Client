@@ -1,0 +1,10 @@
+*.css
+*.md
+*.svg
+/.idea
+/build
+/.vscode
+/node_modules
+package.json
+README.md
+src.zip
