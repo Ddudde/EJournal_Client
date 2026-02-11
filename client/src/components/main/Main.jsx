@@ -38,7 +38,7 @@ timid, d1, warnErrNet, server;
 scrolling = false;
 // eslint-disable-next-line no-undef
 server = servLink;
-export let prefSite = "/EJournal";
+export let prefSite = "/EJournal_Client";
 gr = {
     group: 4
 };

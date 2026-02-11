@@ -7,7 +7,7 @@ cacheOFF = true;
 
 cacheWhitelist = [CACHE_NAME];
 
-prefSite = "/EJournal";
+prefSite = "/EJournal_Client";
 
 async function init() {
     // num = 0;

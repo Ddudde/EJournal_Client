@@ -67,7 +67,7 @@ function App() {
     });
     return <Routes>
         <Route path="/" element={<Redirect/>}/>
-        <Route path="EJournal" element={<Main/>}>
+        <Route path="EJournal_Client" element={<Main/>}>
             <Route index element={indexComp}/>
             <Route path="news" element={<NewsMain/>}>
                 <Route index element={<NewsPor/>} />
