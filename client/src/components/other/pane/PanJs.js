@@ -6,6 +6,7 @@ export default class PanJs {
     inps = {}
     gr = {}
     gr1 = {}
+    g
     nav
     lGroups
     lGroupY
@@ -18,4 +19,5 @@ export default class PanJs {
     timid
     lel
     eles
+    info
 }

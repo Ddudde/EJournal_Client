@@ -8,6 +8,7 @@ cacheOFF = true;
 cacheWhitelist = [CACHE_NAME];
 
 prefSite = "/EJournal_Client";
+prefResource = "";
 
 async function init() {
     // num = 0;
@@ -15,16 +16,16 @@ async function init() {
     //     console.log('tick', num);
     //     num++;
     // }, 2000);
-    prom = fetch(prefSite + "/asset-manifest.json")
+    prom = fetch(prefResource + "/asset-manifest.json")
         .then(resp => resp.json())
         .then(assets => {
             urlsToCache = [
                 prefSite + "/",
-                prefSite + "/static/media/fav512.png",
-                prefSite + "/static/media/fav32.png",
-                prefSite + "/static/media/fav16.png",
-                prefSite + "/manifest.json",
-                prefSite + "/static/js/app.js"
+                prefResource + "/static/media/fav512.png",
+                prefResource + "/static/media/fav32.png",
+                prefResource + "/static/media/fav16.png",
+                prefResource + "/manifest.json",
+                prefResource + "/src/utils/initPWA.ts"
             ];
             Object.getOwnPropertyNames(assets.files).map((key, i, x, val = assets.files[key]) => {
                 urlsToCache.push(val);
@@ -130,7 +131,7 @@ function fetchF(e) {
                 console.log(message);
                 if (e.request.destination == 'document') {
                     console.log("setIndexDoc...")
-                    return caches.match(prefSite + "/");
+                    return caches.match("/");
                 }
             }
         }
