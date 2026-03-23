@@ -1,4 +1,4 @@
-import type MainApi from "../api/MainApi";
+import type MainApi from "../api/main/MainApi";
 import type StartApi from "../api/StartApi";
 import type DialogStore from "../store/other/DialogStore";
 import type EventsStore from "../store/other/EventsStore";
@@ -76,7 +76,6 @@ export default class StartController {
         if(data.status == 200){
             console.log(data);
             this.statusStore.cloneState(data.body);
-            setSettings(dispatch);
         } else {
             this.eventsStore.changeEvent("Внимание!", "Неверный логин или пароль", 10);
         }

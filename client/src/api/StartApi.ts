@@ -1,5 +1,5 @@
 import { cAuth, cSettings } from "../utils/apiPath";
-import MainApi from "./MainApi";
+import MainApi from "./main/MainApi";
 
 export default class StartApi {
     public async initRecovery(selEmailZ: boolean, els: any): Promise<any> {

@@ -1,11 +1,8 @@
-import { cAuth, cProfiles, cSSE } from "../utils/apiPath";
+import { cAuth, cProfiles, cSSE } from "../../utils/apiPath";
 
 export default class MainApi {
     public static servLink: string = "http://localhost:8080";
     private eventSource: EventSource;
-
-    public constructor() {
-    }
 
     public async exitFromAccount(notifToken: string): Promise<any> {
         const data: Promise<any> = MainApi.sendToServer({

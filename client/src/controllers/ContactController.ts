@@ -1,5 +1,5 @@
 import type ContactApi from "../api/ContactApi";
-import type MainApi from "../api/MainApi";
+import type MainApi from "../api/main/MainApi";
 import type ContactStore from "../store/ContactStore";
 
 export default class ContactController {

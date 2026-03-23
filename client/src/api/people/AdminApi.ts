@@ -1,5 +1,5 @@
 import { cAdmins, cAuth } from "../../utils/apiPath";
-import MainApi from "../MainApi";
+import MainApi from "../main/MainApi";
 
 export default class AdminApi {
     public async getInfo(): Promise<any> {

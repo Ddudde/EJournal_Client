@@ -1,0 +1,114 @@
+= Asciidoc
+Natik Muradov <myratoff25@gmail.com>
+:revnumber: v0.4.2
+:revdate: 16.01.2026
+:revremark: Основное описание клиента
+:sectnums:
+:hardbreaks-option:
+:toc: left
+:toclevels: 4
+:toc-title: Содержание
+:imagesdir: ./imgAsciiDoc
+
+====
+Github: https://github.com/Ddudde/EJournal
+NOTE: Доки в ветке public репозитория клиента.
+Публикации в HTML и PDF форматах находятся в /docs/EJournal/asciiDoc/.
+Основное описание проекта здесь. Также есть дополнительные:
+Также в /docs/start-web.bat можно стартануть Python http server для просмотра документации
+
+* Swagger: link:/EJournal_Client/swagger/htmlSwag/[]
+* JavaDoc: link:/EJournal_Client/javaDoc/[]
+* AsciiDoc-Server: link:/EJournal_Client/asciiDoc/[]
+* AsciiDoc-Client: link:/EJournal_Client/asciiDoc/client.html[]
+
+
+Клиент:
+Выполнен с архитектурой MVC с активной моделью.
+https://github.com/Ddudde/EJournal_Client
+Находится в /client
+http://localhost:5173/EJournal_Client/
+Github Pages: https://ddudde.github.io/EJournal_Client/
+Typescript, React, Redux, PWA
+====
+
+== Зависимости клиента
+====
+NOTE: Vs Code в качестве IDE
+Node: 24.13.0
+Typescript: 5.9.3
+
+Фреймворки/Сборщики:
+
+. React 18.0.0
+. Mobx 6.13.7
+. Vite 7.3.1
+
+Библиотеки/Технологии:
+
+. Github Pages
+. Single Page Application
+. Progressive Web App
+. React Router
+. Firebase Cloud Messaging
+. React Helmet
+
+====
+== Использование
+====
+Запускаем сервер
+И запускаем клиент по одному из адресов: http://localhost:5173/EJournal_Client/
+, https://ddudde.github.io/EJournal/
+Выбираем роль, допустим администратора
+И авторизируемся
+Логин: nm12
+Пароль: 1111
+Радуемся!
+====
+== API
+=== HTTP методы
+|===
+| Метод | Использование
+| `GET`
+| Метод GET используется для чтения ресурса
+| `POST`
+| Метод POST чаще всего используется для создания новых ресурсов
+| `PATCH`
+| PATCH используется для частичного изменения ресурса
+| `PUT`
+| PUT используется для обновления ресурса целиком
+| `DELETE`
+| DELETE используется для удаления ресурса
+|===
+=== HTTP статус коды
+|===
+| Статус код | Использование
+
+| `200 OK`
+| Запрос принят и корректно обработан веб-сервером
+
+| `201 Created`
+| Запрос корректно обработан и в результате был создан новый ресурс
+
+| `202 Accepted`
+| Запрос принят. Используется в проекте как альтернатива 200 коду
+
+| `204 No Content`
+| Запрос успешно обработан, однако в ответе только заголовки без контента сообщения
+
+| `400 Bad Request`
+| Запрос от клиента к веб-серверу составлен некорректно. Обычно это происходит, если клиент не передаёт необходимые заголовки или параметры или они неправильные
+
+| `401 Unauthorized`
+| Получение запрашиваемого ресурса доступно только аутентифицированным пользователям
+
+| `403 Forbidden`
+| У клиента не хватает прав для получения запрашиваемого ресурса
+
+| `404 Not Found`
+| Сервер не смог найти запрашиваемый ресурс
+
+| `500 Internal Server Error`
+| На сервере произошла непредвиденная ошибка
+
+|===

@@ -1,4 +1,4 @@
-import type MainApi from "../../api/MainApi";
+import type MainApi from "../../api/main/MainApi";
 import type AdminApi from "../../api/people/AdminApi";
 import type EventsStore from "../../store/other/EventsStore";
 import type AdminsStore from "../../store/people/AdminsStore";

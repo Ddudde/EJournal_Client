@@ -36,7 +36,6 @@ interface Props{
     mod?: any
 }
 
-//TODO: Связь с Settings
 @observer
 class Start extends Component<Props> {
     static contextType = ContextStores;

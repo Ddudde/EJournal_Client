@@ -41,7 +41,7 @@ export default class EventsStore {
         this.evs = value;
     }
 
-    public clearEvents (): void {
+    public clearEvents(): void {
         const mas = {};
         let nameProperty: string;
         for(nameProperty of Object.getOwnPropertyNames(this.cons)){

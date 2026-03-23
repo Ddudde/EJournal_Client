@@ -28,6 +28,10 @@ export default class Dialog extends Component {
         console.log("I was triggered during componentDidMount Dialog");
     }
 
+    componentWillUnmount(): void {
+        console.log("I was triggered during componentWillUnmount Dialog");
+    }
+
     public render(): ReactElement {
         return this.dialogInfo.obj && <div className={dialogCSS.over}>
             <div className={dialogCSS.block}>

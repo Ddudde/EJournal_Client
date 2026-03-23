@@ -1,5 +1,5 @@
 import { cNews } from "../utils/apiPath";
-import MainApi from "./MainApi";
+import MainApi from "./main/MainApi";
 
 export default class NewsApi {
     public async deleteNews (id: string): Promise<void> {

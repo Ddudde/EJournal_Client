@@ -1,4 +1,4 @@
-import MainApi from "../api/MainApi";
+import MainApi from "../api/main/MainApi";
 import type TutorApi from "../api/TutorApi";
 import type EventsStore from "../store/other/EventsStore";
 import { cAuth } from "../utils/apiPath";

@@ -59,7 +59,7 @@ export default class GroupStore {
         this.els = value;
     }
 
-    public changeGroupsGlobal (value: any): void {
+    public cloneGroups (value: any): void {
         this.els.groups = value;
     }
 

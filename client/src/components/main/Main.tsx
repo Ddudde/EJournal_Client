@@ -19,12 +19,11 @@ import type StatusStore from "../../store/StatusStore";
 import type PanelStore from "../../store/other/PanelStore";
 import type ThemeStore from "../../store/ThemeStore";
 import { ContextStores } from "../../utils/context";
-import type MainController from "../../controllers/MainController";
+import type MainController from "../../controllers/main/MainController";
 
 interface Props {
 };
 
-//todo: Связь с Settings
 @observer
 export default class Main extends Component {
     static contextType = ContextStores;
@@ -70,9 +69,9 @@ export default class Main extends Component {
             </div>
             <div className={mainCSS.logMenu}>
                 {this.getPan("Профиль", "Pro", "profiles", mainCSS.logMenuBlock)}
-                {this.cState.roles && this.getPan("Сменить роль", "Rol", "", mainCSS.logMenuBlock,this.mainController.changeRoles)}
+                {this.cState.roles && this.getPan("Сменить роль", "Rol", "", mainCSS.logMenuBlock,this.mainController.changeRoles.bind(this.mainController))}
                 {this.getPan("Настройки", "Set", "settings", mainCSS.logMenuBlock)}
-                {this.getPan("Выход", "Exi", "", mainCSS.logMenuBlock,this.onExit)}
+                {this.getPan("Выход", "Exi", "", mainCSS.logMenuBlock,this.onExit.bind(this))}
             </div>
         </div>
     }

@@ -1,4 +1,4 @@
-import MainApi from "../api/MainApi";
+import MainApi from "../api/main/MainApi";
 import { cSettings } from "../utils/apiPath";
 
 export enum NotifEvent {

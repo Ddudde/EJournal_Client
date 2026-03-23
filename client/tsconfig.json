@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es2016",
-    "lib": ["dom", "dom.iterable", "esnext", "es2016"],
+    "lib": ["dom", "dom.iterable", "esnext", "es2016", "webworker"],
     "allowJs": true,
     "types": ["react", "react-dom", "vite"],
     "skipLibCheck": true,
@@ -19,7 +19,7 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src"],
+  "include": ["src", "*.ts"],
   "references": [{ "path": "./tsconfig.node.json" }],
   "exclude": [
     "node_modules"

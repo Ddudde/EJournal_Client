@@ -1,4 +1,4 @@
-import type MainApi from "../api/MainApi";
+import type MainApi from "../api/main/MainApi";
 import type NewsApi from "../api/NewsApi";
 import type NewsStore from "../store/NewsStore";
 

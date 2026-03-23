@@ -1,5 +1,7 @@
 import {makeAutoObservable} from 'mobx';
 
+//toDo: Изменить компоненты из-за info
+
 export default class AdminsStore {
     public info: any = {
         // "id1" : {

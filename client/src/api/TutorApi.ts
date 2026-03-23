@@ -1,5 +1,5 @@
 import { cRequests } from "../utils/apiPath";
-import MainApi from "./MainApi";
+import MainApi from "./main/MainApi";
 
 export default class TutorApi {
 

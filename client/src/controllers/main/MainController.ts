@@ -1,8 +1,8 @@
-import type MainApi from "../api/MainApi";
-import type DialogStore from "../store/other/DialogStore";
-import type EventsStore from "../store/other/EventsStore";
-import type StatusStore from "../store/StatusStore";
-import { NotifEvent } from "./NotificationController";
+import type MainApi from "../../api/main/MainApi";
+import type DialogStore from "../../store/other/DialogStore";
+import type EventsStore from "../../store/other/EventsStore";
+import type StatusStore from "../../store/StatusStore";
+import { NotifEvent } from "../NotificationController";
 
 export default class MainController {
     private mainApi: MainApi;
@@ -27,6 +27,7 @@ export default class MainController {
     }
 
     public async changeRoles(): Promise<void> {
+        console.log("testdffd");
         const data: any = await this.mainApi.changeRoles();
         if(data.status == 200 && data.body.role != undefined){
             this.statusStore.cloneState(data.body);
@@ -47,7 +48,6 @@ export default class MainController {
         if(data.status == 200) {
             this.statusStore.cloneState(data.body);
             window.dispatchEvent(new Event(NotifEvent.REQUEST_PERMISSON));
-            if(this.statusStore.login) setSettings(dispatch);
             eventSource.dispatchEvent(new Event("connect"));
         }
     }

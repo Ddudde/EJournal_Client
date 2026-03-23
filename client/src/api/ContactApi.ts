@@ -1,5 +1,5 @@
 import { cContacts } from "../utils/apiPath";
-import MainApi from "./MainApi";
+import MainApi from "./main/MainApi";
 
 export default class ContactApi {
     public async changeContact (value: string, p: string, p1?: string): Promise<any> {

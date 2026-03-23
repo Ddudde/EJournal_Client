@@ -1,5 +1,5 @@
 import { cHteachers } from "../../utils/apiPath";
-import MainApi from "../MainApi";
+import MainApi from "../main/MainApi";
 
 export default class PeopleApi {
     public async deleteGroup (id: string): Promise<any> {

@@ -4,8 +4,8 @@ export default class StatusStore {
     public auth: boolean = false;
 	public invErr: boolean = false;
 	public reaYes: boolean = false;
-	public login: string = "nm12";
 	public ico: number = 2;
+	public login: string = "nm12";
 	public role: number = 4;
 	public uuid: string = "sdfds";
 	public roles: boolean = true;

@@ -22,7 +22,6 @@ class PeopleMain extends Component<Props> {
     static contextType = ContextStores;
     context: any;
     private cState: StatusStore;
-    private evsIni: boolean;
     private navigate: NavigateFunction;
     private eventsInfo: EventsStore;
     private peopleController: PeopleController;
@@ -215,13 +214,6 @@ class PeopleMain extends Component<Props> {
         this.gr.group = name;
     }
 
-    public setEvGr(): void {
-        if(!this.evsIni) {
-            this.evsIni = true;
-            this.peopleController.didMount();
-        }
-    }
-
     private updatePanel(): void {
         this.gr.groups = {
             0: this.cState.auth && (this.cState.role < 2 || this.cState.role == 3) ? {
@@ -276,7 +268,6 @@ class PeopleMain extends Component<Props> {
 
     public componentWillUnmount(): void {
         this.peopleController.willUnmount();
-        this.evsIni = false;
         console.log("I was triggered during componentWillUnmount PeopleMain.jsx");
     }
 

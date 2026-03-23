@@ -8,8 +8,8 @@ import GroupStore from '../store/GroupStore';
 import CheckboxStore from '../store/other/CheckboxStore';
 import IndicatorStore from '../store/other/IndicatorStore';
 import StatusStore from '../store/StatusStore';
-import MainController from '../controllers/MainController';
-import MainApi from '../api/MainApi';
+import MainController from '../controllers/main/MainController';
+import MainApi from '../api/main/MainApi';
 import NotificationController from '../controllers/NotificationController';
 import StartController from '../controllers/StartController';
 import StartApi from '../api/StartApi';
@@ -26,6 +26,21 @@ import AdminApi from '../api/people/AdminApi';
 import PeopleApi from '../api/people/PeopleApi';
 import NewsController from '../controllers/NewsController';
 import NewsApi from '../api/NewsApi';
+import RequestStore from '../store/RequestStore';
+import DnevnikStore from '../store/DnevnikStore';
+import HTeacherStore from '../store/people/HTeacherStore';
+import ScheduleStore from '../store/analytics/ScheduleStore';
+import ZvonkiStore from '../store/analytics/ZvonkiStore';
+import RequestController from '../controllers/RequestController';
+import DnevnikController from '../controllers/DnevnikController';
+import HTeacherController from '../controllers/people/HTeacherController';
+import SettingController from '../controllers/main/SettingController';
+import ScheduleController from '../controllers/analytics/ScheduleController';
+import RequestApi from '../api/RequestApi';
+import DnevnikApi from '../api/DnevnikApi';
+import HTeacherApi from '../api/people/HTeacherApi';
+import SettingApi from '../api/main/SettingApi';
+import ScheduleApi from '../api/analytics/ScheduleApi';
 
 export interface IStoresContextValue {
     statusStore: StatusStore,
@@ -38,7 +53,12 @@ export interface IStoresContextValue {
     indicatorStore: IndicatorStore,
     contactsStore: ContactStore,
     newsStore: NewsStore,
-    adminsStore: AdminsStore
+    adminsStore: AdminsStore,
+    requestStore: RequestStore,
+    dnevnikStore: DnevnikStore,
+    hteacherStore: HTeacherStore,
+    scheduleStore: ScheduleStore,
+    zvonkiStore: ZvonkiStore
 }
 
 export interface IControllersContextValue {
@@ -50,7 +70,12 @@ export interface IControllersContextValue {
     contactController: ContactController,
     adminController: AdminController,
     peopleController: PeopleController,
-    newsController: NewsController
+    newsController: NewsController,
+    requestController: RequestController,
+    dnevnikController: DnevnikController,
+    hteacherController: HTeacherController,
+    settingController: SettingController,
+    scheduleController: ScheduleController
 }
 
 const ContextStores = createContext<any | null>(
@@ -70,10 +95,20 @@ export function initContextsValues() {
         indicatorStore: new IndicatorStore(),
         contactsStore: new ContactStore(),
         newsStore: new NewsStore(),
-        adminsStore: new AdminsStore()
+        adminsStore: new AdminsStore(),
+        requestStore: new RequestStore(),
+        dnevnikStore: new DnevnikStore(),
+        hteacherStore: new HTeacherStore(),
+        scheduleStore: new ScheduleStore(),
+        zvonkiStore: new ZvonkiStore()
     };
 
     const mainApi = new MainApi();
+    const peopleController = new PeopleController(
+        mainApi,
+        stores.groupStore,
+        new PeopleApi()
+    );
     const controllers: IControllersContextValue = {
         mainApi: mainApi,
         mainController: new MainController(
@@ -106,15 +141,45 @@ export function initContextsValues() {
             new AdminApi(),
             stores.adminsStore
         ),
-        peopleController: new PeopleController(
-            mainApi,
-            stores.groupStore,
-            new PeopleApi()
-        ),
+        peopleController: peopleController,
         newsController: new NewsController(
             mainApi,
             stores.newsStore,
             new NewsApi()
+        ),
+        requestController: new RequestController(
+            mainApi,
+            new RequestApi(),
+            stores.requestStore
+        ),
+        dnevnikController: new DnevnikController(
+            mainApi,
+            new DnevnikApi(),
+            stores.dnevnikStore,
+            stores.scheduleStore
+        ),
+        hteacherController: new HTeacherController(
+            mainApi,
+            new HTeacherApi(),
+            stores.hteacherStore,
+            stores.statusStore,
+            stores.eventsStore
+        ),
+        settingController: new SettingController(
+            mainApi,
+            new SettingApi(),
+            stores.statusStore,
+            stores.eventsStore,
+            stores.dialogStore,
+            stores.checkboxStore
+        ),
+        scheduleController: new ScheduleController(
+            mainApi,
+            new ScheduleApi(),
+            stores.scheduleStore,
+            stores.groupStore,
+            stores.statusStore,
+            peopleController
         )
     };
 
