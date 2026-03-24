@@ -92,20 +92,20 @@ export default class Dnevnik extends Component {
             }
         }
         idLessons = mas;
-        return <>{idLessons.map((idLesson: string, lesNum, x, lesson = schedules.lessons[idLesson] || {}, lesDM = (this.dnevnikStore.jur[lesson.name] || {})[rawDayDate] || {}, lesD = lesDM[lesDM.i++] || {}) => <>
+        return <>{idLessons.map((idLesson: string, lesNum, x, lesson = schedules.lessons[idLesson] || {}, marksPerLesson = (this.dnevnikStore.jur[lesson.name] || {})[rawDayDate] || {}, mark = marksPerLesson.marks[marksPerLesson.i++] || {}) => <>
             <div className={dnevCSS.nav_i} id={dnevCSS.nav_i}>
                 {lesson.name || <br/>}
             </div>
             <div className={dnevCSS.nav_i+" "+dnevCSS.dayHomework} id={dnevCSS.nav_i}>
-                {lesD.homework || <br/>}
+                {mark.homework || <br/>}
             </div>
             <div className={dnevCSS.nav_i} id={dnevCSS.nav_i}>
-                {lesD.mark || <br/>}
-                {lesD.weight > 1 && <div className={dnevCSS.nav_i+" "+dnevCSS.nav_iWeight} id={dnevCSS.nav_i}>
-                    {lesD.weight}
+                {mark.mark || <br/>}
+                {mark.weight > 1 && <div className={dnevCSS.nav_i+" "+dnevCSS.nav_iWeight} id={dnevCSS.nav_i}>
+                    {mark.weight}
                 </div>}
-                {lesD.type && <div className={dnevCSS.nav_i+" "+dnevCSS.nav_iType} id={dnevCSS.nav_i}>
-                    {lesD.type}
+                {mark.type && <div className={dnevCSS.nav_i+" "+dnevCSS.nav_iType} id={dnevCSS.nav_i}>
+                    {mark.type}
                 </div>}
             </div>
         </>)}</>

@@ -48,15 +48,19 @@ class App extends Component {
 	public UNSAFE_componentWillMount(): void {
 		const {statusStore} = this.context.stores;
         this.cState = statusStore;
-        if(!this.cState.auth) {
-            this.indexComp = <Start/>;
-        } else {
-            if(this.cState.role < 2) this.indexComp = <Dnevnik/>;
-            if(this.cState.role == 2) this.indexComp = <Schedule/>;
-            if(this.cState.role == 3) this.indexComp = <AnalyticsMain comp={<Zvonki/>}/>;
-            if(this.cState.role == 4) this.indexComp = <RequestReceiver/>;
-        }
+        this.getStartPages();
 	}
+
+    private getStartPages() {
+        if (!this.cState.auth) {
+            this.indexComp = <Start />;
+        } else {
+            if (this.cState.role < 2) this.indexComp = <Dnevnik />;
+            if (this.cState.role == 2) this.indexComp = <Schedule />;
+            if (this.cState.role == 3) this.indexComp = <AnalyticsMain comp={<Zvonki />} />;
+            if (this.cState.role == 4) this.indexComp = <RequestReceiver />;
+        }
+    }
 
     private navigateWithSkipWarning(path : string): void{
         setTimeout(() => {this.navigate(path)});
@@ -71,6 +75,11 @@ class App extends Component {
             console.log(this.path);
             this.navigateWithSkipWarning(this.path);
         }
+    }
+
+    public UNSAFE_componentWillUpdate(): void {
+        console.log("I was triggered during componentWillUpdate App");
+        this.getStartPages();
     }
 
     public render(): ReactElement { 

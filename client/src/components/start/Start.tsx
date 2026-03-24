@@ -287,11 +287,11 @@ class Start extends Component<Props> {
         const data: boolean = await this.startController.initRecovery(this.selEmailZ, this.els, this.emailCodePas);
         if(data){
             e.target = e.target.parentElement;
-            this.onSmvz(e);
+            this.goToRecoveryOrVxod(e);
         }
     }
 
-    private onSmvz(e): void {
+    private goToRecoveryOrVxod(e): void {
         const par: HTMLElement = e.target.parentElement.parentElement.parentElement;
         const mod: boolean = par.getAttribute('data-mod') == '0';
         par.setAttribute("data-mod", +mod + "");
@@ -346,7 +346,7 @@ class Start extends Component<Props> {
                 Код подтверждения:
                 <span style={{color: "#F00"}}> *</span>
             </div>
-            <input className={start.inps} type="text" placeholder="Код подтверждения" onChange={this.chGotovo} id="codeR"
+            <input className={start.inps} type="text" placeholder="Код подтверждения" onChange={this.chGotovo.bind(this)} id="codeR"
                 ref={el => this.elem.codEm = el} required pattern="^[a-zA-Z0-9_]+$"/>
         </div>
     }
@@ -457,22 +457,22 @@ class Start extends Component<Props> {
                     <div className={start.posit} data-mod="0">
                         <div className={start.help} data-enable={this.code ? '1' : '0'} data-mod="0">
                             <div className={start.r}>
-                                Нет аккаунта? <span className={start.helpa} onClick={this.onreg}>Регистрация!</span>
+                                Нет аккаунта? <span className={start.helpa} onClick={this.onreg.bind(this)}>Регистрация!</span>
                             </div>
                             <div className={start.v}>
-                                Есть аккаунт? <span className={start.helpa} onClick={this.onvxod}>Вход!</span>
+                                Есть аккаунт? <span className={start.helpa} onClick={this.onvxod.bind(this)}>Вход!</span>
                             </div>
                         </div>
                         <form className={start.vxod} data-mod="0" ref={el=>this.elem.vxodBlock = el}>
                             <div className={start.vxo}>
-                                <input className={start.inps} type="login" onChange={this.chStatVb}
+                                <input className={start.inps} type="login" onChange={this.chStatVb.bind(this)}
                                     ref={el => this.elem.logv = el} placeholder="Логин" id="logv" autoComplete="username"
                                     required pattern="^[a-zA-Z0-9\-]+$"/>
                                 <div className={start.dinp}>
-                                    <input className={start.inps} type="password" onChange={this.chStatVb}
+                                    <input className={start.inps} type="password" onChange={this.chStatVb.bind(this)}
                                         ref={el => this.elem.pasv = el} placeholder="Пароль" id="pasv"
                                         autoComplete="current-password" required pattern="^[a-zA-Z0-9_]+$"/>
-                                    <div className={start.nav_i + " " + start.zabpar} id={start.nav_i} onClick={this.onSmvz}>
+                                    <div className={start.nav_i + " " + start.zabpar} id={start.nav_i} onClick={this.goToRecoveryOrVxod.bind(this)}>
                                         Забыли пароль?
                                     </div>
                                 </div>
@@ -484,45 +484,45 @@ class Start extends Component<Props> {
                                         </div>
                                     </div>
                                     <div className={button.button + ' ' + start.marg} ref={el => this.elem.vxbut = el}
-                                        onClick={this.initVxod}>
+                                        onClick={this.initVxod.bind(this)}>
                                         ВОЙТИ!
                                     </div>
                                 </div>
                             </div>
                             <div className={start.zab}>
                                 <input className={start.inps} ref={el => this.elem.logz = el} type="text"
-                                    onChange={this.chStatZb} placeholder="Логин" id="logz" autoComplete="username"
+                                    onChange={this.chStatZb.bind(this)} placeholder="Логин" id="logz" autoComplete="username"
                                     required pattern="^[a-zA-Z0-9\-]+$"/>
                                 <div className={start.blockRec} data-selemail={+this.selEmailZ} ref={el=>this.elem.blockRecZ=el}>
                                     <div className={start.email}>
                                         <div className={start.dinp}>
-                                            <input className={start.inps} ref={el => this.elem.emalZ = el} type="email" placeholder="E-Mail" onChange={this.chStatZb} id="emalZ" required/>
-                                            <span className={button.button + ' ' + start.marg} data-mod='2' onClick={this.changeSelEmailZ}>
+                                            <input className={start.inps} ref={el => this.elem.emalZ = el} type="email" placeholder="E-Mail" onChange={this.chStatZb.bind(this)} id="emalZ" required/>
+                                            <span className={button.button + ' ' + start.marg} data-mod='2' onClick={this.changeSelEmailZ.bind(this)}>
                                                 Заменить на секретную фразу
                                             </span>
                                         </div>
                                     </div>
                                     <div className={start.secFR}>
                                         <div className={start.dinp}>
-                                            <input className={start.inps} type="text" placeholder="Секретная фраза" onChange={this.chStatZb} id="secFrZ"
+                                            <input className={start.inps} type="text" placeholder="Секретная фраза" onChange={this.chStatZb.bind(this)} id="secFrZ"
                                                 required pattern="^[a-zA-Z0-9_]+$"/>
-                                            <span className={button.button + ' ' + start.marg} data-mod='2' onClick={this.changeSelEmailZ}>
+                                            <span className={button.button + ' ' + start.marg} data-mod='2' onClick={this.changeSelEmailZ.bind(this)}>
                                                 Заменить на e-mail
                                             </span>
                                         </div>
                                     </div>
                                 </div>
                                 <div className={start.dinp}>
-                                    <input className={start.inps} type="password" onChange={this.chStatZb}
+                                    <input className={start.inps} type="password" onChange={this.chStatZb.bind(this)}
                                         placeholder="Новый пароль" id="pasnz" autoComplete="new-password" required
                                         pattern="^[a-zA-Z0-9_]+$"/>
-                                    <div className={button.button + ' ' + start.marg} data-mod='2' onClick={this.gen_pas}>
+                                    <div className={button.button + ' ' + start.marg} data-mod='2' onClick={this.gen_pas.bind(this)}>
                                         <img src={ran} className={start.randimg} alt=""/>
                                         Случайный пароль
                                     </div>
                                 </div>
                                 <div className={start.dinp}>
-                                    <input className={start.inps} type="password" onChange={this.chStatZb}
+                                    <input className={start.inps} type="password" onChange={this.chStatZb.bind(this)}
                                         placeholder="Подтвердите пароль" id="paspz" autoComplete="new-password"
                                         required pattern="^[a-zA-Z0-9_]+$"/>
                                     <span className={start.warn + ' ' + start.marg} id="warncz">
@@ -538,7 +538,7 @@ class Start extends Component<Props> {
                                         </div>
                                     </div>
                                     <div className={button.button + ' ' + start.butZab + ' ' + start.marg} id="butR"
-                                        data-mod="1" onClick={this.onSmvz}>
+                                        data-mod="1" onClick={this.goToRecoveryOrVxod.bind(this)}>
                                         Вспомнил пароль
                                     </div>
                                 </div>
@@ -550,15 +550,15 @@ class Start extends Component<Props> {
                                     Выберите аватар для профиля:
                                     <span style={{color: "#F00"}}> *</span>
                                 </p>
-                                <div className={start.blockAva} onClick={this.chStatAv}>
+                                <div className={start.blockAva} onClick={this.chStatAv.bind(this)}>
                                     <input id="ch1" name="ico" type="radio" value="1" defaultChecked/>
                                     <img className={start.logoi} src={ls1} alt=""/>
                                 </div>
-                                <div className={start.blockAva} onClick={this.chStatAv}>
+                                <div className={start.blockAva} onClick={this.chStatAv.bind(this)}>
                                     <input id="ch2" name="ico" type="radio" value="2"/>
                                     <img className={start.logoi} src={ls2} alt=""/>
                                 </div>
-                                <div className={start.blockAva} onClick={this.chStatAv}>
+                                <div className={start.blockAva} onClick={this.chStatAv.bind(this)}>
                                     <input id="ch3" name="ico" type="radio" value="3"/>
                                     <img className={start.logoi} src={ls3} alt=""/>
                                 </div>
@@ -567,13 +567,13 @@ class Start extends Component<Props> {
                                 Логин:
                                 <span style={{color: "#F00"}}> *</span>
                             </div>
-                            <input className={start.inps} type="text" placeholder="Логин" onChange={this.chStatRb} id="logr"
+                            <input className={start.inps} type="text" placeholder="Логин" onChange={this.chStatRb.bind(this)} id="logr"
                                 autoComplete="username" required pattern="^[a-zA-Z0-9\-]+$"/>
                             <div className={start.raz}>
                                 Пароль:
                                 <span style={{color: "#F00"}}> *</span>
                             </div>
-                            <input className={start.inps} type="password" placeholder="Пароль" onChange={this.chStatRb}
+                            <input className={start.inps} type="password" placeholder="Пароль" onChange={this.chStatRb.bind(this)}
                                 id="pasr" autoComplete="new-password" required pattern="^[a-zA-Z0-9_]+$"/>
                             <div className={start.raz}>
                                 Повторите пароль:
@@ -581,9 +581,9 @@ class Start extends Component<Props> {
                             </div>
                             <div className={start.dinp}>
                                 <input className={start.inps} type="password" placeholder="Повторите пароль"
-                                    onChange={this.chStatRb} id="ppasr" autoComplete="new-password" required
+                                    onChange={this.chStatRb.bind(this)} id="ppasr" autoComplete="new-password" required
                                     pattern="^[a-zA-Z0-9_]+$"/>
-                                <span className={button.button + ' ' + start.marg} data-mod='2' onClick={this.gen_pas}>
+                                <span className={button.button + ' ' + start.marg} data-mod='2' onClick={this.gen_pas.bind(this)}>
                                     <img src={ran} className={start.randimg} alt=""/>
                                     Случайный пароль
                                 </span>
@@ -595,8 +595,8 @@ class Start extends Component<Props> {
                                         <span style={{color: "#F00"}}> *</span>
                                     </div>
                                     <div className={start.dinp}>
-                                        <input className={start.inps} ref={el => this.elem.emalR = el} type="email" placeholder="E-Mail" onChange={this.chStatRb} id="emalR" required/>
-                                        <span className={button.button + ' ' + start.marg} data-mod='2' onClick={this.changeSelEmailR}>
+                                        <input className={start.inps} ref={el => this.elem.emalR = el} type="email" placeholder="E-Mail" onChange={this.chStatRb.bind(this)} id="emalR" required/>
+                                        <span className={button.button + ' ' + start.marg} data-mod='2' onClick={this.changeSelEmailR.bind(this)}>
                                             Заменить на секретную фразу
                                         </span>
                                     </div>
@@ -607,9 +607,9 @@ class Start extends Component<Props> {
                                         <span style={{color: "#F00"}}> *</span>
                                     </div>
                                     <div className={start.dinp}>
-                                        <input className={start.inps} type="text" placeholder="Секретная фраза" onChange={this.chStatRb} id="secFrR"
+                                        <input className={start.inps} type="text" placeholder="Секретная фраза" onChange={this.chStatRb.bind(this)} id="secFrR"
                                             required pattern="^[a-zA-Z0-9_]+$"/>
-                                        <span className={button.button + ' ' + start.marg} data-mod='2' onClick={this.changeSelEmailR}>
+                                        <span className={button.button + ' ' + start.marg} data-mod='2' onClick={this.changeSelEmailR.bind(this)}>
                                             Заменить на e-mail
                                         </span>
                                     </div>
@@ -635,7 +635,7 @@ class Start extends Component<Props> {
                                     </div>
                                 </div>
                                 <span data-enable={+this.els.regb} className={button.button + ' ' + start.marg}
-                                    ref={el => this.elem.regbut = el} onClick={this.preRego}>
+                                    ref={el => this.elem.regbut = el} onClick={this.preRego.bind(this)}>
                                     ЗАРЕГИСТРИРОВАТЬСЯ!
                                 </span>
                             </div>

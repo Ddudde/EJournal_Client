@@ -169,6 +169,10 @@ export default class Main extends Component {
         this.dialogInfo = dialogStore;
         this.mainController = this.context.controllers.mainController;
         this.mainController.openStream();
+        this.getMainPanel();
+    }
+
+    private getMainPanel() {
         Main.gr.groups = {
             0: !this.cState.auth ? {
                 nam: "Главная",
@@ -253,6 +257,11 @@ export default class Main extends Component {
         clearTimeout(this.timid);
         this.themeInfo = undefined;
         console.log("I was triggered during componentWillUnmount Main");
+    }
+
+    public UNSAFE_componentWillUpdate(): void {
+        console.log("I was triggered during componentWillUpdate Main");
+        this.getMainPanel();
     }
 
     public render(): ReactElement {

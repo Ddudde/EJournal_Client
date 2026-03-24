@@ -58,7 +58,7 @@ export default class Events extends Component {
             setTimeout(()=>this.deleteTimer(id), this.eventsInfo.time[id].long*1000);
             this.eventsInfo.changeEventTimer(id, true);
         }
-        console.log('componentDidUpdate App');
+        console.log('componentDidUpdate Events');
     }
 
     public render(): ReactElement {

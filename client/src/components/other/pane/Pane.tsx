@@ -276,9 +276,12 @@ export default class Pane extends Component<Props> {
     }
 
     private setInfoPanel(): void {
-        if(this.panJs.ke == undefined) {
+        // console.log(this.props.gro.group);
+        // console.log(this.panelInfo.els[this.panJs.ke]?.group);
+        if(this.panJs.ke == undefined || this.props.gro?.group != this.panJs.info?.group) {
+        // if(this.panJs.ke == undefined) {
             this.panJs.pari.paels = 0;
-            this.panJs.ke = this.kel++;
+            if(this.panJs.ke == undefined) this.panJs.ke = this.kel++;
             if(!this.props.cla) {
                 this.panelInfo.changePane(this.panJs.ke, this.props.gro);
                 this.panJs.info = this.panelInfo.els[this.panJs.ke];
