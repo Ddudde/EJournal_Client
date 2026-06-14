@@ -1,6 +1,6 @@
 import type { ReactElement} from "react";
 import {Component} from "react";
-import withRouterHOC from "../../utils/withRouterHOC";
+import withRouterHOC from "../../utils/withHOC";
 import Main from "./Main";
 import type { NavigateFunction } from "react-router-dom";
 

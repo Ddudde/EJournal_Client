@@ -9,4 +9,9 @@ const withRouterHOC: any = (WrappedComponent: ElementType, enableParam?: boolean
     return <WrappedComponent {...props} navigate={navigate} params={params}/>;
 }
 
+export const withParamsHOC: any = (WrappedComponent: ElementType) => (props: any) => {
+    const params: Readonly<Params<string>> = useParams();
+    return <WrappedComponent {...props} params={params}/>;
+}
+
 export default withRouterHOC;

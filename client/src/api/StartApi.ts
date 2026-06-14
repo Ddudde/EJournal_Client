@@ -26,7 +26,7 @@ export default class StartApi {
         return data;
     }
 
-    public async initVxod(notifToken: string, permis: boolean, auth: string): Promise<any> {
+    public static async initVxod(notifToken: string, permis: boolean, auth: string): Promise<any> {
         const data: Promise<any> = MainApi.sendToServer({
             notifToken: notifToken,
             permis: permis

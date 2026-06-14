@@ -5,7 +5,7 @@ import type { ReactElement} from "react";
 import {Component} from "react";
 import Redirect from "./components/main/Redirect";
 import {observer} from "mobx-react";
-import withRouterHOC from "./utils/withRouterHOC";
+import withRouterHOC from "./utils/withHOC";
 import Start from "./components/start/Start";
 import ErrFound from "./components/other/error/ErrFound";
 import type StatusStore from "./store/StatusStore";

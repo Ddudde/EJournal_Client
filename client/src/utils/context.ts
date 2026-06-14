@@ -103,7 +103,7 @@ export function initContextsValues() {
         zvonkiStore: new ZvonkiStore()
     };
 
-    const mainApi = new MainApi();
+    const mainApi = new MainApi(stores.statusStore, stores.eventsStore);
     const peopleController = new PeopleController(
         mainApi,
         stores.groupStore,

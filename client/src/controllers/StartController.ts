@@ -1,5 +1,5 @@
 import type MainApi from "../api/main/MainApi";
-import type StartApi from "../api/StartApi";
+import StartApi from "../api/StartApi";
 import type DialogStore from "../store/other/DialogStore";
 import type EventsStore from "../store/other/EventsStore";
 import type StatusStore from "../store/StatusStore";
@@ -72,12 +72,21 @@ export default class StartController {
     }
 
     public async initVxod(notifToken: string, permis: boolean, auth: string): Promise<void> {
-        const data: any = await this.startApi.initVxod(notifToken, permis, auth);
-        if(data.status == 200){
+        const data: any = await StartApi.initVxod(notifToken, permis, auth);
+        if(data.status == 200) {
             console.log(data);
-            this.statusStore.cloneState(data.body);
+            this.statusStore.cloneState(data.body.bodyAuth);
+            localStorage.setItem("accessToken", data.body.token);
         } else {
             this.eventsStore.changeEvent("Внимание!", "Неверный логин или пароль", 10);
+        }
+    }
+
+    public static async initTestVxod(auth: string): Promise<void> {
+        const data: any = await StartApi.initVxod(undefined, undefined, auth);
+        if(data.status == 200) {
+            console.log(data);
+            localStorage.setItem("accessToken", data.body.token);
         }
     }
 

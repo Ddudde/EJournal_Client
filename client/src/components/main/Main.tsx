@@ -20,6 +20,7 @@ import type PanelStore from "../../store/other/PanelStore";
 import type ThemeStore from "../../store/ThemeStore";
 import { ContextStores } from "../../utils/context";
 import type MainController from "../../controllers/main/MainController";
+import StartController from "../../controllers/StartController";
 
 interface Props {
 };
@@ -163,12 +164,13 @@ export default class Main extends Component {
 
     public UNSAFE_componentWillMount(): void {
 		const {statusStore, themeStore, panelStore, dialogStore} = this.context.stores;
+        const {mainController} = this.context.controllers;
+        this.mainController = mainController;
+        this.mainController.openStream();
         this.themeInfo = themeStore;
         this.cState = statusStore;
         Main.panelInfo = panelStore;
         this.dialogInfo = dialogStore;
-        this.mainController = this.context.controllers.mainController;
-        this.mainController.openStream();
         this.getMainPanel();
     }
 

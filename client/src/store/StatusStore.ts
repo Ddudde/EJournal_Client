@@ -1,6 +1,7 @@
 import {makeAutoObservable} from 'mobx';
 
 export default class StatusStore {
+    // public auth: boolean = true;
     public auth: boolean = false;
 	public invErr: boolean = false;
 	public reaYes: boolean = false;

@@ -3,6 +3,7 @@ import type DialogStore from "../../store/other/DialogStore";
 import type EventsStore from "../../store/other/EventsStore";
 import type StatusStore from "../../store/StatusStore";
 import { NotifEvent } from "../NotificationController";
+import StartController from "../StartController";
 
 export default class MainController {
     private mainApi: MainApi;
@@ -10,12 +11,17 @@ export default class MainController {
     private dialogStore: DialogStore;
     private warnErrNet: number | undefined;
     private eventsStore: EventsStore;
+    public static awaitInitSSE: Promise<void>;
+    private awaitInitAuth: Promise<void>;
 
     public constructor(mainApi: MainApi, statusStore: StatusStore, dialogStore: DialogStore, eventsStore: EventsStore) {
         this.mainApi = mainApi;
         this.statusStore = statusStore;
         this.dialogStore = dialogStore;
         this.eventsStore = eventsStore;
+        if(!localStorage.getItem("accessToken")) {
+            // this.awaitInitAuth = StartController.initTestVxod("nm12:1111");
+        }
     }
 
     public async selectKid(kid: string): Promise<void> {
@@ -27,7 +33,6 @@ export default class MainController {
     }
 
     public async changeRoles(): Promise<void> {
-        console.log("testdffd");
         const data: any = await this.mainApi.changeRoles();
         if(data.status == 200 && data.body.role != undefined){
             this.statusStore.cloneState(data.body);
@@ -43,8 +48,8 @@ export default class MainController {
         }
     }
 
-    private async initConnection(login: string, notifToken: string, permis: boolean, eventSource:EventSource): Promise<void> {
-        const data: any = await this.mainApi.initConnection(login, notifToken, permis);
+    private async initConnection(notifToken: string, permis: boolean, eventSource:EventSource): Promise<void> {
+        const data: any = await this.mainApi.initConnection(notifToken, permis);
         if(data.status == 200) {
             this.statusStore.cloneState(data.body);
             window.dispatchEvent(new Event(NotifEvent.REQUEST_PERMISSON));
@@ -52,21 +57,23 @@ export default class MainController {
         }
     }
 
-    private initSSE(): void {
+    private async initSSE(): Promise<void> {
+        await this.connectToSSE();
+        console.log("yaaaaaaaa");
         const eventSource:EventSource = this.mainApi.initSSE();
         eventSource.onerror = this.errorSSE.bind(this);
         eventSource.addEventListener('chck', e => {
             const msg = JSON.parse(e.data);
             console.log(msg);
             if (msg) {
-                localStorage.setItem("sec", msg);
+                localStorage.setItem("token", msg);
                 this.statusStore.changeState("uuid", msg);
             }
             if(this.warnErrNet != undefined){
                 this.eventsStore.deleteEvents(this.warnErrNet);
                 this.warnErrNet = undefined;
             }
-            this.initConnection(this.statusStore.login, localStorage.getItem("notifToken"), Notification.permission == "granted", eventSource);
+            this.initConnection(localStorage.getItem("notifToken"), Notification.permission == "granted", eventSource);
         }, false);
     }
 
@@ -76,6 +83,7 @@ export default class MainController {
             this.closeStream();
         } else {
             console.log('try to reconnect....');
+            this.connectToSSE();
         }
         if(this.warnErrNet == undefined) {
             this.warnErrNet = this.eventsStore.changeEvent("Внимание!", "Отсутствует подключение к серверу", undefined, true);
@@ -86,12 +94,20 @@ export default class MainController {
         this.mainApi.closeStream();
     }
 
-    public openStream(): void {
+    public async openStream(): Promise<void> {
         const readyStateSSE: number = this.mainApi.getReadyStateSSE();
         if (readyStateSSE != undefined && readyStateSSE != EventSource.CLOSED) {
             console.log("stream already opened");
             return;
         }
-        this.initSSE();
+        if(this.awaitInitAuth) await this.awaitInitAuth;
+        MainController.awaitInitSSE = this.initSSE();
+    }
+
+    public async connectToSSE(): Promise<void> {
+        const data: any = await this.mainApi.connectToSSE();
+        if(data.status == 200 && data.body) {
+            localStorage.setItem("uuid", data.body);
+        }
     }
 }

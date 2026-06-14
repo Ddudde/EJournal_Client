@@ -7,7 +7,7 @@ import { Outlet} from "react-router-dom";
 import Main from "../main/Main";
 import peopleCSS from './peopleMain.module.css';
 import Pane from "../other/pane/Pane";
-import withRouterHOC from "../../utils/withRouterHOC";
+import withRouterHOC from "../../utils/withHOC";
 import type StatusStore from "../../store/StatusStore";
 import type EventsStore from "../../store/other/EventsStore";
 import type PeopleController from "../../controllers/people/PeopleController";
@@ -288,8 +288,8 @@ class PeopleMain extends Component<Props> {
 
 const HOC = withRouterHOC(PeopleMain);
 
-function setStaticForHOC() {
+function setStaticForHOCInJS() {
     return HOC;
 }
 
-export default setStaticForHOC();
+export default setStaticForHOCInJS();

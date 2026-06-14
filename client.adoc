@@ -12,7 +12,9 @@ Natik Muradov <myratoff25@gmail.com>
 
 ====
 Github: https://github.com/Ddudde/EJournal
+
 NOTE: Доки в ветке public репозитория клиента.
+
 Публикации в HTML и PDF форматах находятся в /docs/EJournal/asciiDoc/.
 Основное описание проекта здесь. Также есть дополнительные:
 Также в /docs/start-web.bat можно стартануть Python http server для просмотра документации

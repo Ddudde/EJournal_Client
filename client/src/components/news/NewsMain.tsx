@@ -37,11 +37,11 @@ export default class NewsMain extends Component {
             }
         }
     };
-    static chStatB: (e, inps: any) => void;
-    static errorLoad: (e) => void;
-    static getAdd: (inps: any, forceUpdate: any, id?: string) => ReactElement;
-    static setActNew: (name: any) => void;
-    static setTyp: (value: string) => void;
+    public static chStatB: (e, inps: any) => void;
+    public static errorLoad: (e) => void;
+    public static getAdd: (inps: any, forceUpdate: any, id?: string) => ReactElement;
+    public static setActNew: (name: any) => void;
+    public static setTyp: (value: string) => void;
 
     private getEdField(edFi: ReactElement, titleEd: string, id: string, inf: string, inp: string, inps: any, forceUpdate: any, placeholder?: string, pattern?: string): ReactElement {
         return (<>

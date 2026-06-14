@@ -69,7 +69,7 @@ import hizo35 from "../../media/tutor/hteachers/izo35.png";
 import hizo36 from "../../media/tutor/hteachers/izo36.png";
 import knopka from "../../media/dnevnik/knopka.png";
 import { ContextStores } from "../../utils/context";
-import withRouterHOC from "../../utils/withRouterHOC";
+import withRouterHOC from "../../utils/withHOC";
 import {Helmet} from "react-helmet-async";
 import Main from "../main/Main";
 import RequestSender from "./requestSender/RequestSender";
