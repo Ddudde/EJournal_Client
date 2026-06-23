@@ -14,7 +14,7 @@ export async function initPWA(notificationController: NotificationController): P
             projectId: "e-journalfcm",
             appId: "1:781991460409:web:a900bf500869ddd6f097e8"
         });
-        const regPromise = navigator.serviceWorker.register("/service-worker.ts");
+        const regPromise = navigator.serviceWorker.register("/service-worker.js");
         const fireApp: any = await fireAppPromise;
         const reg: ServiceWorkerRegistration = await regPromise;
         navigator.serviceWorker.addEventListener('message', event => {

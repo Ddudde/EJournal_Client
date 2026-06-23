@@ -15,7 +15,7 @@
   },
   "scripts": {
     "start": "vite",
-    "build": "vite build",
+    "build": "tsc --noCheck ./public/service-worker.ts && vite build",
     "serve": "vite preview"
   },
   "eslintConfig": {

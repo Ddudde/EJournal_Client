@@ -12,6 +12,7 @@ export default defineConfig({
         },
     })],
     build: {
+        outDir: 'build',
         manifest: "asset-manifest.json"
     }
 });
