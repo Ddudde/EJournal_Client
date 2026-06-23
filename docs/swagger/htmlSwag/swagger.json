@@ -2,7 +2,7 @@
   "openapi" : "3.0.1",
   "info" : {
     "title" : "EJournal",
-    "description" : "<!DOCTYPE HTML>\r\n<HTML lang=\"RU\">\r\n\t<HEAD>\r\n\t\t<TITLE>API Overview</TITLE>\r\n\t</HEAD>\r\n\t<BODY>\r\n\t\t<PRE style=\"font-size: 20px; margin: 10px 0;\">\r\nОсновное описание в AsciiDoc.\r\n* Swagger: <a href=\"/EJournal/swagger/htmlSwag\">/EJournal/swagger/htmlSwag</a>\r\n* JavaDoc: <a href=\"/EJournal/javaDoc\">/EJournal/javaDoc</a>\r\n* AsciiDoc: <a href=\"/EJournal/asciiDoc\">/EJournal/asciiDoc</a>\r\n\r\nВсе примеры из модульных тестов.\r\n\r\nВнимание! Для того чтобы попробовать \"Try It Out\" блок в Swagger не забудь в CORS конфиг сервера добавить нужную ссылку.\r\nCORS конфиг находится в ru.configs.WebMVCConfig.\r\n\r\nТестовый режим включается в ru.Main.test\r\nТестовый режим подключает тестового пользователя.\r\nUUID-токен: 9693b2a1-77bb-4426-8045-9f9b4395d454, администратор с ником \"nm12\"\r\nДля аутентификации с \"Try It Out\" ввести в header \"x-access-token\" тестовый UUID-токен\r\n\r\nДля смены пользователя на тестовом токене перейти к запросу \"/auth/infCon/\"\r\nи в теле запроса указать логин нужного пользователя.\r\nПример тела:\r\n{\r\n\t\"login\": \"testLogin\"\r\n}\r\n\r\nОбычно у всех разделов есть эндпоинт с которого обязательно начинать работу, а иногда и несколько.\r\nПеред описанием эндпоинта пишется [start]\r\n\t\t</PRE>\r\n\t</BODY>\r\n</HTML>",
+    "description" : "<!DOCTYPE HTML>\r\n<HTML lang=\"RU\">\r\n\t<HEAD>\r\n\t\t<TITLE>API Overview</TITLE>\r\n\t</HEAD>\r\n\t<BODY>\r\n\t\t<PRE style=\"font-size: 20px; margin: 10px 0;\">\r\nОсновное описание в AsciiDoc.\r\n* Swagger: <a href=\"/EJournal_Client/swagger/htmlSwag\">/EJournal_Client/swagger/htmlSwag</a>\r\n* JavaDoc: <a href=\"/EJournal_Client/javaDoc\">/EJournal_Client/javaDoc</a>\r\n* AsciiDoc-Server: <a href=\"/EJournal_Client/asciiDoc\">/EJournal_Client/asciiDoc</a>\r\n* AsciiDoc-Client: <a href=\"/EJournal_Client/asciiDoc/client.html\">/EJournal_Client/asciiDoc/client.html</a>\r\n\r\nВсе примеры из модульных тестов.\r\n\r\nВнимание! Для того чтобы попробовать \"Try It Out\" блок в Swagger не забудь в CORS конфиг сервера добавить нужную ссылку.\r\nCORS конфиг находится в ru.configs.WebMVCConfig.\r\n\r\nТестовый режим включается в ru.Main.test\r\nТестовый режим подключает тестового пользователя.\r\nSSE-токен: 9693b2a1-77bb-4426-8045-9f9b4395d454\r\nJWT-токен: eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9,\r\nадминистратор с ником \"nm12\"\r\nДля аутентификации с \"Try It Out\" ввести в header тестовый SSE и JWT токены\r\n\r\nОбычно у всех разделов есть эндпоинт с которого обязательно начинать работу, а иногда и несколько.\r\nПеред описанием эндпоинта пишется [start]\r\n\t\t</PRE>\r\n\t</BODY>\r\n</HTML>",
     "version" : "1.0"
   },
   "servers" : [ {
@@ -71,20 +71,29 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "AdminsController/addPep_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "AdminsController/addPep_whenEmpty_Anonim" : {
@@ -114,20 +123,29 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "AdminsController/chPep_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "AdminsController/chPep_whenEmpty_Anonim" : {
@@ -157,14 +175,23 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "AdminsController/getAdmins_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "responses" : {
           "404" : {
@@ -175,11 +202,11 @@
             "content" : {
               "application/json;charset=UTF-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/requests-chTitle486549215"
+                  "$ref" : "#/components/schemas/hteachers-chSch486549215"
                 },
                 "examples" : {
                   "AdminsController/getAdmins_whenGood_Admin" : {
-                    "value" : "{\"3872\":{\"name\":\"Якушева А.О.\",\"login\":\"esse_et\"},\"1705\":{\"name\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\"},\"1840\":{\"name\":\"Пестов Л.А.\",\"login\":\"sed_commodi\"},\"3225\":{\"name\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\"},\"9764\":{\"name\":\"Силин А.К.\",\"login\":\"facere_a\"}}"
+                    "value" : "{\"3872\":{\"name\":\"Якушева А.О.\",\"login\":\"esse_et\"},\"1840\":{\"name\":\"Пестов Л.А.\",\"login\":\"sed_commodi\"},\"9764\":{\"name\":\"Силин А.К.\",\"login\":\"facere_a\"},\"1705\":{\"name\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\"},\"3225\":{\"name\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\"}}"
                   }
                 }
               }
@@ -195,20 +222,29 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "AdminsController/remPep_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "AdminsController/remPep_whenEmpty_Anonim" : {
@@ -231,27 +267,36 @@
         }
       }
     },
-    "/auth/auth/" : {
+    "/auth/auth" : {
       "post" : {
         "tags" : [ "AuthController" ],
         "summary" : "Авторизация пользователя",
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "AuthController/auth_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "AuthController/auth_whenGood_AdminUser" : {
@@ -270,11 +315,11 @@
             "content" : {
               "application/json;charset=UTF-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/requests-chTitle486549215"
+                  "$ref" : "#/components/schemas/hteachers-chSch486549215"
                 },
                 "examples" : {
                   "AuthController/auth_whenGood_AdminUser" : {
-                    "value" : "{\"auth\":true,\"login\":\"nm12\",\"role\":4,\"uuidS\":\"cb0a5c00-09e8-4e44-a53b-bab4edcb029b\",\"roles\":true,\"secFr\":false,\"email\":false}"
+                    "value" : "{\"bodyAuth\":{\"role\":4,\"auth\":true,\"login\":\"nm12\",\"uuidS\":\"41c21a37-72f9-40da-b90b-f16f3d541bee\",\"roles\":true,\"secFr\":false,\"email\":false}}"
                   }
                 }
               }
@@ -289,27 +334,36 @@
         } ]
       }
     },
-    "/auth/checkInvCode/" : {
+    "/auth/checkInvCode" : {
       "post" : {
         "tags" : [ "AuthController" ],
         "summary" : "Проверка инвайта для регистрации/регистрации новой роли",
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "AuthController/checkInvCode_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "AuthController/checkInvCode_whenGood_AdminUser" : {
@@ -332,27 +386,36 @@
         }
       }
     },
-    "/auth/infCon/" : {
+    "/auth/infCon" : {
       "patch" : {
         "tags" : [ "AuthController" ],
         "summary" : "[start] Изменение подписки",
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "AuthController/infCon_whenGood_AdminUser",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "AuthController/infCon_whenGood_AdminUser" : {
@@ -368,7 +431,7 @@
             "content" : {
               "application/json;charset=UTF-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/requests-chTitle486549215"
+                  "$ref" : "#/components/schemas/hteachers-chSch486549215"
                 },
                 "examples" : {
                   "AuthController/infCon_whenGood_AdminUser" : {
@@ -381,27 +444,83 @@
         }
       }
     },
-    "/auth/reg/" : {
+    "/auth/refreshToken" : {
+      "get" : {
+        "tags" : [ "AuthController" ],
+        "summary" : "проверка заранее выданного рефреш токена и выдача нового вместе с JWT",
+        "description" : "Также возможны 401, 403 и 500 коды ответов",
+        "operationId" : "AuthController/refreshToken_when",
+        "parameters" : [ {
+          "name" : "x-token",
+          "in" : "header",
+          "description" : "SSE UUID-токен, в ней подписка",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "200",
+            "content" : {
+              "application/json;charset=UTF-8" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/hteachers-chSch486549215"
+                },
+                "examples" : {
+                  "AuthController/refreshToken_whenGood_AdminUser" : {
+                    "value" : "{\"token\":\"eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6Ijk3NjQiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTg4NjM5MSwiZXhwIjoxNzgxODg2MzkxfQ.CTH_jJXSKW2Hl_XikM9OFS24YaidoGtyG2SnuluaQgaGgLGfKeTIrEhjAb5qO_A1\"}"
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "400"
+          }
+        }
+      }
+    },
+    "/auth/reg" : {
       "post" : {
         "tags" : [ "AuthController" ],
         "summary" : "Регистрация пользователя",
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "AuthController/reg_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "AuthController/reg_whenGood_Anonim" : {
@@ -419,41 +538,17 @@
         },
         "responses" : {
           "201" : {
-            "description" : "201",
-            "content" : {
-              "application/json;charset=UTF-8" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/requests-chTitle486549215"
-                },
-                "examples" : {
-                  "AuthController/reg_whenGood_Anonim" : {
-                    "value" : "{}"
-                  }
-                }
-              }
-            }
+            "description" : "201"
           },
           "404" : {
-            "description" : "404",
-            "content" : {
-              "application/json;charset=UTF-8" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/requests-chTitle486549215"
-                },
-                "examples" : {
-                  "AuthController/reg_whenWrongLogin_Anonim" : {
-                    "value" : "{\"error\":true}"
-                  }
-                }
-              }
-            }
+            "description" : "404"
           },
           "202" : {
             "description" : "202",
             "content" : {
               "application/json;charset=UTF-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/requests-chTitle486549215"
+                  "$ref" : "#/components/schemas/hteachers-chSch486549215"
                 },
                 "examples" : {
                   "AuthController/reg_whenWrong_Anonim" : {
@@ -466,21 +561,30 @@
         }
       }
     },
-    "/auth/remCon/" : {
+    "/auth/remCon" : {
       "patch" : {
         "tags" : [ "AuthController" ],
         "summary" : "Завершение сеанса",
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "AuthController/remCon_whenGood_AdminUser",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "responses" : {
           "200" : {
@@ -489,27 +593,36 @@
         }
       }
     },
-    "/auth/setCodePep/" : {
+    "/auth/setCodePep" : {
       "patch" : {
         "tags" : [ "AuthController" ],
         "summary" : "Установка/обновление инвайта для регистрации + Server Sent Events",
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "AuthController/setCodePep_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "AuthController/setCodePep_whenEmpty_AdminUser" : {
@@ -531,11 +644,11 @@
             "content" : {
               "application/json;charset=UTF-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/requests-chTitle486549215"
+                  "$ref" : "#/components/schemas/hteachers-chSch486549215"
                 },
                 "examples" : {
                   "AuthController/setCodePep_whenGood_AdminUser" : {
-                    "value" : "{\"id\":9764,\"code\":\"2321ba2f-56dd-488c-beec-f3a5a46411d6\",\"id1\":0}"
+                    "value" : "{\"id\":9764,\"id1\":0,\"code\":\"c66f3292-933d-4346-bd28-0acfb905a1c9\"}"
                   }
                 }
               }
@@ -544,27 +657,36 @@
         }
       }
     },
-    "/contacts/chContact/" : {
+    "/contacts/chContact" : {
       "put" : {
         "tags" : [ "ContactsController" ],
         "summary" : "Изменение контакта + Server Sent Events",
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "ContactsController/chContact_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "ContactsController/chContact_whenEmpty_Portal_AdminUser" : {
@@ -605,7 +727,7 @@
             "type" : "string"
           }
         }, {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
           "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
           "required" : true,
@@ -616,26 +738,14 @@
         } ],
         "responses" : {
           "404" : {
-            "description" : "404",
-            "content" : {
-              "application/json;charset=UTF-8" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/requests-chTitle486549215"
-                },
-                "examples" : {
-                  "ContactsController/getContacts_whenEmpty_Portal_AdminUser" : {
-                    "value" : "{\"error\":true}"
-                  }
-                }
-              }
-            }
+            "description" : "404"
           },
           "200" : {
             "description" : "200",
             "content" : {
               "application/json;charset=UTF-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/contacts-getContacts-type1554439890"
+                  "$ref" : "#/components/schemas/contacts-getContacts-type-222779981"
                 },
                 "examples" : {
                   "ContactsController/getContacts_whenGood_Portal_AdminUser" : {
@@ -658,14 +768,23 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "DnevnikController/getDnevnik_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "responses" : {
           "401" : {
@@ -676,17 +795,17 @@
             "content" : {
               "application/json;charset=UTF-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/requests-chTitle486549215"
+                  "$ref" : "#/components/schemas/hteachers-chSch486549215"
                 },
                 "examples" : {
                   "DnevnikController/getDnevnik_whenGood_KID" : {
-                    "value" : "{\"body\":{\"1\":{\"lessons\":{\"0\":{\"name\":\"Русский Яз.\",\"cabinet\":\"1283\",\"prepod\":{\"name\":\"Якушева А.О.\",\"id\":3872}},\"3\":{\"name\":\"Англ. Яз.\",\"cabinet\":\"1977\",\"prepod\":{\"name\":\"Дроздов А.А.\",\"id\":1705}},\"4\":{\"name\":\"Математика\",\"cabinet\":\"1870\",\"prepod\":{\"name\":\"Пестов Л.А.\",\"id\":1840}},\"5\":{\"name\":\"Англ. Яз.\",\"cabinet\":\"640\",\"prepod\":{\"name\":\"Никифорова Н.А.\",\"id\":3225}}}},\"3\":{\"lessons\":{\"0\":{\"name\":\"Англ. Яз.\",\"cabinet\":\"1098\",\"prepod\":{\"name\":\"Силин А.К.\",\"id\":9764}},\"2\":{\"name\":\"Русский Яз.\",\"cabinet\":\"1660\",\"prepod\":{\"name\":\"Якушева А.О.\",\"id\":3872}},\"4\":{\"name\":\"Физика\",\"cabinet\":\"1837\",\"prepod\":{\"name\":\"Дроздов А.А.\",\"id\":1705}}}},\"4\":{\"lessons\":{\"3\":{\"name\":\"Русский Яз.\",\"cabinet\":\"482\",\"prepod\":{\"name\":\"Пестов Л.А.\",\"id\":1840}},\"4\":{\"name\":\"Физика\",\"cabinet\":\"394\",\"prepod\":{\"name\":\"Никифорова Н.А.\",\"id\":3225}}}}},\"min\":\"12.01.24\",\"max\":\"29.03.24\",\"bodyD\":{\"Химия\":{\"10.06.22\":{\"0\":{\"mark\":\"4\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"i\":0}},\"Англ. Яз\":{\"12.06.22\":{\"0\":{\"mark\":\"Н\",\"weight\":1},\"i\":0},\"10.06.22\":{\"0\":{\"mark\":\"1\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"i\":0}},\"Математика\":{\"10.06.22\":{\"0\":{\"mark\":\"2\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"1\":{\"mark\":\"5\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"i\":0},\"11.06.22\":{\"0\":{\"mark\":\"5\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"i\":0}}}}"
+                    "value" : "{\"body\":{\"1\":{\"lessons\":{\"0\":{\"name\":\"Русский Яз.\",\"cabinet\":\"1283\",\"prepod\":{\"id\":3872,\"name\":\"Якушева А.О.\"}},\"3\":{\"name\":\"Англ. Яз.\",\"cabinet\":\"1977\",\"prepod\":{\"id\":1705,\"name\":\"Дроздов А.А.\"}},\"4\":{\"name\":\"Математика\",\"cabinet\":\"1870\",\"prepod\":{\"id\":1840,\"name\":\"Пестов Л.А.\"}},\"5\":{\"name\":\"Англ. Яз.\",\"cabinet\":\"640\",\"prepod\":{\"id\":3225,\"name\":\"Никифорова Н.А.\"}}}},\"3\":{\"lessons\":{\"0\":{\"name\":\"Англ. Яз.\",\"cabinet\":\"1098\",\"prepod\":{\"id\":9764,\"name\":\"Силин А.К.\"}},\"2\":{\"name\":\"Русский Яз.\",\"cabinet\":\"1660\",\"prepod\":{\"id\":3872,\"name\":\"Якушева А.О.\"}},\"4\":{\"name\":\"Физика\",\"cabinet\":\"1837\",\"prepod\":{\"id\":1705,\"name\":\"Дроздов А.А.\"}}}},\"4\":{\"lessons\":{\"3\":{\"name\":\"Русский Яз.\",\"cabinet\":\"482\",\"prepod\":{\"id\":1840,\"name\":\"Пестов Л.А.\"}},\"4\":{\"name\":\"Физика\",\"cabinet\":\"394\",\"prepod\":{\"id\":3225,\"name\":\"Никифорова Н.А.\"}}}}},\"min\":\"12.01.24\",\"max\":\"29.03.24\",\"bodyD\":{\"Химия\":{\"10.06.22\":{\"marks\":{\"0\":{\"mark\":\"4\",\"weight\":1,\"type\":\"Ответ на уроке\"}},\"i\":0}},\"Англ. Яз\":{\"12.06.22\":{\"marks\":{\"0\":{\"mark\":\"Н\",\"weight\":1}},\"i\":0},\"10.06.22\":{\"marks\":{\"0\":{\"mark\":\"1\",\"weight\":1,\"type\":\"Ответ на уроке\"}},\"i\":0}},\"Математика\":{\"10.06.22\":{\"marks\":{\"0\":{\"mark\":\"2\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"1\":{\"mark\":\"5\",\"weight\":1,\"type\":\"Ответ на уроке\"}},\"i\":0},\"11.06.22\":{\"marks\":{\"0\":{\"mark\":\"5\",\"weight\":1,\"type\":\"Ответ на уроке\"}},\"i\":0}}}}"
                   },
                   "DnevnikController/getDnevnik_whenGood_KID_onlyHomework" : {
-                    "value" : "{\"body\":{\"1\":{\"lessons\":{\"0\":{\"name\":\"Русский Яз.\",\"cabinet\":\"1283\",\"prepod\":{\"name\":\"Якушева А.О.\",\"id\":3872}},\"3\":{\"name\":\"Англ. Яз.\",\"cabinet\":\"1977\",\"prepod\":{\"name\":\"Дроздов А.А.\",\"id\":1705}},\"4\":{\"name\":\"Математика\",\"cabinet\":\"1870\",\"prepod\":{\"name\":\"Пестов Л.А.\",\"id\":1840}},\"5\":{\"name\":\"Англ. Яз.\",\"cabinet\":\"640\",\"prepod\":{\"name\":\"Никифорова Н.А.\",\"id\":3225}}}},\"3\":{\"lessons\":{\"0\":{\"name\":\"Англ. Яз.\",\"cabinet\":\"1098\",\"prepod\":{\"name\":\"Силин А.К.\",\"id\":9764}},\"2\":{\"name\":\"Русский Яз.\",\"cabinet\":\"1660\",\"prepod\":{\"name\":\"Якушева А.О.\",\"id\":3872}},\"4\":{\"name\":\"Физика\",\"cabinet\":\"1837\",\"prepod\":{\"name\":\"Дроздов А.А.\",\"id\":1705}}}},\"4\":{\"lessons\":{\"3\":{\"name\":\"Русский Яз.\",\"cabinet\":\"482\",\"prepod\":{\"name\":\"Пестов Л.А.\",\"id\":1840}},\"4\":{\"name\":\"Физика\",\"cabinet\":\"394\",\"prepod\":{\"name\":\"Никифорова Н.А.\",\"id\":3225}}}}},\"min\":\"12.01.24\",\"max\":\"29.03.24\",\"bodyD\":{\"Химия\":{\"10.06.22\":{\"0\":{\"homework\":\"Стр. 62-63 пересказ\"},\"i\":0}},\"Англ. Яз\":{\"12.06.22\":{\"0\":{\"homework\":\"Упр. 5Стр. 103\"},\"i\":0},\"10.06.22\":{\"0\":{\"homework\":\"Упр. 5Стр. 103,Упр. 2Стр. 104\"},\"i\":0}},\"Математика\":{\"10.06.22\":{\"0\":{\"homework\":\"Упр. 6Стр. 103\"},\"i\":0},\"11.06.22\":{\"0\":{\"homework\":\"Упр. 7Стр. 103\"},\"i\":0}}}}"
+                    "value" : "{\"body\":{\"1\":{\"lessons\":{\"0\":{\"name\":\"Русский Яз.\",\"cabinet\":\"1283\",\"prepod\":{\"id\":3872,\"name\":\"Якушева А.О.\"}},\"3\":{\"name\":\"Англ. Яз.\",\"cabinet\":\"1977\",\"prepod\":{\"id\":1705,\"name\":\"Дроздов А.А.\"}},\"4\":{\"name\":\"Математика\",\"cabinet\":\"1870\",\"prepod\":{\"id\":1840,\"name\":\"Пестов Л.А.\"}},\"5\":{\"name\":\"Англ. Яз.\",\"cabinet\":\"640\",\"prepod\":{\"id\":3225,\"name\":\"Никифорова Н.А.\"}}}},\"3\":{\"lessons\":{\"0\":{\"name\":\"Англ. Яз.\",\"cabinet\":\"1098\",\"prepod\":{\"id\":9764,\"name\":\"Силин А.К.\"}},\"2\":{\"name\":\"Русский Яз.\",\"cabinet\":\"1660\",\"prepod\":{\"id\":3872,\"name\":\"Якушева А.О.\"}},\"4\":{\"name\":\"Физика\",\"cabinet\":\"1837\",\"prepod\":{\"id\":1705,\"name\":\"Дроздов А.А.\"}}}},\"4\":{\"lessons\":{\"3\":{\"name\":\"Русский Яз.\",\"cabinet\":\"482\",\"prepod\":{\"id\":1840,\"name\":\"Пестов Л.А.\"}},\"4\":{\"name\":\"Физика\",\"cabinet\":\"394\",\"prepod\":{\"id\":3225,\"name\":\"Никифорова Н.А.\"}}}}},\"min\":\"12.01.24\",\"max\":\"29.03.24\",\"bodyD\":{\"Химия\":{\"10.06.22\":{\"marks\":{\"0\":{\"homework\":\"Стр. 62-63 пересказ\"}},\"i\":0}},\"Англ. Яз\":{\"12.06.22\":{\"marks\":{\"0\":{\"homework\":\"Упр. 5Стр. 103\"}},\"i\":0},\"10.06.22\":{\"marks\":{\"0\":{\"homework\":\"Упр. 5Стр. 103,Упр. 2Стр. 104\"}},\"i\":0}},\"Математика\":{\"10.06.22\":{\"marks\":{\"0\":{\"homework\":\"Упр. 6Стр. 103\"}},\"i\":0},\"11.06.22\":{\"marks\":{\"0\":{\"homework\":\"Упр. 7Стр. 103\"}},\"i\":0}}}}"
                   },
                   "DnevnikController/getDnevnik_whenGood_KID_withHomework" : {
-                    "value" : "{\"body\":{\"1\":{\"lessons\":{\"0\":{\"name\":\"Русский Яз.\",\"cabinet\":\"1283\",\"prepod\":{\"name\":\"Якушева А.О.\",\"id\":3872}},\"3\":{\"name\":\"Англ. Яз.\",\"cabinet\":\"1977\",\"prepod\":{\"name\":\"Дроздов А.А.\",\"id\":1705}},\"4\":{\"name\":\"Математика\",\"cabinet\":\"1870\",\"prepod\":{\"name\":\"Пестов Л.А.\",\"id\":1840}},\"5\":{\"name\":\"Англ. Яз.\",\"cabinet\":\"640\",\"prepod\":{\"name\":\"Никифорова Н.А.\",\"id\":3225}}}},\"3\":{\"lessons\":{\"0\":{\"name\":\"Англ. Яз.\",\"cabinet\":\"1098\",\"prepod\":{\"name\":\"Силин А.К.\",\"id\":9764}},\"2\":{\"name\":\"Русский Яз.\",\"cabinet\":\"1660\",\"prepod\":{\"name\":\"Якушева А.О.\",\"id\":3872}},\"4\":{\"name\":\"Физика\",\"cabinet\":\"1837\",\"prepod\":{\"name\":\"Дроздов А.А.\",\"id\":1705}}}},\"4\":{\"lessons\":{\"3\":{\"name\":\"Русский Яз.\",\"cabinet\":\"482\",\"prepod\":{\"name\":\"Пестов Л.А.\",\"id\":1840}},\"4\":{\"name\":\"Физика\",\"cabinet\":\"394\",\"prepod\":{\"name\":\"Никифорова Н.А.\",\"id\":3225}}}}},\"min\":\"12.01.24\",\"max\":\"29.03.24\",\"bodyD\":{\"Химия\":{\"10.06.22\":{\"0\":{\"mark\":\"4\",\"weight\":1,\"type\":\"Ответ на уроке\",\"homework\":\"Стр. 62-63 пересказ\"},\"i\":0}},\"Англ. Яз\":{\"12.06.22\":{\"0\":{\"mark\":\"Н\",\"weight\":1,\"homework\":\"Упр. 5Стр. 103\"},\"i\":0},\"10.06.22\":{\"0\":{\"mark\":\"1\",\"weight\":1,\"type\":\"Ответ на уроке\",\"homework\":\"Упр. 5Стр. 103,Упр. 2Стр. 104\"},\"i\":0}},\"Математика\":{\"10.06.22\":{\"0\":{\"mark\":\"2\",\"weight\":1,\"type\":\"Ответ на уроке\",\"homework\":\"Упр. 6Стр. 103\"},\"1\":{\"mark\":\"5\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"i\":0},\"11.06.22\":{\"0\":{\"mark\":\"5\",\"weight\":1,\"type\":\"Ответ на уроке\",\"homework\":\"Упр. 7Стр. 103\"},\"i\":0}}}}"
+                    "value" : "{\"body\":{\"1\":{\"lessons\":{\"0\":{\"name\":\"Русский Яз.\",\"cabinet\":\"1283\",\"prepod\":{\"id\":3872,\"name\":\"Якушева А.О.\"}},\"3\":{\"name\":\"Англ. Яз.\",\"cabinet\":\"1977\",\"prepod\":{\"id\":1705,\"name\":\"Дроздов А.А.\"}},\"4\":{\"name\":\"Математика\",\"cabinet\":\"1870\",\"prepod\":{\"id\":1840,\"name\":\"Пестов Л.А.\"}},\"5\":{\"name\":\"Англ. Яз.\",\"cabinet\":\"640\",\"prepod\":{\"id\":3225,\"name\":\"Никифорова Н.А.\"}}}},\"3\":{\"lessons\":{\"0\":{\"name\":\"Англ. Яз.\",\"cabinet\":\"1098\",\"prepod\":{\"id\":9764,\"name\":\"Силин А.К.\"}},\"2\":{\"name\":\"Русский Яз.\",\"cabinet\":\"1660\",\"prepod\":{\"id\":3872,\"name\":\"Якушева А.О.\"}},\"4\":{\"name\":\"Физика\",\"cabinet\":\"1837\",\"prepod\":{\"id\":1705,\"name\":\"Дроздов А.А.\"}}}},\"4\":{\"lessons\":{\"3\":{\"name\":\"Русский Яз.\",\"cabinet\":\"482\",\"prepod\":{\"id\":1840,\"name\":\"Пестов Л.А.\"}},\"4\":{\"name\":\"Физика\",\"cabinet\":\"394\",\"prepod\":{\"id\":3225,\"name\":\"Никифорова Н.А.\"}}}}},\"min\":\"12.01.24\",\"max\":\"29.03.24\",\"bodyD\":{\"Химия\":{\"10.06.22\":{\"marks\":{\"0\":{\"mark\":\"4\",\"weight\":1,\"type\":\"Ответ на уроке\",\"homework\":\"Стр. 62-63 пересказ\"}},\"i\":0}},\"Англ. Яз\":{\"12.06.22\":{\"marks\":{\"0\":{\"mark\":\"Н\",\"weight\":1,\"homework\":\"Упр. 5Стр. 103\"}},\"i\":0},\"10.06.22\":{\"marks\":{\"0\":{\"mark\":\"1\",\"weight\":1,\"type\":\"Ответ на уроке\",\"homework\":\"Упр. 5Стр. 103,Упр. 2Стр. 104\"}},\"i\":0}},\"Математика\":{\"10.06.22\":{\"marks\":{\"0\":{\"mark\":\"2\",\"weight\":1,\"type\":\"Ответ на уроке\",\"homework\":\"Упр. 6Стр. 103\"},\"1\":{\"mark\":\"5\",\"weight\":1,\"type\":\"Ответ на уроке\"}},\"i\":0},\"11.06.22\":{\"marks\":{\"0\":{\"mark\":\"5\",\"weight\":1,\"type\":\"Ответ на уроке\",\"homework\":\"Упр. 7Стр. 103\"}},\"i\":0}}}}"
                   }
                 }
               }
@@ -702,14 +821,23 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "DnevnikController/getInfo_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "responses" : {
           "401" : {
@@ -728,20 +856,29 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "HTeachersController/addGroup_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "HTeachersController/addGroup_whenEmpty_Anonim" : {
@@ -758,8 +895,8 @@
           "401" : {
             "description" : "401"
           },
-          "200" : {
-            "description" : "200"
+          "201" : {
+            "description" : "201"
           }
         }
       }
@@ -771,20 +908,29 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "HTeachersController/addPep_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "HTeachersController/addPep_whenEmpty_Anonim" : {
@@ -814,20 +960,29 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "HTeachersController/addSch_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "HTeachersController/addSch_whenEmpty_Anonim" : {
@@ -857,20 +1012,29 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "HTeachersController/chGroup_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "HTeachersController/chGroup_whenEmpty_Anonim" : {
@@ -900,20 +1064,29 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "HTeachersController/chPep_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "HTeachersController/chPep_whenEmpty_Anonim" : {
@@ -943,20 +1116,29 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "HTeachersController/chSch_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "HTeachersController/chSch_whenEmpty_Anonim" : {
@@ -986,14 +1168,23 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "HTeachersController/getInfo_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "responses" : {
           "401" : {
@@ -1004,11 +1195,11 @@
             "content" : {
               "application/json;charset=UTF-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/requests-chTitle486549215"
+                  "$ref" : "#/components/schemas/hteachers-chSch486549215"
                 },
                 "examples" : {
                   "HTeachersController/getInfo_whenGood_HTEACHER" : {
-                    "value" : "{\"3872\":{\"name\":\"Якушева А.О.\",\"login\":\"esse_et\"},\"1705\":{\"name\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\"},\"1840\":{\"name\":\"Пестов Л.А.\",\"login\":\"sed_commodi\"},\"3225\":{\"name\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\"},\"9764\":{\"name\":\"Силин А.К.\",\"login\":\"facere_a\"}}"
+                    "value" : "{\"3872\":{\"name\":\"Якушева А.О.\",\"login\":\"esse_et\"},\"1840\":{\"name\":\"Пестов Л.А.\",\"login\":\"sed_commodi\"},\"9764\":{\"name\":\"Силин А.К.\",\"login\":\"facere_a\"},\"1705\":{\"name\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\"},\"3225\":{\"name\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\"}}"
                   }
                 }
               }
@@ -1024,14 +1215,23 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "HTeachersController/getInfoForAdmins_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "responses" : {
           "401" : {
@@ -1042,11 +1242,11 @@
             "content" : {
               "application/json;charset=UTF-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/requests-chTitle486549215"
+                  "$ref" : "#/components/schemas/hteachers-chSch486549215"
                 },
                 "examples" : {
                   "HTeachersController/getInfoForAdmins_whenGood_Admin" : {
-                    "value" : "{\"0\":{\"pep\":{\"3872\":{\"name\":\"Якушева А.О.\",\"login\":\"esse_et\"},\"1705\":{\"name\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\"},\"1840\":{\"name\":\"Пестов Л.А.\",\"login\":\"sed_commodi\"},\"3225\":{\"name\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\"},\"9764\":{\"name\":\"Силин А.К.\",\"login\":\"facere_a\"}}}}"
+                    "value" : "{\"0\":{\"pep\":{\"3872\":{\"name\":\"Якушева А.О.\",\"login\":\"esse_et\"},\"1840\":{\"name\":\"Пестов Л.А.\",\"login\":\"sed_commodi\"},\"9764\":{\"name\":\"Силин А.К.\",\"login\":\"facere_a\"},\"1705\":{\"name\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\"},\"3225\":{\"name\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\"}}}}"
                   }
                 }
               }
@@ -1062,20 +1262,29 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "HTeachersController/remGroup_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "HTeachersController/remGroup_whenEmpty_Anonim" : {
@@ -1105,20 +1314,29 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "HTeachersController/remPep_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "HTeachersController/remPep_whenEmpty_Anonim" : {
@@ -1148,20 +1366,29 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "HTeachersController/remSch_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "HTeachersController/remSch_whenEmpty_Anonim" : {
@@ -1191,14 +1418,23 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "KidJournalController/getInfo_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "responses" : {
           "401" : {
@@ -1209,11 +1445,11 @@
             "content" : {
               "application/json;charset=UTF-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/requests-chTitle486549215"
+                  "$ref" : "#/components/schemas/hteachers-chSch486549215"
                 },
                 "examples" : {
                   "KidJournalController/getInfo_whenGood_KID" : {
-                    "value" : "{\"bodyJ\":{\"Химия\":{\"days\":{\"10.06.22\":{\"mark\":\"4\",\"weight\":1,\"type\":\"Ответ на уроке\"}}},\"Англ. Яз\":{\"days\":{\"12.06.22\":{\"mark\":\"Н\",\"weight\":1},\"10.06.22\":{\"mark\":\"1\",\"weight\":1,\"type\":\"Ответ на уроке\"}}},\"Математика\":{\"days\":{\"10.06.22\":{\"mark\":\"2\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"10.06.22,0\":{\"mark\":\"5\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"11.06.22\":{\"mark\":\"5\",\"weight\":1,\"type\":\"Ответ на уроке\"}}}}}"
+                    "value" : "{\"bodyJ\":{\"Химия\":{\"days\":{\"10.06.22\":{\"mark\":\"4\",\"weight\":1,\"type\":\"Ответ на уроке\"}}},\"Англ. Яз\":{\"days\":{\"12.06.22\":{\"mark\":\"Н\",\"weight\":1},\"10.06.22\":{\"mark\":\"1\",\"weight\":1,\"type\":\"Ответ на уроке\"}}},\"Математика\":{\"days\":{\"10.06.22,0\":{\"mark\":\"5\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"10.06.22\":{\"mark\":\"2\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"11.06.22\":{\"mark\":\"5\",\"weight\":1,\"type\":\"Ответ на уроке\"}}}}}"
                   }
                 }
               }
@@ -1229,14 +1465,23 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "KidJournalController/getInfoPers_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "responses" : {
           "401" : {
@@ -1247,11 +1492,11 @@
             "content" : {
               "application/json;charset=UTF-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/requests-chTitle486549215"
+                  "$ref" : "#/components/schemas/hteachers-chSch486549215"
                 },
                 "examples" : {
                   "KidJournalController/getInfoPers_whenGood_KID" : {
-                    "value" : "{\"bodyPers\":{\"352\":\"I четверть\",\"3872\":\"II четверть\",\"9764\":\"III четверть\",\"3456\":\"IV четверть\"},\"bodyM\":{\"Химия\":{\"9764\":\"4\"},\"Англ. Яз\":{\"9764\":\"1\",\"352\":\"Н\"},\"Математика\":{\"9764\":\"2\",\"352\":\"5\",\"3872\":\"5\"}}}"
+                    "value" : "{\"bodyPers\":{\"352\":\"I четверть\",\"3872\":\"II четверть\",\"3456\":\"IV четверть\",\"9764\":\"III четверть\"},\"bodyM\":{\"Химия\":{\"9764\":\"4\"},\"Англ. Яз\":{\"352\":\"Н\",\"9764\":\"1\"},\"Математика\":{\"352\":\"5\",\"3872\":\"5\",\"9764\":\"2\"}}}"
                   }
                 }
               }
@@ -1260,27 +1505,36 @@
         }
       }
     },
-    "/news/addNewsPor/" : {
+    "/news/addNewsPor" : {
       "post" : {
         "tags" : [ "NewsController" ],
         "summary" : "Добавление новой новости портала + Server Sent Events",
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "NewsController/addNewsPortal_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "NewsController/addNewsPortal_whenEmpty_AdminUser" : {
@@ -1303,27 +1557,36 @@
         }
       }
     },
-    "/news/addNewsYo/" : {
+    "/news/addNewsYo" : {
       "post" : {
         "tags" : [ "NewsController" ],
         "summary" : "Добавление новой новости портала + Server Sent Events",
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "NewsController/addNewsYO_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "NewsController/addNewsYO_whenEmpty_HTeacher" : {
@@ -1346,27 +1609,36 @@
         }
       }
     },
-    "/news/chNews/" : {
+    "/news/chNews" : {
       "put" : {
         "tags" : [ "NewsController" ],
         "summary" : "Изменение новости + Server Sent Events",
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "NewsController/chNews_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "NewsController/chNews_whenEmpty_Portal_AdminUser" : {
@@ -1392,27 +1664,36 @@
         }
       }
     },
-    "/news/delNews/" : {
+    "/news/delNews" : {
       "delete" : {
         "tags" : [ "NewsController" ],
         "summary" : "Удаление новости + Server Sent Events",
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "NewsController/delNews_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "NewsController/delNews_whenEmpty_Portal_AdminUser" : {
@@ -1453,7 +1734,7 @@
             "type" : "string"
           }
         }, {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
           "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
           "required" : true,
@@ -1468,17 +1749,17 @@
             "content" : {
               "application/json;charset=UTF-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/requests-chTitle486549215"
+                  "$ref" : "#/components/schemas/hteachers-chSch486549215"
                 },
                 "examples" : {
                   "NewsController/getNews_whenEmpty_Portal_Admin" : {
                     "value" : "{}"
                   },
                   "NewsController/getNews_whenGood_Portal_AdminUser" : {
-                    "value" : "{\"1213\":{\"title\":\"День рождения портала!\",\"date\":\"25.04.2022\",\"text\":\"Начались первые работы\"},\"352\":{\"title\":\"А проект вышел большим...\",\"date\":\"02.12.2022\",\"img_url\":\"/static/media/tuman.jpg\",\"text\":\"Да-да, всё ещё не конец...\"}}"
+                    "value" : "{\"352\":{\"title\":\"А проект вышел большим...\",\"date\":\"02.12.2022\",\"img_url\":\"/static/media/tuman.jpg\",\"text\":\"Да-да, всё ещё не конец...\"},\"1213\":{\"title\":\"День рождения портала!\",\"date\":\"25.04.2022\",\"text\":\"Начались первые работы\"}}"
                   },
                   "NewsController/getNews_whenGood_YO_HTeacher" : {
-                    "value" : "{\"1213\":{\"title\":\"День рождения портала!\",\"date\":\"25.04.2022\",\"text\":\"Начались первые работы\"},\"352\":{\"title\":\"А проект вышел большим...\",\"date\":\"02.12.2022\",\"img_url\":\"/static/media/tuman.jpg\",\"text\":\"Да-да, всё ещё не конец...\"}}"
+                    "value" : "{\"352\":{\"title\":\"А проект вышел большим...\",\"date\":\"02.12.2022\",\"img_url\":\"/static/media/tuman.jpg\",\"text\":\"Да-да, всё ещё не конец...\"},\"1213\":{\"title\":\"День рождения портала!\",\"date\":\"25.04.2022\",\"text\":\"Начались первые работы\"}}"
                   }
                 }
               }
@@ -1494,20 +1775,29 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "ParentsController/addPar_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "ParentsController/addPar_whenEmpty_Anonim" : {
@@ -1537,20 +1827,29 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "ParentsController/chPep_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "ParentsController/chPep_whenEmpty_Anonim" : {
@@ -1580,14 +1879,23 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "ParentsController/getInfo_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "responses" : {
           "401" : {
@@ -1606,14 +1914,23 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "ParentsController/getInfoForHTeacher_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "responses" : {
           "401" : {
@@ -1624,11 +1941,11 @@
             "content" : {
               "application/json;charset=UTF-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/requests-chTitle486549215"
+                  "$ref" : "#/components/schemas/hteachers-chSch486549215"
                 },
                 "examples" : {
                   "ParentsController/getInfoForHTeacher_whenGood_HTEACHER" : {
-                    "value" : "{\"bodyG\":{\"2323\":\"1А\",\"3456\":\"1Б\",\"4354\":\"1В\"},\"firstG\":2323}"
+                    "value" : "{\"firstG\":2323,\"bodyG\":{\"3456\":\"1Б\",\"4354\":\"1В\",\"2323\":\"1А\"}}"
                   }
                 }
               }
@@ -1640,24 +1957,33 @@
     "/parents/remPep" : {
       "delete" : {
         "tags" : [ "ParentsController" ],
-        "summary" : "создаёт пользователя-родителя и сразу прикрепляет к ребёнку + Server Sent Events",
+        "summary" : "Создаёт пользователя-родителя и сразу прикрепляет к ребёнку + Server Sent Events",
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "ParentsController/remPep_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "ParentsController/remPep_whenEmpty_Anonim" : {
@@ -1695,14 +2021,23 @@
             "type" : "string"
           }
         }, {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "responses" : {
           "401" : {
@@ -1713,11 +2048,11 @@
             "content" : {
               "application/json;charset=UTF-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/requests-chTitle486549215"
+                  "$ref" : "#/components/schemas/hteachers-chSch486549215"
                 },
                 "examples" : {
                   "ParentsController/getParents_whenGood_HTEACHER" : {
-                    "value" : "{\"bodyP\":{\"3872\":{\"name\":\"Якушева А.О.\",\"login\":\"esse_et\",\"par\":{}},\"1705\":{\"name\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\",\"par\":{}},\"1840\":{\"name\":\"Пестов Л.А.\",\"login\":\"sed_commodi\",\"par\":{}},\"3225\":{\"name\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\",\"par\":{}},\"9764\":{\"name\":\"Силин А.К.\",\"login\":\"facere_a\",\"par\":{\"3872\":{\"name\":\"Якушева А.О.\",\"login\":\"esse_et\"}}}},\"bodyC\":{\"3872\":{\"name\":\"Якушева А.О.\",\"login\":\"esse_et\"},\"1705\":{\"name\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\"},\"1840\":{\"name\":\"Пестов Л.А.\",\"login\":\"sed_commodi\"},\"3225\":{\"name\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\"},\"9764\":{\"name\":\"Силин А.К.\",\"login\":\"facere_a\"}}}"
+                    "value" : "{\"bodyC\":{\"3872\":{\"name\":\"Якушева А.О.\",\"login\":\"esse_et\"},\"1840\":{\"name\":\"Пестов Л.А.\",\"login\":\"sed_commodi\"},\"9764\":{\"name\":\"Силин А.К.\",\"login\":\"facere_a\"},\"1705\":{\"name\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\"},\"3225\":{\"name\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\"}},\"bodyP\":{\"3872\":{\"name\":\"Якушева А.О.\",\"login\":\"esse_et\"},\"1840\":{\"name\":\"Пестов Л.А.\",\"login\":\"sed_commodi\"},\"9764\":{\"name\":\"Силин А.К.\",\"par\":{\"3872\":{\"name\":\"Якушева А.О.\",\"login\":\"esse_et\"}},\"login\":\"facere_a\"},\"1705\":{\"name\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\"},\"3225\":{\"name\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\"}}}"
                   }
                 }
               }
@@ -1733,20 +2068,29 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "PeriodsController/addPer_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "PeriodsController/addPer_whenEmpty_Anonim" : {
@@ -1776,14 +2120,23 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "PeriodsController/getInfo_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "responses" : {
           "401" : {
@@ -1794,7 +2147,7 @@
             "content" : {
               "application/json;charset=UTF-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/requests-chTitle486549215"
+                  "$ref" : "#/components/schemas/hteachers-chSch486549215"
                 },
                 "examples" : {
                   "PeriodsController/getInfo_whenGood_HTEACHER" : {
@@ -1814,20 +2167,29 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "TeacherJournalController/addHomework_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "TeacherJournalController/addHomework_whenEmpty_Anonim" : {
@@ -1857,20 +2219,29 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "TeacherJournalController/addMark_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "TeacherJournalController/addMark_whenEmpty_Anonim" : {
@@ -1906,14 +2277,23 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "TeacherJournalController/getInfoPart1_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "responses" : {
           "401" : {
@@ -1924,11 +2304,11 @@
             "content" : {
               "application/json;charset=UTF-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/requests-chTitle486549215"
+                  "$ref" : "#/components/schemas/hteachers-chSch486549215"
                 },
                 "examples" : {
                   "TeacherJournalController/getInfoPart1_whenGood_TEACHER" : {
-                    "value" : "{\"bodyPred\":{\"0\":\"Англ.Яз.\",\"1\":\"Химия\",\"2\":\"Физика\"},\"bodyPers\":{\"352\":\"I четверть\",\"3872\":\"II четверть\",\"9764\":\"III четверть\",\"3456\":\"IV четверть\"},\"min\":\"12.01.24\",\"max\":\"29.03.24\",\"bodyS\":{}}"
+                    "value" : "{\"min\":\"12.01.24\",\"max\":\"29.03.24\",\"bodyPred\":{\"0\":\"Англ.Яз.\",\"1\":\"Химия\",\"2\":\"Физика\"},\"bodyPers\":{\"352\":\"I четверть\",\"3872\":\"II четверть\",\"3456\":\"IV четверть\",\"9764\":\"III четверть\"},\"bodyS\":{}}"
                   }
                 }
               }
@@ -1952,14 +2332,23 @@
             "type" : "string"
           }
         }, {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "responses" : {
           "401" : {
@@ -1970,11 +2359,11 @@
             "content" : {
               "application/json;charset=UTF-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/requests-chTitle486549215"
+                  "$ref" : "#/components/schemas/hteachers-chSch486549215"
                 },
                 "examples" : {
                   "TeacherJournalController/getInfoPart2_whenGood_TEACHER" : {
-                    "value" : "{\"bodyG\":{\"21\":\"1А\",\"22\":\"1Б\",\"23\":\"1В\"},\"firstG\":21}"
+                    "value" : "{\"firstG\":21,\"bodyG\":{\"21\":\"1А\",\"22\":\"1Б\",\"23\":\"1В\"}}"
                   }
                 }
               }
@@ -1998,14 +2387,23 @@
             "type" : "string"
           }
         }, {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "responses" : {
           "401" : {
@@ -2016,11 +2414,11 @@
             "content" : {
               "application/json;charset=UTF-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/requests-chTitle486549215"
+                  "$ref" : "#/components/schemas/hteachers-chSch486549215"
                 },
                 "examples" : {
                   "TeacherJournalController/getInfoPart3_whenGood_TEACHER" : {
-                    "value" : "{\"bodyD\":{\"12.06.22\":\"Упр. 5Стр. 103\",\"10.06.22\":\"Упр. 6Стр. 103\",\"11.06.22\":\"Упр. 7Стр. 103\"},\"bodyK\":{\"3872\":{\"name\":\"Якушева А.О.\",\"days\":{\"12.06.22\":{\"mark\":\"1\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"12.06.22,0\":{\"mark\":\"2\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"12.06.22,1\":{\"mark\":\"4\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"12.06.22,2\":{\"mark\":\"5\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"12.06.22,3\":{\"mark\":\"5\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"12.06.22,4\":{\"mark\":\"Н\",\"weight\":1},\"10.06.22\":{\"mark\":\"1\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"10.06.22,0\":{\"mark\":\"2\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"10.06.22,1\":{\"mark\":\"4\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"10.06.22,2\":{\"mark\":\"5\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"10.06.22,3\":{\"mark\":\"5\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"10.06.22,4\":{\"mark\":\"Н\",\"weight\":1},\"11.06.22\":{\"mark\":\"1\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"11.06.22,0\":{\"mark\":\"2\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"11.06.22,1\":{\"mark\":\"4\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"11.06.22,2\":{\"mark\":\"5\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"11.06.22,3\":{\"mark\":\"5\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"11.06.22,4\":{\"mark\":\"Н\",\"weight\":1}},\"avg\":{\"9764\":\"4\",\"352\":\"Н\",\"3872\":\"5\"}},\"1705\":{\"name\":\"Дроздов А.А.\",\"days\":{\"12.06.22\":{\"mark\":\"1\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"12.06.22,0\":{\"mark\":\"2\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"12.06.22,1\":{\"mark\":\"4\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"12.06.22,2\":{\"mark\":\"5\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"12.06.22,3\":{\"mark\":\"5\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"12.06.22,4\":{\"mark\":\"Н\",\"weight\":1},\"10.06.22\":{\"mark\":\"1\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"10.06.22,0\":{\"mark\":\"2\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"10.06.22,1\":{\"mark\":\"4\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"10.06.22,2\":{\"mark\":\"5\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"10.06.22,3\":{\"mark\":\"5\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"10.06.22,4\":{\"mark\":\"Н\",\"weight\":1},\"11.06.22\":{\"mark\":\"1\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"11.06.22,0\":{\"mark\":\"2\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"11.06.22,1\":{\"mark\":\"4\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"11.06.22,2\":{\"mark\":\"5\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"11.06.22,3\":{\"mark\":\"5\",\"weight\":1,\"type\":\"Ответ на уроке\"},\"11.06.22,4\":{\"mark\":\"Н\",\"weight\":1}},\"avg\":{\"9764\":\"4\",\"352\":\"Н\",\"3872\":\"5\"}},\"1840\":{\"name\":\"Пестов Л.А.\",\"days\":{},\"avg\":{}},\"3225\":{\"name\":\"Никифорова Н.А.\",\"days\":{},\"avg\":{}},\"9764\":{\"name\":\"Силин А.К.\",\"days\":{},\"avg\":{}}}}"
+                    "value" : "{\"bodyD\":{\"12.06.22\":\"Упр. 5Стр. 103\",\"10.06.22\":\"Упр. 6Стр. 103\",\"11.06.22\":\"Упр. 7Стр. 103\"},\"bodyK\":{\"3872\":{\"name\":\"Якушева А.О.\",\"days\":{\"10.06.22,3\":{\"mark\":\"5\",\"type\":\"Ответ на уроке\",\"weight\":1},\"10.06.22,4\":{\"mark\":\"Н\",\"weight\":1},\"11.06.22,4\":{\"mark\":\"Н\",\"weight\":1},\"12.06.22,0\":{\"mark\":\"2\",\"type\":\"Ответ на уроке\",\"weight\":1},\"11.06.22,2\":{\"mark\":\"5\",\"type\":\"Ответ на уроке\",\"weight\":1},\"11.06.22,3\":{\"mark\":\"5\",\"type\":\"Ответ на уроке\",\"weight\":1},\"12.06.22,3\":{\"mark\":\"5\",\"type\":\"Ответ на уроке\",\"weight\":1},\"11.06.22,0\":{\"mark\":\"2\",\"type\":\"Ответ на уроке\",\"weight\":1},\"12.06.22,4\":{\"mark\":\"Н\",\"weight\":1},\"11.06.22,1\":{\"mark\":\"4\",\"type\":\"Ответ на уроке\",\"weight\":1},\"12.06.22,1\":{\"mark\":\"4\",\"type\":\"Ответ на уроке\",\"weight\":1},\"12.06.22,2\":{\"mark\":\"5\",\"type\":\"Ответ на уроке\",\"weight\":1},\"10.06.22,1\":{\"mark\":\"4\",\"type\":\"Ответ на уроке\",\"weight\":1},\"10.06.22,2\":{\"mark\":\"5\",\"type\":\"Ответ на уроке\",\"weight\":1},\"12.06.22\":{\"mark\":\"1\",\"type\":\"Ответ на уроке\",\"weight\":1},\"10.06.22,0\":{\"mark\":\"2\",\"type\":\"Ответ на уроке\",\"weight\":1},\"10.06.22\":{\"mark\":\"1\",\"type\":\"Ответ на уроке\",\"weight\":1},\"11.06.22\":{\"mark\":\"1\",\"type\":\"Ответ на уроке\",\"weight\":1}},\"avg\":{\"352\":\"Н\",\"3872\":\"5\",\"9764\":\"4\"}},\"1840\":{\"name\":\"Пестов Л.А.\",\"days\":{},\"avg\":{}},\"9764\":{\"name\":\"Силин А.К.\",\"days\":{},\"avg\":{}},\"1705\":{\"name\":\"Дроздов А.А.\",\"days\":{\"10.06.22,3\":{\"mark\":\"5\",\"type\":\"Ответ на уроке\",\"weight\":1},\"10.06.22,4\":{\"mark\":\"Н\",\"weight\":1},\"11.06.22,4\":{\"mark\":\"Н\",\"weight\":1},\"12.06.22,0\":{\"mark\":\"2\",\"type\":\"Ответ на уроке\",\"weight\":1},\"11.06.22,2\":{\"mark\":\"5\",\"type\":\"Ответ на уроке\",\"weight\":1},\"11.06.22,3\":{\"mark\":\"5\",\"type\":\"Ответ на уроке\",\"weight\":1},\"12.06.22,3\":{\"mark\":\"5\",\"type\":\"Ответ на уроке\",\"weight\":1},\"11.06.22,0\":{\"mark\":\"2\",\"type\":\"Ответ на уроке\",\"weight\":1},\"12.06.22,4\":{\"mark\":\"Н\",\"weight\":1},\"11.06.22,1\":{\"mark\":\"4\",\"type\":\"Ответ на уроке\",\"weight\":1},\"12.06.22,1\":{\"mark\":\"4\",\"type\":\"Ответ на уроке\",\"weight\":1},\"12.06.22,2\":{\"mark\":\"5\",\"type\":\"Ответ на уроке\",\"weight\":1},\"10.06.22,1\":{\"mark\":\"4\",\"type\":\"Ответ на уроке\",\"weight\":1},\"10.06.22,2\":{\"mark\":\"5\",\"type\":\"Ответ на уроке\",\"weight\":1},\"12.06.22\":{\"mark\":\"1\",\"type\":\"Ответ на уроке\",\"weight\":1},\"10.06.22,0\":{\"mark\":\"2\",\"type\":\"Ответ на уроке\",\"weight\":1},\"10.06.22\":{\"mark\":\"1\",\"type\":\"Ответ на уроке\",\"weight\":1},\"11.06.22\":{\"mark\":\"1\",\"type\":\"Ответ на уроке\",\"weight\":1}},\"avg\":{\"352\":\"Н\",\"3872\":\"5\",\"9764\":\"4\"}},\"3225\":{\"name\":\"Никифорова Н.А.\",\"days\":{},\"avg\":{}}}}"
                   }
                 }
               }
@@ -2036,20 +2434,29 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "ProfileController/chEmail_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "ProfileController/chEmail_whenEmpty_Anonim" : {
@@ -2079,20 +2486,29 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "ProfileController/chInfo_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "ProfileController/chInfo_whenEmpty_Anonim" : {
@@ -2122,20 +2538,29 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "ProfileController/chKid_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "ProfileController/chKid_whenEmpty_Anonim" : {
@@ -2157,7 +2582,7 @@
             "content" : {
               "application/json;charset=UTF-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/requests-chTitle486549215"
+                  "$ref" : "#/components/schemas/hteachers-chSch486549215"
                 },
                 "examples" : {
                   "ProfileController/chKid_whenGood_Parent" : {
@@ -2177,27 +2602,36 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "ProfileController/chLogin_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "ProfileController/chLogin_whenEmpty_Anonim" : {
                   "value" : "{}"
                 },
                 "ProfileController/chLogin_whenGood_Admin" : {
-                  "value" : "{\n    \"nLogin\": nm\n}\n"
+                  "value" : "{\n    \"nLogin\": \"nm\"\n}\n"
                 }
               }
             }
@@ -2220,20 +2654,29 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "ProfileController/chRole_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "ProfileController/chRole_whenEmpty_Anonim" : {
@@ -2252,7 +2695,7 @@
             "content" : {
               "application/json;charset=UTF-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/requests-chTitle486549215"
+                  "$ref" : "#/components/schemas/hteachers-chSch486549215"
                 },
                 "examples" : {
                   "ProfileController/chRole_whenGood_Kid" : {
@@ -2272,20 +2715,29 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "ProfileController/exit_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "ProfileController/exit_whenEmpty_Anonim" : {
@@ -2323,7 +2775,7 @@
             "type" : "string"
           }
         }, {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
           "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
           "required" : true,
@@ -2341,7 +2793,7 @@
             "content" : {
               "application/json;charset=UTF-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/requests-chTitle486549215"
+                  "$ref" : "#/components/schemas/hteachers-chSch486549215"
                 },
                 "examples" : {
                   "ProfileController/getProfile_whenGood_AuthLogin_Admin" : {
@@ -2364,20 +2816,29 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "RequestController/addReq_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "RequestController/addReq_whenEmpty_Anonim" : {
@@ -2407,20 +2868,29 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "RequestController/chDate_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "RequestController/chDate_whenEmpty_Anonim" : {
@@ -2450,20 +2920,29 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "RequestController/chText_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "RequestController/chText_whenEmpty_Anonim" : {
@@ -2493,20 +2972,29 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "RequestController/chTitle_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "RequestController/chTitle_whenEmpty_Anonim" : {
@@ -2536,20 +3024,29 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "RequestController/delReq_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "RequestController/delReq_whenEmpty_Anonim" : {
@@ -2579,14 +3076,24 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "RequestController/getRequests_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          },
+          "example" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
         } ],
         "responses" : {
           "401" : {
@@ -2597,7 +3104,7 @@
             "content" : {
               "application/json;charset=UTF-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/requests-chTitle486549215"
+                  "$ref" : "#/components/schemas/hteachers-chSch486549215"
                 },
                 "examples" : {
                   "RequestController/getRequests_whenGood_Admin" : {
@@ -2617,20 +3124,29 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "ScheduleController/addLesson_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "ScheduleController/addLesson_whenEmpty_Anonim" : {
@@ -2660,14 +3176,23 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "ScheduleController/getInfo_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "responses" : {
           "401" : {
@@ -2686,14 +3211,23 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "ScheduleController/getInfoForHTeacherOrTEACHER_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "responses" : {
           "401" : {
@@ -2704,11 +3238,11 @@
             "content" : {
               "application/json;charset=UTF-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/requests-chTitle486549215"
+                  "$ref" : "#/components/schemas/hteachers-chSch486549215"
                 },
                 "examples" : {
                   "ScheduleController/getInfoForHTeacherOrTEACHER_whenGood_HTEACHER" : {
-                    "value" : "{\"bodyG\":{\"2323\":\"1А\",\"3456\":\"1Б\",\"4354\":\"1В\"},\"firstG\":2323,\"bodyT\":{\"nt\":{\"tea\":{\"3872\":{\"name\":\"Якушева А.О.\",\"login\":\"esse_et\"},\"1705\":{\"name\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\"},\"1840\":{\"name\":\"Пестов Л.А.\",\"login\":\"sed_commodi\"},\"3225\":{\"name\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\"},\"9764\":{\"name\":\"Силин А.К.\",\"login\":\"facere_a\"}}},\"0\":{\"name\":\"Англ. Яз\",\"tea\":{\"22\":{\"name\":\"Якушева А.О.\",\"login\":\"esse_et\"},\"23\":{\"name\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\"},\"24\":{\"name\":\"Пестов Л.А.\",\"login\":\"sed_commodi\"}}},\"1\":{\"name\":\"Математика\",\"tea\":{\"25\":{\"name\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\"}}}}}"
+                    "value" : "{\"bodyT\":{\"nt\":{\"tea\":{\"3872\":{\"name\":\"Якушева А.О.\",\"login\":\"esse_et\"},\"1840\":{\"name\":\"Пестов Л.А.\",\"login\":\"sed_commodi\"},\"9764\":{\"name\":\"Силин А.К.\",\"login\":\"facere_a\"},\"1705\":{\"name\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\"},\"3225\":{\"name\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\"}}},\"body\":{\"0\":{\"tea\":{\"3872\":{\"name\":\"Якушева А.О.\",\"login\":\"esse_et\"},\"1840\":{\"name\":\"Пестов Л.А.\",\"login\":\"sed_commodi\"},\"1705\":{\"name\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\"}},\"name\":\"Англ. Яз\"},\"1\":{\"tea\":{\"3225\":{\"name\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\"}},\"name\":\"Математика\"}}},\"firstG\":2323,\"bodyG\":{\"3456\":\"1Б\",\"4354\":\"1В\",\"2323\":\"1А\"}}"
                   }
                 }
               }
@@ -2732,14 +3266,23 @@
             "type" : "string"
           }
         }, {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "responses" : {
           "401" : {
@@ -2750,11 +3293,11 @@
             "content" : {
               "application/json;charset=UTF-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/requests-chTitle486549215"
+                  "$ref" : "#/components/schemas/hteachers-chSch486549215"
                 },
                 "examples" : {
                   "ScheduleController/getSchedule_whenGood_HTEACHER" : {
-                    "value" : "{\"body\":{\"1\":{\"lessons\":{\"0\":{\"name\":\"Русский Яз.\",\"cabinet\":\"1283\",\"prepod\":{\"name\":\"Якушева А.О.\",\"id\":3872}},\"3\":{\"name\":\"Англ. Яз.\",\"cabinet\":\"1977\",\"prepod\":{\"name\":\"Дроздов А.А.\",\"id\":1705}},\"4\":{\"name\":\"Математика\",\"cabinet\":\"1870\",\"prepod\":{\"name\":\"Пестов Л.А.\",\"id\":1840}},\"5\":{\"name\":\"Англ. Яз.\",\"cabinet\":\"640\",\"prepod\":{\"name\":\"Никифорова Н.А.\",\"id\":3225}}}},\"3\":{\"lessons\":{\"0\":{\"name\":\"Англ. Яз.\",\"cabinet\":\"1098\",\"prepod\":{\"name\":\"Силин А.К.\",\"id\":9764}},\"2\":{\"name\":\"Русский Яз.\",\"cabinet\":\"1660\",\"prepod\":{\"name\":\"Якушева А.О.\",\"id\":3872}},\"4\":{\"name\":\"Физика\",\"cabinet\":\"1837\",\"prepod\":{\"name\":\"Дроздов А.А.\",\"id\":1705}}}},\"4\":{\"lessons\":{\"3\":{\"name\":\"Русский Яз.\",\"cabinet\":\"482\",\"prepod\":{\"name\":\"Пестов Л.А.\",\"id\":1840}},\"4\":{\"name\":\"Физика\",\"cabinet\":\"394\",\"prepod\":{\"name\":\"Никифорова Н.А.\",\"id\":3225}}}}}}"
+                    "value" : "{\"body\":{\"1\":{\"lessons\":{\"0\":{\"name\":\"Русский Яз.\",\"cabinet\":\"1283\",\"prepod\":{\"id\":3872,\"name\":\"Якушева А.О.\"}},\"3\":{\"name\":\"Англ. Яз.\",\"cabinet\":\"1977\",\"prepod\":{\"id\":1705,\"name\":\"Дроздов А.А.\"}},\"4\":{\"name\":\"Математика\",\"cabinet\":\"1870\",\"prepod\":{\"id\":1840,\"name\":\"Пестов Л.А.\"}},\"5\":{\"name\":\"Англ. Яз.\",\"cabinet\":\"640\",\"prepod\":{\"id\":3225,\"name\":\"Никифорова Н.А.\"}}}},\"3\":{\"lessons\":{\"0\":{\"name\":\"Англ. Яз.\",\"cabinet\":\"1098\",\"prepod\":{\"id\":9764,\"name\":\"Силин А.К.\"}},\"2\":{\"name\":\"Русский Яз.\",\"cabinet\":\"1660\",\"prepod\":{\"id\":3872,\"name\":\"Якушева А.О.\"}},\"4\":{\"name\":\"Физика\",\"cabinet\":\"1837\",\"prepod\":{\"id\":1705,\"name\":\"Дроздов А.А.\"}}}},\"4\":{\"lessons\":{\"3\":{\"name\":\"Русский Яз.\",\"cabinet\":\"482\",\"prepod\":{\"id\":1840,\"name\":\"Пестов Л.А.\"}},\"4\":{\"name\":\"Физика\",\"cabinet\":\"394\",\"prepod\":{\"id\":3225,\"name\":\"Никифорова Н.А.\"}}}}}}"
                   }
                 }
               }
@@ -2763,27 +3306,36 @@
         }
       }
     },
-    "/settings/addNotifToken/" : {
+    "/settings/addNotifToken" : {
       "post" : {
         "tags" : [ "SettingsController" ],
         "summary" : "Установка токена уведомлений",
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "SettingsController/addNotifToken_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "SettingsController/addNotifToken_whenEmpty_AdminUser" : {
@@ -2806,27 +3358,36 @@
         }
       }
     },
-    "/settings/chPass/" : {
+    "/settings/chPass" : {
       "patch" : {
         "tags" : [ "SettingsController" ],
         "summary" : "Изменяет пароль пользователя при помощи емэйла/секретной фразы",
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "SettingsController/chPass_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "SettingsController/chPass_whenError_secFr_AdminUser" : {
@@ -2848,7 +3409,7 @@
             "content" : {
               "application/json;charset=UTF-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/requests-chTitle486549215"
+                  "$ref" : "#/components/schemas/hteachers-chSch486549215"
                 },
                 "examples" : {
                   "SettingsController/chPass_whenError_secFr_AdminUser" : {
@@ -2863,7 +3424,7 @@
             "content" : {
               "application/json;charset=UTF-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/requests-chTitle486549215"
+                  "$ref" : "#/components/schemas/hteachers-chSch486549215"
                 },
                 "examples" : {
                   "SettingsController/chPass_whenGood_Email_AdminUser" : {
@@ -2879,27 +3440,36 @@
         }
       }
     },
-    "/settings/chSettings/" : {
+    "/settings/chSettings" : {
       "patch" : {
         "tags" : [ "SettingsController" ],
         "summary" : "Вкл/выкл подсказки или ряд уведомлений",
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "SettingsController/chSettings_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "SettingsController/chSettings_whenEmpty_AdminUser" : {
@@ -2922,27 +3492,36 @@
         }
       }
     },
-    "/settings/checkCodeEmail/" : {
+    "/settings/checkCodeEmail" : {
       "patch" : {
         "tags" : [ "SettingsController" ],
         "summary" : "Подтверждение емэйла",
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "SettingsController/checkCodeEmail_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "SettingsController/checkCodeEmail_whenEmpty_AdminUser" : {
@@ -2965,27 +3544,36 @@
         }
       }
     },
-    "/settings/checkPasCodeEmail/" : {
+    "/settings/checkPasCodeEmail" : {
       "patch" : {
         "tags" : [ "SettingsController" ],
         "summary" : "Изменяет пароль пользователя при помощи емэйла",
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "SettingsController/checkPasCodeEmail_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "SettingsController/checkPasCodeEmail_whenGood_AdminUser" : {
@@ -3008,21 +3596,30 @@
         }
       }
     },
-    "/settings/getSettings/" : {
+    "/settings/getSettings" : {
       "get" : {
         "tags" : [ "SettingsController" ],
         "summary" : "Отправляет настройки клиенту",
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "SettingsController/getSettings_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "responses" : {
           "404" : {
@@ -3033,7 +3630,7 @@
             "content" : {
               "application/json;charset=UTF-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/requests-chTitle486549215"
+                  "$ref" : "#/components/schemas/hteachers-chSch486549215"
                 },
                 "examples" : {
                   "SettingsController/getSettings_whenGood_AdminUser" : {
@@ -3046,27 +3643,36 @@
         }
       }
     },
-    "/settings/remNotifToken/" : {
+    "/settings/remNotifToken" : {
       "post" : {
         "tags" : [ "SettingsController" ],
         "summary" : "Удаление токена уведомлений",
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "SettingsController/remNotifToken_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "SettingsController/remNotifToken_whenEmpty_AdminUser" : {
@@ -3089,27 +3695,36 @@
         }
       }
     },
-    "/settings/startEmail/" : {
+    "/settings/startEmail" : {
       "patch" : {
         "tags" : [ "SettingsController" ],
         "summary" : "Изменение электронной почты пользователя или добавление при регистрации",
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "SettingsController/startEmail_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "SettingsController/startEmail_whenEmpty_AdminUser" : {
@@ -3132,23 +3747,23 @@
         }
       }
     },
-    "/sse/start" : {
+    "/sse/connectToken" : {
       "get" : {
         "tags" : [ "SSEController" ],
-        "summary" : "[start] Открытие Server Sent Events для нового клиента или сохранение подписки для старого пользователя",
-        "description" : "Также возможны 401, 403 и 500 коды ответовПодписка сохраняется в течении одного запуска сервера.\n",
-        "operationId" : "SSEController/start_whenGoodNext_Anonim",
+        "summary" : "выдаёт одноразовый токен для SSE",
+        "description" : "Также возможны 401, 403 и 500 коды ответов    Подписка сохраняется в течении одного запуска сервера.\n",
+        "operationId" : "SSEController/getToken_whenGood_AdminUser",
         "responses" : {
           "200" : {
             "description" : "200",
             "content" : {
-              "text/event-stream" : {
+              "application/json;charset=UTF-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/requests-chTitle486549215"
+                  "$ref" : "#/components/schemas/hteachers-chSch486549215"
                 },
                 "examples" : {
-                  "SSEController/start_whenGoodNext_Anonim" : {
-                    "value" : "event:chck\ndata:\"437ecedf-d67c-4f51-947e-be10688f8fd0\"\n\n"
+                  "SSEController/getToken_whenGood_AdminUser" : {
+                    "value" : "\"3d63fbae-0a88-432a-98bd-8372623fc7f4\""
                   }
                 }
               }
@@ -3157,32 +3772,26 @@
         }
       }
     },
-    "/sse/start/{uuidAuth}" : {
+    "/sse/start" : {
       "get" : {
         "tags" : [ "SSEController" ],
         "summary" : "[start] Открытие Server Sent Events для нового клиента или сохранение подписки для старого пользователя",
-        "description" : "Также возможны 401, 403 и 500 коды ответовПодписка сохраняется в течении одного запуска сервера.\n",
-        "operationId" : "SSEController/start_whenGood_AdminUser",
-        "parameters" : [ {
-          "name" : "uuidAuth",
-          "in" : "path",
-          "description" : "Авторизация, в ней подписка и пользователь",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          }
-        } ],
+        "description" : "Также возможны 401, 403 и 500 коды ответов    Подписка сохраняется в течении одного запуска сервера.\n",
+        "operationId" : "SSEController/start_whenGood",
         "responses" : {
           "200" : {
             "description" : "200",
             "content" : {
               "text/event-stream" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/requests-chTitle486549215"
+                  "$ref" : "#/components/schemas/hteachers-chSch486549215"
                 },
                 "examples" : {
+                  "SSEController/start_whenGoodNext_Anonim" : {
+                    "value" : "event:chck\ndata:\"a69657b7-4f83-4cca-a1a3-5bca38a408b2\"\n\n"
+                  },
                   "SSEController/start_whenGood_AdminUser" : {
-                    "value" : "event:chck\ndata:\"5bdff004-a775-4606-a674-5d390cf3559d\"\n\n"
+                    "value" : "event:chck\ndata:\"3e16a5ba-6962-4c9f-a22a-c64d30293f5e\"\n\n"
                   }
                 }
               }
@@ -3198,20 +3807,29 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "StudentsController/addPep_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "StudentsController/addPep_whenEmpty_Anonim" : {
@@ -3241,20 +3859,29 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "StudentsController/chPep_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "StudentsController/chPep_whenEmpty_Anonim" : {
@@ -3284,14 +3911,23 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "StudentsController/getInfo_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "responses" : {
           "401" : {
@@ -3310,14 +3946,23 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "StudentsController/getInfoForHTeacher_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "responses" : {
           "401" : {
@@ -3328,11 +3973,11 @@
             "content" : {
               "application/json;charset=UTF-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/requests-chTitle486549215"
+                  "$ref" : "#/components/schemas/hteachers-chSch486549215"
                 },
                 "examples" : {
                   "StudentsController/getInfoForHTeacher_whenGood_HTEACHER" : {
-                    "value" : "{\"bodyG\":{\"2323\":\"1А\",\"3456\":\"1Б\",\"4354\":\"1В\"},\"firstG\":2323}"
+                    "value" : "{\"firstG\":2323,\"bodyG\":{\"3456\":\"1Б\",\"4354\":\"1В\",\"2323\":\"1А\"}}"
                   }
                 }
               }
@@ -3348,20 +3993,29 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "StudentsController/remPep_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "StudentsController/remPep_whenEmpty_Anonim" : {
@@ -3399,14 +4053,23 @@
             "type" : "string"
           }
         }, {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "responses" : {
           "401" : {
@@ -3417,11 +4080,11 @@
             "content" : {
               "application/json;charset=UTF-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/requests-chTitle486549215"
+                  "$ref" : "#/components/schemas/hteachers-chSch486549215"
                 },
                 "examples" : {
                   "StudentsController/getStud_whenGood_KID" : {
-                    "value" : "{\"3872\":{\"name\":\"Якушева А.О.\",\"login\":\"esse_et\"},\"1705\":{\"name\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\"},\"1840\":{\"name\":\"Пестов Л.А.\",\"login\":\"sed_commodi\"},\"3225\":{\"name\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\"},\"9764\":{\"name\":\"Силин А.К.\",\"login\":\"facere_a\"}}"
+                    "value" : "{\"3872\":{\"name\":\"Якушева А.О.\",\"login\":\"esse_et\"},\"1840\":{\"name\":\"Пестов Л.А.\",\"login\":\"sed_commodi\"},\"9764\":{\"name\":\"Силин А.К.\",\"login\":\"facere_a\"},\"1705\":{\"name\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\"},\"3225\":{\"name\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\"}}"
                   }
                 }
               }
@@ -3437,20 +4100,29 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "TeachersController/addTea_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "TeachersController/addTea_whenEmpty_Anonim" : {
@@ -3480,20 +4152,29 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "TeachersController/chPep_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "TeachersController/chPep_whenEmpty_Anonim" : {
@@ -3523,14 +4204,23 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "TeachersController/getTeachers_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "responses" : {
           "401" : {
@@ -3541,11 +4231,11 @@
             "content" : {
               "application/json;charset=UTF-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/requests-chTitle486549215"
+                  "$ref" : "#/components/schemas/hteachers-chSch486549215"
                 },
                 "examples" : {
                   "TeachersController/getTeachers_whenGood_HTEACHER" : {
-                    "value" : "{\"nt\":{\"tea\":{\"3872\":{\"name\":\"Якушева А.О.\",\"login\":\"esse_et\"},\"1705\":{\"name\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\"},\"1840\":{\"name\":\"Пестов Л.А.\",\"login\":\"sed_commodi\"},\"3225\":{\"name\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\"},\"9764\":{\"name\":\"Силин А.К.\",\"login\":\"facere_a\"}}},\"0\":{\"name\":\"Англ. Яз\",\"tea\":{\"22\":{\"name\":\"Якушева А.О.\",\"login\":\"esse_et\"},\"23\":{\"name\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\"},\"24\":{\"name\":\"Пестов Л.А.\",\"login\":\"sed_commodi\"}}},\"1\":{\"name\":\"Математика\",\"tea\":{\"25\":{\"name\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\"}}}}"
+                    "value" : "{\"nt\":{\"tea\":{\"3872\":{\"name\":\"Якушева А.О.\",\"login\":\"esse_et\"},\"1840\":{\"name\":\"Пестов Л.А.\",\"login\":\"sed_commodi\"},\"9764\":{\"name\":\"Силин А.К.\",\"login\":\"facere_a\"},\"1705\":{\"name\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\"},\"3225\":{\"name\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\"}}},\"body\":{\"0\":{\"tea\":{\"3872\":{\"name\":\"Якушева А.О.\",\"login\":\"esse_et\"},\"1840\":{\"name\":\"Пестов Л.А.\",\"login\":\"sed_commodi\"},\"1705\":{\"name\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\"}},\"name\":\"Англ. Яз\"},\"1\":{\"tea\":{\"3225\":{\"name\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\"}},\"name\":\"Математика\"}}}"
                   }
                 }
               }
@@ -3561,20 +4251,29 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "TeachersController/remPep_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "TeachersController/remPep_whenEmpty_Anonim" : {
@@ -3604,20 +4303,29 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "TestController/chTests_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/requests-chTitle486549215"
+                "$ref" : "#/components/schemas/hteachers-chSch486549215"
               },
               "examples" : {
                 "TestController/chTests_whenBad_Anonim" : {
@@ -3639,11 +4347,11 @@
             "content" : {
               "application/json;charset=UTF-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/requests-chTitle486549215"
+                  "$ref" : "#/components/schemas/hteachers-chSch486549215"
                 },
                 "examples" : {
                   "TestController/chTests_whenGood_AdminUser" : {
-                    "value" : "{\"bodyT\":{\"admins\":{},\"schools\":{}}}"
+                    "value" : "{\"bodyT\":{}}"
                   }
                 }
               }
@@ -3659,14 +4367,23 @@
         "description" : "Также возможны 401, 403 и 500 коды ответов",
         "operationId" : "TestController/getInfo_when",
         "parameters" : [ {
-          "name" : "x-access-token",
+          "name" : "x-token",
           "in" : "header",
-          "description" : "UUID-токен, авторизация, в ней подписка и пользователь",
+          "description" : "SSE UUID-токен, в ней подписка",
           "required" : true,
           "schema" : {
             "type" : "string"
           },
           "example" : "9693b2a1-77bb-4426-8045-9f9b4395d454"
+        }, {
+          "name" : "x-access-token",
+          "in" : "header",
+          "description" : "JWT-токен, авторизация",
+          "required" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "eyJhbGciOiJIUzM4NCJ9.eyJpc3MiOiJlam91cm5hbCIsInN1YiI6IjEiLCJyb2xlIjpbIktJRCIsIkFETUlOIl0sImlhdCI6MTc4MTcxNzY1OCwiZXhwIjoyMTAxNzE3NjU4fQ.mqPag1Gf9BZVW7AwCfk1M_lKqQ3ypmfEZfeVrAsMi21bXsOM30r7z8lAXwnS3uR9"
+          }
         } ],
         "responses" : {
           "401" : {
@@ -3677,14 +4394,14 @@
             "content" : {
               "application/json;charset=UTF-8" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/requests-chTitle486549215"
+                  "$ref" : "#/components/schemas/hteachers-chSch486549215"
                 },
                 "examples" : {
                   "TestController/getInfo_whenGood_TestModeOff_AdminUser" : {
-                    "value" : "{\"bodyS\":{\"checkbox_debug\":true,\"checkbox_test\":true},\"bodyT\":{\"admins\":{},\"schools\":{}}}"
+                    "value" : "{\"bodyT\":{},\"bodyS\":{\"checkbox_debug\":true,\"checkbox_test\":true}}"
                   },
                   "TestController/getInfo_whenGood_TestModeOn_AdminUser" : {
-                    "value" : "{\"bodyS\":{\"checkbox_debug\":true,\"checkbox_test\":true},\"bodyT\":{\"admins\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\",\"pass\":\"k02o9ezp8tacrfp\"},\"1705\":{\"fio\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\",\"pass\":\"9an3e5ykj8\"},\"1840\":{\"fio\":\"Пестов Л.А.\",\"login\":\"sed_commodi\",\"pass\":\"zjitnc71x\"},\"3225\":{\"fio\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\",\"pass\":\"hx45205la\"},\"9764\":{\"fio\":\"Силин А.К.\",\"login\":\"facere_a\",\"pass\":\"2qiasp5nsk4mq7\"}},\"schools\":{\"9600\":{\"name\":\"Лицей №3293\",\"hteachers\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\",\"pass\":\"k02o9ezp8tacrfp\"},\"1705\":{\"fio\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\",\"pass\":\"9an3e5ykj8\"},\"1840\":{\"fio\":\"Пестов Л.А.\",\"login\":\"sed_commodi\",\"pass\":\"zjitnc71x\"},\"3225\":{\"fio\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\",\"pass\":\"hx45205la\"},\"9764\":{\"fio\":\"Силин А.К.\",\"login\":\"facere_a\",\"pass\":\"2qiasp5nsk4mq7\"}},\"teachers\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\",\"pass\":\"k02o9ezp8tacrfp\"},\"1705\":{\"fio\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\",\"pass\":\"9an3e5ykj8\"},\"1840\":{\"fio\":\"Пестов Л.А.\",\"login\":\"sed_commodi\",\"pass\":\"zjitnc71x\"},\"3225\":{\"fio\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\",\"pass\":\"hx45205la\"},\"9764\":{\"fio\":\"Силин А.К.\",\"login\":\"facere_a\",\"pass\":\"2qiasp5nsk4mq7\"}},\"groups\":{\"2323\":{\"name\":\"1А\",\"kids\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\",\"pass\":\"k02o9ezp8tacrfp\"},\"1705\":{\"fio\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\",\"pass\":\"9an3e5ykj8\"},\"1840\":{\"fio\":\"Пестов Л.А.\",\"login\":\"sed_commodi\",\"pass\":\"zjitnc71x\"},\"3225\":{\"fio\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\",\"pass\":\"hx45205la\"},\"9764\":{\"fio\":\"Силин А.К.\",\"login\":\"facere_a\",\"pass\":\"2qiasp5nsk4mq7\"}},\"parents\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\",\"pass\":\"k02o9ezp8tacrfp\"}}},\"3456\":{\"name\":\"1Б\",\"kids\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\",\"pass\":\"k02o9ezp8tacrfp\"},\"1705\":{\"fio\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\",\"pass\":\"9an3e5ykj8\"},\"1840\":{\"fio\":\"Пестов Л.А.\",\"login\":\"sed_commodi\",\"pass\":\"zjitnc71x\"},\"3225\":{\"fio\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\",\"pass\":\"hx45205la\"},\"9764\":{\"fio\":\"Силин А.К.\",\"login\":\"facere_a\",\"pass\":\"2qiasp5nsk4mq7\"}},\"parents\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\",\"pass\":\"k02o9ezp8tacrfp\"}}},\"4354\":{\"name\":\"1В\",\"kids\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\",\"pass\":\"k02o9ezp8tacrfp\"},\"1705\":{\"fio\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\",\"pass\":\"9an3e5ykj8\"},\"1840\":{\"fio\":\"Пестов Л.А.\",\"login\":\"sed_commodi\",\"pass\":\"zjitnc71x\"},\"3225\":{\"fio\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\",\"pass\":\"hx45205la\"},\"9764\":{\"fio\":\"Силин А.К.\",\"login\":\"facere_a\",\"pass\":\"2qiasp5nsk4mq7\"}},\"parents\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\",\"pass\":\"k02o9ezp8tacrfp\"}}}}},\"1137\":{\"name\":\"Гимназия №2246\",\"hteachers\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\",\"pass\":\"k02o9ezp8tacrfp\"},\"1705\":{\"fio\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\",\"pass\":\"9an3e5ykj8\"},\"1840\":{\"fio\":\"Пестов Л.А.\",\"login\":\"sed_commodi\",\"pass\":\"zjitnc71x\"},\"3225\":{\"fio\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\",\"pass\":\"hx45205la\"},\"9764\":{\"fio\":\"Силин А.К.\",\"login\":\"facere_a\",\"pass\":\"2qiasp5nsk4mq7\"}},\"teachers\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\",\"pass\":\"k02o9ezp8tacrfp\"},\"1705\":{\"fio\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\",\"pass\":\"9an3e5ykj8\"},\"1840\":{\"fio\":\"Пестов Л.А.\",\"login\":\"sed_commodi\",\"pass\":\"zjitnc71x\"},\"3225\":{\"fio\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\",\"pass\":\"hx45205la\"},\"9764\":{\"fio\":\"Силин А.К.\",\"login\":\"facere_a\",\"pass\":\"2qiasp5nsk4mq7\"}},\"groups\":{\"2323\":{\"name\":\"1А\",\"kids\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\",\"pass\":\"k02o9ezp8tacrfp\"},\"1705\":{\"fio\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\",\"pass\":\"9an3e5ykj8\"},\"1840\":{\"fio\":\"Пестов Л.А.\",\"login\":\"sed_commodi\",\"pass\":\"zjitnc71x\"},\"3225\":{\"fio\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\",\"pass\":\"hx45205la\"},\"9764\":{\"fio\":\"Силин А.К.\",\"login\":\"facere_a\",\"pass\":\"2qiasp5nsk4mq7\"}},\"parents\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\",\"pass\":\"k02o9ezp8tacrfp\"}}},\"3456\":{\"name\":\"1Б\",\"kids\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\",\"pass\":\"k02o9ezp8tacrfp\"},\"1705\":{\"fio\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\",\"pass\":\"9an3e5ykj8\"},\"1840\":{\"fio\":\"Пестов Л.А.\",\"login\":\"sed_commodi\",\"pass\":\"zjitnc71x\"},\"3225\":{\"fio\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\",\"pass\":\"hx45205la\"},\"9764\":{\"fio\":\"Силин А.К.\",\"login\":\"facere_a\",\"pass\":\"2qiasp5nsk4mq7\"}},\"parents\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\",\"pass\":\"k02o9ezp8tacrfp\"}}},\"4354\":{\"name\":\"1В\",\"kids\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\",\"pass\":\"k02o9ezp8tacrfp\"},\"1705\":{\"fio\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\",\"pass\":\"9an3e5ykj8\"},\"1840\":{\"fio\":\"Пестов Л.А.\",\"login\":\"sed_commodi\",\"pass\":\"zjitnc71x\"},\"3225\":{\"fio\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\",\"pass\":\"hx45205la\"},\"9764\":{\"fio\":\"Силин А.К.\",\"login\":\"facere_a\",\"pass\":\"2qiasp5nsk4mq7\"}},\"parents\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\",\"pass\":\"k02o9ezp8tacrfp\"}}}}},\"2903\":{\"name\":\"Школа №217\",\"hteachers\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\",\"pass\":\"k02o9ezp8tacrfp\"},\"1705\":{\"fio\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\",\"pass\":\"9an3e5ykj8\"},\"1840\":{\"fio\":\"Пестов Л.А.\",\"login\":\"sed_commodi\",\"pass\":\"zjitnc71x\"},\"3225\":{\"fio\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\",\"pass\":\"hx45205la\"},\"9764\":{\"fio\":\"Силин А.К.\",\"login\":\"facere_a\",\"pass\":\"2qiasp5nsk4mq7\"}},\"teachers\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\",\"pass\":\"k02o9ezp8tacrfp\"},\"1705\":{\"fio\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\",\"pass\":\"9an3e5ykj8\"},\"1840\":{\"fio\":\"Пестов Л.А.\",\"login\":\"sed_commodi\",\"pass\":\"zjitnc71x\"},\"3225\":{\"fio\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\",\"pass\":\"hx45205la\"},\"9764\":{\"fio\":\"Силин А.К.\",\"login\":\"facere_a\",\"pass\":\"2qiasp5nsk4mq7\"}},\"groups\":{\"2323\":{\"name\":\"1А\",\"kids\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\",\"pass\":\"k02o9ezp8tacrfp\"},\"1705\":{\"fio\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\",\"pass\":\"9an3e5ykj8\"},\"1840\":{\"fio\":\"Пестов Л.А.\",\"login\":\"sed_commodi\",\"pass\":\"zjitnc71x\"},\"3225\":{\"fio\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\",\"pass\":\"hx45205la\"},\"9764\":{\"fio\":\"Силин А.К.\",\"login\":\"facere_a\",\"pass\":\"2qiasp5nsk4mq7\"}},\"parents\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\",\"pass\":\"k02o9ezp8tacrfp\"}}},\"3456\":{\"name\":\"1Б\",\"kids\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\",\"pass\":\"k02o9ezp8tacrfp\"},\"1705\":{\"fio\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\",\"pass\":\"9an3e5ykj8\"},\"1840\":{\"fio\":\"Пестов Л.А.\",\"login\":\"sed_commodi\",\"pass\":\"zjitnc71x\"},\"3225\":{\"fio\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\",\"pass\":\"hx45205la\"},\"9764\":{\"fio\":\"Силин А.К.\",\"login\":\"facere_a\",\"pass\":\"2qiasp5nsk4mq7\"}},\"parents\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\",\"pass\":\"k02o9ezp8tacrfp\"}}},\"4354\":{\"name\":\"1В\",\"kids\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\",\"pass\":\"k02o9ezp8tacrfp\"},\"1705\":{\"fio\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\",\"pass\":\"9an3e5ykj8\"},\"1840\":{\"fio\":\"Пестов Л.А.\",\"login\":\"sed_commodi\",\"pass\":\"zjitnc71x\"},\"3225\":{\"fio\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\",\"pass\":\"hx45205la\"},\"9764\":{\"fio\":\"Силин А.К.\",\"login\":\"facere_a\",\"pass\":\"2qiasp5nsk4mq7\"}},\"parents\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\",\"pass\":\"k02o9ezp8tacrfp\"}}}}}}}}"
+                    "value" : "{\"bodyT\":{\"admins\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\"},\"1840\":{\"fio\":\"Пестов Л.А.\",\"login\":\"sed_commodi\"},\"9764\":{\"fio\":\"Силин А.К.\",\"login\":\"facere_a\"},\"1705\":{\"fio\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\"},\"3225\":{\"fio\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\"}},\"schools\":{\"9600\":{\"name\":\"Лицей №3293\",\"hteachers\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\"},\"1840\":{\"fio\":\"Пестов Л.А.\",\"login\":\"sed_commodi\"},\"9764\":{\"fio\":\"Силин А.К.\",\"login\":\"facere_a\"},\"1705\":{\"fio\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\"},\"3225\":{\"fio\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\"}},\"teachers\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\"},\"1840\":{\"fio\":\"Пестов Л.А.\",\"login\":\"sed_commodi\"},\"9764\":{\"fio\":\"Силин А.К.\",\"login\":\"facere_a\"},\"1705\":{\"fio\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\"},\"3225\":{\"fio\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\"}},\"groups\":{\"3456\":{\"name\":\"1Б\",\"kids\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\"},\"1840\":{\"fio\":\"Пестов Л.А.\",\"login\":\"sed_commodi\"},\"9764\":{\"fio\":\"Силин А.К.\",\"login\":\"facere_a\"},\"1705\":{\"fio\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\"},\"3225\":{\"fio\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\"}},\"parents\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\"}}},\"4354\":{\"name\":\"1В\",\"kids\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\"},\"1840\":{\"fio\":\"Пестов Л.А.\",\"login\":\"sed_commodi\"},\"9764\":{\"fio\":\"Силин А.К.\",\"login\":\"facere_a\"},\"1705\":{\"fio\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\"},\"3225\":{\"fio\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\"}},\"parents\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\"}}},\"2323\":{\"name\":\"1А\",\"kids\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\"},\"1840\":{\"fio\":\"Пестов Л.А.\",\"login\":\"sed_commodi\"},\"9764\":{\"fio\":\"Силин А.К.\",\"login\":\"facere_a\"},\"1705\":{\"fio\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\"},\"3225\":{\"fio\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\"}},\"parents\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\"}}}}},\"1137\":{\"name\":\"Гимназия №2246\",\"hteachers\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\"},\"1840\":{\"fio\":\"Пестов Л.А.\",\"login\":\"sed_commodi\"},\"9764\":{\"fio\":\"Силин А.К.\",\"login\":\"facere_a\"},\"1705\":{\"fio\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\"},\"3225\":{\"fio\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\"}},\"teachers\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\"},\"1840\":{\"fio\":\"Пестов Л.А.\",\"login\":\"sed_commodi\"},\"9764\":{\"fio\":\"Силин А.К.\",\"login\":\"facere_a\"},\"1705\":{\"fio\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\"},\"3225\":{\"fio\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\"}},\"groups\":{\"3456\":{\"name\":\"1Б\",\"kids\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\"},\"1840\":{\"fio\":\"Пестов Л.А.\",\"login\":\"sed_commodi\"},\"9764\":{\"fio\":\"Силин А.К.\",\"login\":\"facere_a\"},\"1705\":{\"fio\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\"},\"3225\":{\"fio\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\"}},\"parents\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\"}}},\"4354\":{\"name\":\"1В\",\"kids\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\"},\"1840\":{\"fio\":\"Пестов Л.А.\",\"login\":\"sed_commodi\"},\"9764\":{\"fio\":\"Силин А.К.\",\"login\":\"facere_a\"},\"1705\":{\"fio\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\"},\"3225\":{\"fio\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\"}},\"parents\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\"}}},\"2323\":{\"name\":\"1А\",\"kids\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\"},\"1840\":{\"fio\":\"Пестов Л.А.\",\"login\":\"sed_commodi\"},\"9764\":{\"fio\":\"Силин А.К.\",\"login\":\"facere_a\"},\"1705\":{\"fio\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\"},\"3225\":{\"fio\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\"}},\"parents\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\"}}}}},\"2903\":{\"name\":\"Школа №217\",\"hteachers\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\"},\"1840\":{\"fio\":\"Пестов Л.А.\",\"login\":\"sed_commodi\"},\"9764\":{\"fio\":\"Силин А.К.\",\"login\":\"facere_a\"},\"1705\":{\"fio\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\"},\"3225\":{\"fio\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\"}},\"teachers\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\"},\"1840\":{\"fio\":\"Пестов Л.А.\",\"login\":\"sed_commodi\"},\"9764\":{\"fio\":\"Силин А.К.\",\"login\":\"facere_a\"},\"1705\":{\"fio\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\"},\"3225\":{\"fio\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\"}},\"groups\":{\"3456\":{\"name\":\"1Б\",\"kids\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\"},\"1840\":{\"fio\":\"Пестов Л.А.\",\"login\":\"sed_commodi\"},\"9764\":{\"fio\":\"Силин А.К.\",\"login\":\"facere_a\"},\"1705\":{\"fio\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\"},\"3225\":{\"fio\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\"}},\"parents\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\"}}},\"4354\":{\"name\":\"1В\",\"kids\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\"},\"1840\":{\"fio\":\"Пестов Л.А.\",\"login\":\"sed_commodi\"},\"9764\":{\"fio\":\"Силин А.К.\",\"login\":\"facere_a\"},\"1705\":{\"fio\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\"},\"3225\":{\"fio\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\"}},\"parents\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\"}}},\"2323\":{\"name\":\"1А\",\"kids\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\"},\"1840\":{\"fio\":\"Пестов Л.А.\",\"login\":\"sed_commodi\"},\"9764\":{\"fio\":\"Силин А.К.\",\"login\":\"facere_a\"},\"1705\":{\"fio\":\"Дроздов А.А.\",\"login\":\"debitis_accusantium\"},\"3225\":{\"fio\":\"Никифорова Н.А.\",\"login\":\"numquam_nobis\"}},\"parents\":{\"3872\":{\"fio\":\"Якушева А.О.\",\"login\":\"esse_et\"}}}}}}},\"bodyS\":{\"checkbox_debug\":true,\"checkbox_test\":true}}"
                   }
                 }
               }
@@ -3696,10 +4413,12 @@
   },
   "components" : {
     "schemas" : {
-      "contacts-getContacts-type1554439890" : {
+      "contacts-getContacts-type-222779981" : {
+        "required" : [ "contact", "mapPr" ],
         "type" : "object",
         "properties" : {
           "mapPr" : {
+            "required" : [ "imgUrl", "text" ],
             "type" : "object",
             "properties" : {
               "imgUrl" : {
@@ -3719,7 +4438,7 @@
           }
         }
       },
-      "requests-chTitle486549215" : {
+      "hteachers-chSch486549215" : {
         "type" : "object"
       }
     },

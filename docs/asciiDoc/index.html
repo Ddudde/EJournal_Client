@@ -444,26 +444,28 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Natik Muradov</span><br>
 <span id="email" class="email"><a href="mailto:myratoff25@gmail.com">myratoff25@gmail.com</a></span><br>
-<span id="revnumber">version v0.3,</span>
-<span id="revdate">26.11.2025</span>
-<br><span id="revremark">Основное описание</span>
+<span id="revnumber">version v0.4.3,</span>
+<span id="revdate">13.06.2026</span>
+<br><span id="revremark">Основное описание сервера</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Содержание</div>
 <ul class="sectlevel1">
 <li><a href="#_технологии-сервера">1. Технологии сервера</a></li>
-<li><a href="#_зависимости-клиента">2. Зависимости клиента</a></li>
+<li><a href="#_положительные-стороны-проекта">2. Положительные стороны проекта</a></li>
 <li><a href="#_использование">3. Использование</a></li>
-<li><a href="#_документы">4. Документы</a></li>
-<li><a href="#_api">5. API</a>
+<li><a href="#_безопасность">4. Безопасность</a></li>
+<li><a href="#_секретыключи-сервера">5. Секреты(ключи) сервера</a></li>
+<li><a href="#_документация">6. Документация</a></li>
+<li><a href="#_api">7. API</a>
 <ul class="sectlevel2">
-<li><a href="#_http-методы">5.1. HTTP методы</a></li>
-<li><a href="#_http-статус-коды">5.2. HTTP статус коды</a></li>
+<li><a href="#_http-методы">7.1. HTTP методы</a></li>
+<li><a href="#_http-статус-коды">7.2. HTTP статус коды</a></li>
 </ul>
 </li>
-<li><a href="#_логгирование">6. Логгирование</a></li>
-<li><a href="#_логическая-схема-базы-данных">7. Логическая схема базы данных</a></li>
-<li><a href="#_физическая-схема-базы-данных">8. Физическая схема базы данных</a></li>
+<li><a href="#_логгирование">8. Логгирование</a></li>
+<li><a href="#_логическая-схема-базы-данных">9. Логическая схема базы данных</a></li>
+<li><a href="#_физическая-схема-базы-данных">10. Физическая схема базы данных</a></li>
 </ul>
 </div>
 </div>
@@ -474,36 +476,48 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <div class="paragraph">
 <p>Github: <a href="https://github.com/Ddudde/EJournal" class="bare">https://github.com/Ddudde/EJournal</a><br>
-Публикации в HTML и PDF форматах находятся в /docs/EJournal/asciiDoc/.<br>
+Клиент вставлен в качестве подмодуля Git(папка /EJournal_Client/) в репозиторий сервера и можно увидеть соотношения коммитов сервера и клиента.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Доки в ветке public репозитория клиента.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Публикации в HTML и PDF форматах находятся в /docs/EJournal/asciiDoc/.<br>
 Основное описание проекта здесь. Также есть дополнительные:<br>
 Также в /docs/start-web.bat можно стартануть Python http server для просмотра документации</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Swagger: <a href="/EJournal/swagger/htmlSwag/" class="bare">/EJournal/swagger/htmlSwag/</a></p>
+<p>Swagger: <a href="/EJournal_Client/swagger/htmlSwag/" class="bare">/EJournal_Client/swagger/htmlSwag/</a></p>
 </li>
 <li>
-<p>JavaDoc: <a href="/EJournal/javaDoc/" class="bare">/EJournal/javaDoc/</a></p>
+<p>JavaDoc: <a href="/EJournal_Client/javaDoc/" class="bare">/EJournal_Client/javaDoc/</a></p>
 </li>
 <li>
-<p>AsciiDoc: <a href="/EJournal/asciiDoc/" class="bare">/EJournal/asciiDoc/</a></p>
+<p>AsciiDoc-Server: <a href="/EJournal_Client/asciiDoc/" class="bare">/EJournal_Client/asciiDoc/</a></p>
+</li>
+<li>
+<p>AsciiDoc-Client: <a href="/EJournal_Client/asciiDoc/client.html" class="bare">/EJournal_Client/asciiDoc/client.html</a></p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
 <p>Сервер:<br>
+<a href="https://github.com/Ddudde/EJournal" class="bare">https://github.com/Ddudde/EJournal</a><br>
 Выполнен в классическом монолите<br>
-Находится в /project/server<br>
+Находится в /server<br>
 <a href="http://localhost:8080" class="bare">http://localhost:8080</a><br>
 Java, Spring, REST + Server Sent Events</p>
-</div>
-<div class="paragraph">
-<p>Клиент:<br>
-Находится в /project/client<br>
-<a href="http://localhost:3000/EJournal" class="bare">http://localhost:3000/EJournal</a><br>
-Github Pages: <a href="https://ddudde.github.io/EJournal/" class="bare">https://ddudde.github.io/EJournal/</a><br>
-JS, React, Redux, PWA</p>
 </div>
 </div>
 </div>
@@ -525,8 +539,8 @@ JS, React, Redux, PWA</p>
 Intellij IDEA в качестве IDE<br>
 BD: H2<br>
 <a href="http://localhost:8080/console_db" class="bare">http://localhost:8080/console_db</a><br>
-JDK: GraalVM 21<br>
-Сборка: Gradle 8.14.3<br>
+JDK: GraalVM 25<br>
+Сборка: Gradle 9.2.1<br>
 БД: PostgreSQL 15 / H2
 </td>
 </tr>
@@ -538,7 +552,7 @@ JDK: GraalVM 21<br>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Spring Boot 2.7.18</p>
+<p>Spring Boot 3.5.9</p>
 </li>
 <li>
 <p>Spring Security</p>
@@ -602,49 +616,25 @@ JDK: GraalVM 21<br>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_зависимости-клиента">2. Зависимости клиента</h2>
+<h2 id="_положительные-стороны-проекта">2. Положительные стороны проекта</h2>
 <div class="sectionbody">
 <div class="exampleblock">
 <div class="content">
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Vs Code в качестве IDE
-</td>
-</tr>
-</table>
+<div class="ulist">
+<ul>
+<li>
+<p>Пуш-уведомления</p>
+</li>
+<li>
+<p>JWT</p>
+</li>
+<li>
+<p>Интеграция с Email (Пример: Отправка кода подтверждения)</p>
+</li>
+</ul>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Github Pages</p>
-</li>
-<li>
-<p>Single Page Application</p>
-</li>
-<li>
-<p>Progressive Web App</p>
-</li>
-<li>
-<p>React</p>
-</li>
-<li>
-<p>Redux</p>
-</li>
-<li>
-<p>React Router</p>
-</li>
-<li>
-<p>Firebase Cloud Messaging</p>
-</li>
-<li>
-<p>React Helmet</p>
-</li>
-</ol>
+<div class="paragraph">
+<p>Coming soon&#8230;&#8203;</p>
 </div>
 </div>
 </div>
@@ -657,7 +647,7 @@ Vs Code в качестве IDE
 <div class="content">
 <div class="paragraph">
 <p>Запускаем сервер<br>
-И запускаем клиент по одному из адресов: <a href="http://localhost:3000/EJournal" class="bare">http://localhost:3000/EJournal</a><br>
+И запускаем клиент по одному из адресов: <a href="http://localhost:5173/EJournal_Client/" class="bare">http://localhost:5173/EJournal_Client/</a><br>
 , <a href="https://ddudde.github.io/EJournal/" class="bare">https://ddudde.github.io/EJournal/</a><br>
 Выбираем роль, допустим администратора<br>
 И авторизируемся<br>
@@ -670,16 +660,65 @@ Vs Code в качестве IDE
 </div>
 </div>
 <div class="sect1">
-<h2 id="_документы">4. Документы</h2>
+<h2 id="_безопасность">4. Безопасность</h2>
 <div class="sectionbody">
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>JavaDoc, AsciiDoc и Swagger генерируются при помощи Gradle<br>
+<p>Авторизация происходит с классической Basic Auth<br>
+Хранение в JWT(JWS) RFC <a href="https://datatracker.ietf.org/doc/html/rfc7515">7515</a><br>
+В связке refresh token(30 дней) + access token(15 минут),<br>
+SHA384 с уникальным ключом для каждого пользователя</p>
+</div>
+<div class="paragraph">
+<p>Server-Sent Events:<br>
+Хранение в UUID токенах.<br>
+Подключение с одноразовым токеном с TTL меньше 15 минут.<br>
+После подключения выдаётся токен с жизнью 15 минут.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_секретыключи-сервера">5. Секреты(ключи) сервера</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Расположение:<br>
+/secrets.gradle<br>
+/src/main/resources/e-journalfcm-firebase-auth.json<br>
+/src/main/resources/config/application.yaml</p>
+</div>
+<div class="paragraph">
+<p>Также с большинством ключей есть шаблоны, они расположены вместе с файлами, пример названия: secrets.gradle.template</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_документация">6. Документация</h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Доки в ветке public репозитория клиента.<br>
+JavaDoc, AsciiDoc и Swagger генерируются при помощи Gradle<br>
 команды:<br>
 gradle javadoc<br>
 gradle asciidoctor<br>
-gradle openapi3</p>
+gradle openapi3
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>toDo - что нужно доделать<br>
@@ -693,10 +732,10 @@ beenDo - что уже сделано</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_api">5. API</h2>
+<h2 id="_api">7. API</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_http-методы">5.1. HTTP методы</h3>
+<h3 id="_http-методы">7.1. HTTP методы</h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -731,7 +770,7 @@ beenDo - что уже сделано</p>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_http-статус-коды">5.2. HTTP статус коды</h3>
+<h3 id="_http-статус-коды">7.2. HTTP статус коды</h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -786,12 +825,12 @@ beenDo - что уже сделано</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_логгирование">6. Логгирование</h2>
+<h2 id="_логгирование">8. Логгирование</h2>
 <div class="sectionbody">
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>Логи сохраняются в папку: \project\server\logs.<br>
+<p>Логи сохраняются в папку: \server\logs.<br>
 Slf4j + logback-spring</p>
 </div>
 </div>
@@ -799,7 +838,7 @@ Slf4j + logback-spring</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_логическая-схема-базы-данных">7. Логическая схема базы данных</h2>
+<h2 id="_логическая-схема-базы-данных">9. Логическая схема базы данных</h2>
 <div class="sectionbody">
 <div class="exampleblock">
 <div class="content">
@@ -817,7 +856,7 @@ Slf4j + logback-spring</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_физическая-схема-базы-данных">8. Физическая схема базы данных</h2>
+<h2 id="_физическая-схема-базы-данных">10. Физическая схема базы данных</h2>
 <div class="sectionbody">
 <div class="exampleblock">
 <div class="content">
@@ -837,8 +876,8 @@ Slf4j + logback-spring</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version v0.3<br>
-Last updated 2025-11-26 21:48:16 +0300
+Version v0.4.3<br>
+Last updated 2026-06-15 23:27:27 +0300
 </div>
 </div>
 </body>

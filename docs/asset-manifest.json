@@ -1,70 +1,423 @@
 {
-  "files": {
-    "main.css": "/EJournal/static/css/main.192dff32.css",
-    "main.js": "/EJournal/static/js/main.20bd8394.js",
-    "static/js/787.d8939b6a.chunk.js": "/EJournal/static/js/787.d8939b6a.chunk.js",
-    "static/media/izo5.png": "/EJournal/static/media/izo5.d552df68cdc955905b80.png",
-    "static/media/izo6.png": "/EJournal/static/media/izo6.8b1ae17e2604c118f155.png",
-    "static/media/izo7.png": "/EJournal/static/media/izo7.c1b9d30ed3491e15e2f5.png",
-    "static/media/izo9.png": "/EJournal/static/media/izo9.aa196755a7164ceaa30a.png",
-    "static/media/izo4.png": "/EJournal/static/media/izo4.ebfa3e6f5923a3c3c440.png",
-    "static/media/izo28.png": "/EJournal/static/media/izo28.10f7b4ebc071df4e7ca2.png",
-    "static/media/izo30.png": "/EJournal/static/media/izo30.d4fe6f80711b8e954b47.png",
-    "static/media/izo33.png": "/EJournal/static/media/izo33.241c5cbb6d3e2a56a2f6.png",
-    "static/media/izo27.png": "/EJournal/static/media/izo27.f72656561201638c0f82.png",
-    "static/media/izo3.png": "/EJournal/static/media/izo3.2e658b61e60c269ac034.png",
-    "static/media/izo31.png": "/EJournal/static/media/izo31.1d9332be477833e7e3ed.png",
-    "static/media/izo2.png": "/EJournal/static/media/izo2.391d105b5ef7137ba707.png",
-    "static/media/izo32.png": "/EJournal/static/media/izo32.44a783cb528ec34490ae.png",
-    "static/media/izo29.png": "/EJournal/static/media/izo29.a3803dca3b9b061e2b8e.png",
-    "static/media/izo34.png": "/EJournal/static/media/izo34.87c8e18c37d750081bc6.png",
-    "static/media/izo1.png": "/EJournal/static/media/izo1.639776a49307b25f80bb.png",
-    "static/media/izo15.png": "/EJournal/static/media/izo15.60017716ca2fe97adea9.png",
-    "static/media/izo13.png": "/EJournal/static/media/izo13.893344f241aa622710f5.png",
-    "static/media/izo12.png": "/EJournal/static/media/izo12.88d9abda3fe7e312f000.png",
-    "static/media/izo36.png": "/EJournal/static/media/izo36.796a342b3f453c572191.png",
-    "static/media/izo35.png": "/EJournal/static/media/izo35.13155364d929a62a98b2.png",
-    "static/media/izo19.png": "/EJournal/static/media/izo19.e47e1fbeb8fce66af1cc.png",
-    "static/media/tizo3.png": "/EJournal/static/media/tizo3.6948461e7b660144ca0c.png",
-    "static/media/tizo1.png": "/EJournal/static/media/tizo1.87b1ac0d0c441be72677.png",
-    "static/media/tizo2.png": "/EJournal/static/media/tizo2.3118934bc0933545bdf5.png",
-    "static/media/tizo4.png": "/EJournal/static/media/tizo4.fbbf5993957949039d05.png",
-    "static/media/izo18.png": "/EJournal/static/media/izo18.39bc016f269c58477735.png",
-    "static/media/izo14.png": "/EJournal/static/media/izo14.f454dcf7ee0df45c644c.png",
-    "static/media/tizo5.png": "/EJournal/static/media/tizo5.17a06fa6c2c04e23e0e6.png",
-    "static/media/tizo8.png": "/EJournal/static/media/tizo8.170d1dd1c84f11534bcf.png",
-    "static/media/tizo6.png": "/EJournal/static/media/tizo6.cb21ff74fcaaf01ff532.png",
-    "static/media/izo8.png": "/EJournal/static/media/izo8.64fb51f803b8c4d0d70a.png",
-    "static/media/izo16.png": "/EJournal/static/media/izo16.cb61d8760c6496a500bc.png",
-    "static/media/tizo9.png": "/EJournal/static/media/tizo9.bdbdb3e4d2a8bba118a2.png",
-    "static/media/izo26.png": "/EJournal/static/media/izo26.6faf8563ca1033028754.png",
-    "static/media/izo25.png": "/EJournal/static/media/izo25.e8a4333fb5bd470f64bc.png",
-    "static/media/tizo7.png": "/EJournal/static/media/tizo7.34160c3f409a382f4020.png",
-    "static/media/izo24.png": "/EJournal/static/media/izo24.6eaac46e0170e9c9912f.png",
-    "static/media/izo23.png": "/EJournal/static/media/izo23.c610573f61e35e91db71.png",
-    "static/media/izo10.png": "/EJournal/static/media/izo10.f40e66e2a35b565cb1a3.png",
-    "static/media/izo17.png": "/EJournal/static/media/izo17.a24097a1b1c3cb8a0c0f.png",
-    "static/media/izo22.png": "/EJournal/static/media/izo22.521e5a886f746ec4a526.png",
-    "static/media/izo20.png": "/EJournal/static/media/izo20.ec4335bffb1a546b51b2.png",
-    "static/media/izo21.png": "/EJournal/static/media/izo21.33ae016206f48bcca192.png",
-    "static/media/izo11.png": "/EJournal/static/media/izo11.4d95571f9bef3175e3dd.png",
-    "static/media/zavuch.jpg": "/EJournal/static/media/zavuch.f53e70a6fb02c8cef042.jpg",
-    "static/media/fon.jpg": "/EJournal/static/media/fon.8bd616adbf9afd5f3bab.jpg",
-    "static/media/detyam.jpeg": "/EJournal/static/media/detyam.644c8767d6f0107f92ff.jpeg",
-    "static/media/pedagog.jpg": "/EJournal/static/media/pedagog.1a5c26e46dbd69e34100.jpg",
-    "static/media/warn_big.png": "/EJournal/static/media/warn_big.e6c37f292d7904fe7cf7.png",
-    "static/media/roditelyam.jpg": "/EJournal/static/media/roditelyam.6e14c5ae6c56c3b65e23.jpg",
-    "static/media/knopka.png": "/EJournal/static/media/knopka.c14f1cc6c607bb6edd74.png",
-    "static/media/profl.png": "/EJournal/static/media/profl.c9dd7a39ad987dad8b2a.png",
-    "static/media/start.gif": "/EJournal/static/media/start.a57e08d02907efca0b53.gif",
-    "static/media/profd.png": "/EJournal/static/media/profd.b5e12f415ea64591df73.png",
-    "index.html": "/EJournal/index.html",
-    "main.192dff32.css.map": "/EJournal/static/css/main.192dff32.css.map",
-    "main.20bd8394.js.map": "/EJournal/static/js/main.20bd8394.js.map",
-    "787.d8939b6a.chunk.js.map": "/EJournal/static/js/787.d8939b6a.chunk.js.map"
+  "index.html": {
+    "file": "assets/index-EVMJwkqe.js",
+    "name": "index",
+    "src": "index.html",
+    "isEntry": true,
+    "css": [
+      "assets/index-BcCEsMlj.css"
+    ],
+    "assets": [
+      "assets/profd-C9rtdHQu.png",
+      "assets/profl-COuBZABh.png",
+      "assets/up-Bl9HYfqW.png",
+      "assets/warning-nVeAa4zc.png",
+      "assets/ls-icon1-B2vxN_sc.png",
+      "assets/ls-icon2-DrQ_uJBy.png",
+      "assets/ls-icon3-B7yLWDny.png",
+      "assets/pedagog-BM8yMCYH.jpg",
+      "assets/roditelyam-6A76wCWs.jpg",
+      "assets/zavuch-DR7quxbo.jpg",
+      "assets/detyam-DyKTDG1K.jpeg",
+      "assets/start-DzcxV10n.gif",
+      "assets/warn_big-ENONjbZC.png",
+      "assets/izo1-Cad2dt3V.png",
+      "assets/izo2-CoJf2raH.png",
+      "assets/izo3-B9kS54mD.png",
+      "assets/izo4-Busc_Mxh.png",
+      "assets/izo5-Dmd8lQEP.png",
+      "assets/izo6-BKeMQ9XQ.png",
+      "assets/izo7-SwTxO3vl.png",
+      "assets/izo8-DkzwGm59.png",
+      "assets/izo9-JTvmrT9w.png",
+      "assets/izo10-BJMYwQ3z.png",
+      "assets/izo11-CR_GnWIk.png",
+      "assets/izo12-DRyAVvHk.png",
+      "assets/izo13-CX0PUatu.png",
+      "assets/izo14-CRSkLjbO.png",
+      "assets/izo15-B4ceefwO.png",
+      "assets/izo16-D9MRptJ9.png",
+      "assets/izo17-C-oNKQ78.png",
+      "assets/izo18-Cty05Osw.png",
+      "assets/izo19-BAhLONyU.png",
+      "assets/izo1-CkgA0zga.png",
+      "assets/tizo1-DQiJyv9W.png",
+      "assets/tizo2-D974kVdC.png",
+      "assets/tizo3-DCxemjBv.png",
+      "assets/tizo4-BrguWsW2.png",
+      "assets/tizo5-IbZHqZ0R.png",
+      "assets/tizo6-BOalvn8U.png",
+      "assets/tizo7-ZWySB4yI.png",
+      "assets/tizo8-DvTL0wyN.png",
+      "assets/tizo9-DcvxGIAY.png",
+      "assets/izo1-R0ShW9Xt.png",
+      "assets/izo2-BQK6BqY5.png",
+      "assets/izo3-DkTaQVYE.png",
+      "assets/izo4-iio8NNvu.png",
+      "assets/izo5-BkFOpUad.png",
+      "assets/izo6-cQjO3PeP.png",
+      "assets/izo7-BG-PIOno.png",
+      "assets/izo8-BEDNSrtG.png",
+      "assets/izo9-x3KSqo6c.png",
+      "assets/izo10-BU3lCSZG.png",
+      "assets/izo11-CPlelHnc.png",
+      "assets/izo12-CZm7O2zt.png",
+      "assets/izo13-Dn4txI1k.png",
+      "assets/izo14-BEtFSuPr.png",
+      "assets/izo15-qmS2d2fz.png",
+      "assets/izo16-BTU7SlQE.png",
+      "assets/izo17-B9SJZqPI.png",
+      "assets/izo18-ik5z_kAT.png",
+      "assets/izo19-CSU4ZYQK.png",
+      "assets/izo20-DBZjbBzE.png",
+      "assets/izo21-D-pq5P98.png",
+      "assets/izo22-BvjTIO8s.png",
+      "assets/izo23-ByKqaSGf.png",
+      "assets/izo24-CsPFtD8R.png",
+      "assets/izo25-B1w90dUK.png",
+      "assets/izo26-C2lLKxsx.png",
+      "assets/izo27-Cy_SMJQb.png",
+      "assets/izo28-DxCYkjfQ.png",
+      "assets/izo29-BKS2WUWs.png",
+      "assets/izo30-DK9r09y5.png",
+      "assets/izo31-CY7vs5ko.png",
+      "assets/izo32-CC2EgpgL.png",
+      "assets/izo33-C6fmFYeL.png",
+      "assets/izo34-PeWY561y.png",
+      "assets/izo35-DXDfajZR.png",
+      "assets/izo36-C3JlArLy.png",
+      "assets/knopka-B74ZXHML.png",
+      "assets/refreshCl-BbYcHiVE.png",
+      "assets/copyl-BPKITM99.png",
+      "assets/fon-Br1zlA9y.jpg"
+    ]
   },
-  "entrypoints": [
-    "static/css/main.192dff32.css",
-    "static/js/main.20bd8394.js"
-  ]
+  "src/media/copyl.png": {
+    "file": "assets/copyl-BPKITM99.png",
+    "src": "src/media/copyl.png"
+  },
+  "src/media/dnevnik/knopka.png": {
+    "file": "assets/knopka-B74ZXHML.png",
+    "src": "src/media/dnevnik/knopka.png"
+  },
+  "src/media/fon.jpg": {
+    "file": "assets/fon-Br1zlA9y.jpg",
+    "src": "src/media/fon.jpg"
+  },
+  "src/media/ls-icon1.png": {
+    "file": "assets/ls-icon1-B2vxN_sc.png",
+    "src": "src/media/ls-icon1.png"
+  },
+  "src/media/ls-icon2.png": {
+    "file": "assets/ls-icon2-DrQ_uJBy.png",
+    "src": "src/media/ls-icon2.png"
+  },
+  "src/media/ls-icon3.png": {
+    "file": "assets/ls-icon3-B7yLWDny.png",
+    "src": "src/media/ls-icon3.png"
+  },
+  "src/media/profd.png": {
+    "file": "assets/profd-C9rtdHQu.png",
+    "src": "src/media/profd.png"
+  },
+  "src/media/profl.png": {
+    "file": "assets/profl-COuBZABh.png",
+    "src": "src/media/profl.png"
+  },
+  "src/media/refreshCl.png": {
+    "file": "assets/refreshCl-BbYcHiVE.png",
+    "src": "src/media/refreshCl.png"
+  },
+  "src/media/start/detyam.jpeg": {
+    "file": "assets/detyam-DyKTDG1K.jpeg",
+    "src": "src/media/start/detyam.jpeg"
+  },
+  "src/media/start/pedagog.jpg": {
+    "file": "assets/pedagog-BM8yMCYH.jpg",
+    "src": "src/media/start/pedagog.jpg"
+  },
+  "src/media/start/roditelyam.jpg": {
+    "file": "assets/roditelyam-6A76wCWs.jpg",
+    "src": "src/media/start/roditelyam.jpg"
+  },
+  "src/media/start/start.gif": {
+    "file": "assets/start-DzcxV10n.gif",
+    "src": "src/media/start/start.gif"
+  },
+  "src/media/start/zavuch.jpg": {
+    "file": "assets/zavuch-DR7quxbo.jpg",
+    "src": "src/media/start/zavuch.jpg"
+  },
+  "src/media/tutor/hteachers/izo1.png": {
+    "file": "assets/izo1-R0ShW9Xt.png",
+    "src": "src/media/tutor/hteachers/izo1.png"
+  },
+  "src/media/tutor/hteachers/izo10.png": {
+    "file": "assets/izo10-BU3lCSZG.png",
+    "src": "src/media/tutor/hteachers/izo10.png"
+  },
+  "src/media/tutor/hteachers/izo11.png": {
+    "file": "assets/izo11-CPlelHnc.png",
+    "src": "src/media/tutor/hteachers/izo11.png"
+  },
+  "src/media/tutor/hteachers/izo12.png": {
+    "file": "assets/izo12-CZm7O2zt.png",
+    "src": "src/media/tutor/hteachers/izo12.png"
+  },
+  "src/media/tutor/hteachers/izo13.png": {
+    "file": "assets/izo13-Dn4txI1k.png",
+    "src": "src/media/tutor/hteachers/izo13.png"
+  },
+  "src/media/tutor/hteachers/izo14.png": {
+    "file": "assets/izo14-BEtFSuPr.png",
+    "src": "src/media/tutor/hteachers/izo14.png"
+  },
+  "src/media/tutor/hteachers/izo15.png": {
+    "file": "assets/izo15-qmS2d2fz.png",
+    "src": "src/media/tutor/hteachers/izo15.png"
+  },
+  "src/media/tutor/hteachers/izo16.png": {
+    "file": "assets/izo16-BTU7SlQE.png",
+    "src": "src/media/tutor/hteachers/izo16.png"
+  },
+  "src/media/tutor/hteachers/izo17.png": {
+    "file": "assets/izo17-B9SJZqPI.png",
+    "src": "src/media/tutor/hteachers/izo17.png"
+  },
+  "src/media/tutor/hteachers/izo18.png": {
+    "file": "assets/izo18-ik5z_kAT.png",
+    "src": "src/media/tutor/hteachers/izo18.png"
+  },
+  "src/media/tutor/hteachers/izo19.png": {
+    "file": "assets/izo19-CSU4ZYQK.png",
+    "src": "src/media/tutor/hteachers/izo19.png"
+  },
+  "src/media/tutor/hteachers/izo2.png": {
+    "file": "assets/izo2-BQK6BqY5.png",
+    "src": "src/media/tutor/hteachers/izo2.png"
+  },
+  "src/media/tutor/hteachers/izo20.png": {
+    "file": "assets/izo20-DBZjbBzE.png",
+    "src": "src/media/tutor/hteachers/izo20.png"
+  },
+  "src/media/tutor/hteachers/izo21.png": {
+    "file": "assets/izo21-D-pq5P98.png",
+    "src": "src/media/tutor/hteachers/izo21.png"
+  },
+  "src/media/tutor/hteachers/izo22.png": {
+    "file": "assets/izo22-BvjTIO8s.png",
+    "src": "src/media/tutor/hteachers/izo22.png"
+  },
+  "src/media/tutor/hteachers/izo23.png": {
+    "file": "assets/izo23-ByKqaSGf.png",
+    "src": "src/media/tutor/hteachers/izo23.png"
+  },
+  "src/media/tutor/hteachers/izo24.png": {
+    "file": "assets/izo24-CsPFtD8R.png",
+    "src": "src/media/tutor/hteachers/izo24.png"
+  },
+  "src/media/tutor/hteachers/izo25.png": {
+    "file": "assets/izo25-B1w90dUK.png",
+    "src": "src/media/tutor/hteachers/izo25.png"
+  },
+  "src/media/tutor/hteachers/izo26.png": {
+    "file": "assets/izo26-C2lLKxsx.png",
+    "src": "src/media/tutor/hteachers/izo26.png"
+  },
+  "src/media/tutor/hteachers/izo27.png": {
+    "file": "assets/izo27-Cy_SMJQb.png",
+    "src": "src/media/tutor/hteachers/izo27.png"
+  },
+  "src/media/tutor/hteachers/izo28.png": {
+    "file": "assets/izo28-DxCYkjfQ.png",
+    "src": "src/media/tutor/hteachers/izo28.png"
+  },
+  "src/media/tutor/hteachers/izo29.png": {
+    "file": "assets/izo29-BKS2WUWs.png",
+    "src": "src/media/tutor/hteachers/izo29.png"
+  },
+  "src/media/tutor/hteachers/izo3.png": {
+    "file": "assets/izo3-DkTaQVYE.png",
+    "src": "src/media/tutor/hteachers/izo3.png"
+  },
+  "src/media/tutor/hteachers/izo30.png": {
+    "file": "assets/izo30-DK9r09y5.png",
+    "src": "src/media/tutor/hteachers/izo30.png"
+  },
+  "src/media/tutor/hteachers/izo31.png": {
+    "file": "assets/izo31-CY7vs5ko.png",
+    "src": "src/media/tutor/hteachers/izo31.png"
+  },
+  "src/media/tutor/hteachers/izo32.png": {
+    "file": "assets/izo32-CC2EgpgL.png",
+    "src": "src/media/tutor/hteachers/izo32.png"
+  },
+  "src/media/tutor/hteachers/izo33.png": {
+    "file": "assets/izo33-C6fmFYeL.png",
+    "src": "src/media/tutor/hteachers/izo33.png"
+  },
+  "src/media/tutor/hteachers/izo34.png": {
+    "file": "assets/izo34-PeWY561y.png",
+    "src": "src/media/tutor/hteachers/izo34.png"
+  },
+  "src/media/tutor/hteachers/izo35.png": {
+    "file": "assets/izo35-DXDfajZR.png",
+    "src": "src/media/tutor/hteachers/izo35.png"
+  },
+  "src/media/tutor/hteachers/izo36.png": {
+    "file": "assets/izo36-C3JlArLy.png",
+    "src": "src/media/tutor/hteachers/izo36.png"
+  },
+  "src/media/tutor/hteachers/izo4.png": {
+    "file": "assets/izo4-iio8NNvu.png",
+    "src": "src/media/tutor/hteachers/izo4.png"
+  },
+  "src/media/tutor/hteachers/izo5.png": {
+    "file": "assets/izo5-BkFOpUad.png",
+    "src": "src/media/tutor/hteachers/izo5.png"
+  },
+  "src/media/tutor/hteachers/izo6.png": {
+    "file": "assets/izo6-cQjO3PeP.png",
+    "src": "src/media/tutor/hteachers/izo6.png"
+  },
+  "src/media/tutor/hteachers/izo7.png": {
+    "file": "assets/izo7-BG-PIOno.png",
+    "src": "src/media/tutor/hteachers/izo7.png"
+  },
+  "src/media/tutor/hteachers/izo8.png": {
+    "file": "assets/izo8-BEDNSrtG.png",
+    "src": "src/media/tutor/hteachers/izo8.png"
+  },
+  "src/media/tutor/hteachers/izo9.png": {
+    "file": "assets/izo9-x3KSqo6c.png",
+    "src": "src/media/tutor/hteachers/izo9.png"
+  },
+  "src/media/tutor/kids/izo1.png": {
+    "file": "assets/izo1-Cad2dt3V.png",
+    "src": "src/media/tutor/kids/izo1.png"
+  },
+  "src/media/tutor/kids/izo10.png": {
+    "file": "assets/izo10-BJMYwQ3z.png",
+    "src": "src/media/tutor/kids/izo10.png"
+  },
+  "src/media/tutor/kids/izo11.png": {
+    "file": "assets/izo11-CR_GnWIk.png",
+    "src": "src/media/tutor/kids/izo11.png"
+  },
+  "src/media/tutor/kids/izo12.png": {
+    "file": "assets/izo12-DRyAVvHk.png",
+    "src": "src/media/tutor/kids/izo12.png"
+  },
+  "src/media/tutor/kids/izo13.png": {
+    "file": "assets/izo13-CX0PUatu.png",
+    "src": "src/media/tutor/kids/izo13.png"
+  },
+  "src/media/tutor/kids/izo14.png": {
+    "file": "assets/izo14-CRSkLjbO.png",
+    "src": "src/media/tutor/kids/izo14.png"
+  },
+  "src/media/tutor/kids/izo15.png": {
+    "file": "assets/izo15-B4ceefwO.png",
+    "src": "src/media/tutor/kids/izo15.png"
+  },
+  "src/media/tutor/kids/izo16.png": {
+    "file": "assets/izo16-D9MRptJ9.png",
+    "src": "src/media/tutor/kids/izo16.png"
+  },
+  "src/media/tutor/kids/izo17.png": {
+    "file": "assets/izo17-C-oNKQ78.png",
+    "src": "src/media/tutor/kids/izo17.png"
+  },
+  "src/media/tutor/kids/izo18.png": {
+    "file": "assets/izo18-Cty05Osw.png",
+    "src": "src/media/tutor/kids/izo18.png"
+  },
+  "src/media/tutor/kids/izo19.png": {
+    "file": "assets/izo19-BAhLONyU.png",
+    "src": "src/media/tutor/kids/izo19.png"
+  },
+  "src/media/tutor/kids/izo2.png": {
+    "file": "assets/izo2-CoJf2raH.png",
+    "src": "src/media/tutor/kids/izo2.png"
+  },
+  "src/media/tutor/kids/izo3.png": {
+    "file": "assets/izo3-B9kS54mD.png",
+    "src": "src/media/tutor/kids/izo3.png"
+  },
+  "src/media/tutor/kids/izo4.png": {
+    "file": "assets/izo4-Busc_Mxh.png",
+    "src": "src/media/tutor/kids/izo4.png"
+  },
+  "src/media/tutor/kids/izo5.png": {
+    "file": "assets/izo5-Dmd8lQEP.png",
+    "src": "src/media/tutor/kids/izo5.png"
+  },
+  "src/media/tutor/kids/izo6.png": {
+    "file": "assets/izo6-BKeMQ9XQ.png",
+    "src": "src/media/tutor/kids/izo6.png"
+  },
+  "src/media/tutor/kids/izo7.png": {
+    "file": "assets/izo7-SwTxO3vl.png",
+    "src": "src/media/tutor/kids/izo7.png"
+  },
+  "src/media/tutor/kids/izo8.png": {
+    "file": "assets/izo8-DkzwGm59.png",
+    "src": "src/media/tutor/kids/izo8.png"
+  },
+  "src/media/tutor/kids/izo9.png": {
+    "file": "assets/izo9-JTvmrT9w.png",
+    "src": "src/media/tutor/kids/izo9.png"
+  },
+  "src/media/tutor/parents/izo1.png": {
+    "file": "assets/izo1-CkgA0zga.png",
+    "src": "src/media/tutor/parents/izo1.png"
+  },
+  "src/media/tutor/teachers/tizo1.png": {
+    "file": "assets/tizo1-DQiJyv9W.png",
+    "src": "src/media/tutor/teachers/tizo1.png"
+  },
+  "src/media/tutor/teachers/tizo2.png": {
+    "file": "assets/tizo2-D974kVdC.png",
+    "src": "src/media/tutor/teachers/tizo2.png"
+  },
+  "src/media/tutor/teachers/tizo3.png": {
+    "file": "assets/tizo3-DCxemjBv.png",
+    "src": "src/media/tutor/teachers/tizo3.png"
+  },
+  "src/media/tutor/teachers/tizo4.png": {
+    "file": "assets/tizo4-BrguWsW2.png",
+    "src": "src/media/tutor/teachers/tizo4.png"
+  },
+  "src/media/tutor/teachers/tizo5.png": {
+    "file": "assets/tizo5-IbZHqZ0R.png",
+    "src": "src/media/tutor/teachers/tizo5.png"
+  },
+  "src/media/tutor/teachers/tizo6.png": {
+    "file": "assets/tizo6-BOalvn8U.png",
+    "src": "src/media/tutor/teachers/tizo6.png"
+  },
+  "src/media/tutor/teachers/tizo7.png": {
+    "file": "assets/tizo7-ZWySB4yI.png",
+    "src": "src/media/tutor/teachers/tizo7.png"
+  },
+  "src/media/tutor/teachers/tizo8.png": {
+    "file": "assets/tizo8-DvTL0wyN.png",
+    "src": "src/media/tutor/teachers/tizo8.png"
+  },
+  "src/media/tutor/teachers/tizo9.png": {
+    "file": "assets/tizo9-DcvxGIAY.png",
+    "src": "src/media/tutor/teachers/tizo9.png"
+  },
+  "src/media/up.png": {
+    "file": "assets/up-Bl9HYfqW.png",
+    "src": "src/media/up.png"
+  },
+  "src/media/warn_big.png": {
+    "file": "assets/warn_big-ENONjbZC.png",
+    "src": "src/media/warn_big.png"
+  },
+  "src/media/warning.png": {
+    "file": "assets/warning-nVeAa4zc.png",
+    "src": "src/media/warning.png"
+  }
 }
