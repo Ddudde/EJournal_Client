@@ -208,7 +208,6 @@ class Start extends Component<Props> {
     public constructor(props: Props) {
         super(props);
         this.code = props.params.code;
-        this.code = "efs";
         this.mod = props.mod;
         HOC.getEmail = this.getEmail.bind(this);
         HOC.gen_pas = this.gen_pas.bind(this);
@@ -228,7 +227,7 @@ class Start extends Component<Props> {
     public componentDidMount(): void {
         console.log("I was triggered during componentDidMount Start");
         if(this.code){
-            // this.startController.checkInviteCode(this.code, this.mod);
+            this.startController.checkInviteCode(this.code, this.mod);
         }
         this.elem.g_id.addEventListener('mouseenter', this.onsetText.bind(this));
         this.elem.g_id.addEventListener('mouseleave', this.unsetText.bind(this));
