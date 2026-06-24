@@ -101,34 +101,35 @@ class Start extends Component<Props> {
     private inpchr(e: InputEvent | any): void {
         const el: HTMLInputElement = e.target as HTMLInputElement;
         if(!e.inputType) return;
-
-        if (el.validity.patternMismatch || el.value.length == 0) {
-            el.setAttribute("data-mod", '1');
-            if(el.value.length == 0){
-                if(this.warns.empt == undefined) {
-                    this.warns.empt = this.eventsInfo.changeEvent("Внимание!", "Необходимо заполнить поле");
-                    if(this.warns.pat != undefined) {
-                        this.eventsInfo.deleteEvents(this.warns.pat);
-                        this.warns.pat = undefined;
-                    }
-                }
-            } else if(this.warns.pat == undefined) {
-                let message = "Допустимы только латиница, цифры или дефис/нижнее подчёркивание";
-                if(el.type == "password"){
-                    message = "Пароль не меньше 8 символов, без пробелов";
-                }
-                this.warns.pat = this.eventsInfo.changeEvent("Внимание!", message);
-                if(this.warns.empt != undefined) {
-                    this.eventsInfo.deleteEvents(this.warns.empt);
-                    this.warns.empt = undefined;
-                }
-            }
-        } else {
+        if(!el.validity.patternMismatch && el.value.length != 0) {
             el.setAttribute("data-mod", '0');
             if(this.warns.pat != undefined) {
                 this.eventsInfo.deleteEvents(this.warns.pat);
                 this.warns.pat = undefined;
             } else if(this.warns.empt != undefined) {
+                this.eventsInfo.deleteEvents(this.warns.empt);
+                this.warns.empt = undefined;
+            }
+            return;
+        }
+        if(el.type == "password" && el.autocomplete == "current-password") return;
+
+        el.setAttribute("data-mod", '1');
+        if(el.value.length == 0){
+            if(this.warns.empt == undefined) {
+                this.warns.empt = this.eventsInfo.changeEvent("Внимание!", "Необходимо заполнить поле");
+                if(this.warns.pat != undefined) {
+                    this.eventsInfo.deleteEvents(this.warns.pat);
+                    this.warns.pat = undefined;
+                }
+            }
+        } else if(this.warns.pat == undefined) {
+            let message = "Допустимы только латиница, цифры или дефис/нижнее подчёркивание";
+            if(el.type == "password"){
+                message = "Пароль не меньше 8 символов, без пробелов";
+            }
+            this.warns.pat = this.eventsInfo.changeEvent("Внимание!", message);
+            if(this.warns.empt != undefined) {
                 this.eventsInfo.deleteEvents(this.warns.empt);
                 this.warns.empt = undefined;
             }

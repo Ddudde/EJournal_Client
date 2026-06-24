@@ -132,7 +132,7 @@ export default class Authentication extends Component {
                 <div className={start.dinp}>
                     <input className={start.inps} type="password" onChange={this.chStatVb.bind(this)}
                         ref={el => this.elem.pasv = el} placeholder="Пароль" id="pasv"
-                        autoComplete="current-password" required pattern="[\S]"/>
+                        autoComplete="current-password" required pattern="[\S]+$"/>
                     <div className={start.nav_i + " " + start.zabpar} id={start.nav_i} onClick={this.goToRecoveryOrVxod.bind(this)}>
                         Забыли пароль?
                     </div>
