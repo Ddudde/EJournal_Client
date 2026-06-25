@@ -128,7 +128,7 @@ export default class Authentication extends Component {
             <div className={start.vxo}>
                 <input className={start.inps} type="login" onChange={this.chStatVb.bind(this)}
                     ref={el => this.elem.logv = el} placeholder="Логин" id="logv" autoComplete="username"
-                    required pattern="^[a-zA-Z0-9/-]+$"/>
+                    required pattern="^[a-zA-Z0-9\-]+$"/>
                 <div className={start.dinp}>
                     <input className={start.inps} type="password" onChange={this.chStatVb.bind(this)}
                         ref={el => this.elem.pasv = el} placeholder="Пароль" id="pasv"
@@ -153,7 +153,7 @@ export default class Authentication extends Component {
             <div className={start.zab}>
                 <input className={start.inps} ref={el => this.elem.logz = el} type="text"
                     onChange={this.chStatZb.bind(this)} placeholder="Логин" id="logz" autoComplete="username"
-                    required pattern="^[a-zA-Z0-9-]+$"/>
+                    required pattern="^[a-zA-Z0-9\-]+$"/>
                 <div className={start.blockRec} data-selemail={+this.selEmailZ} ref={el=>this.elem.blockRecZ=el}>
                     <div className={start.email}>
                         <div className={start.dinp}>

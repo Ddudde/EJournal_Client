@@ -112,7 +112,6 @@ class Start extends Component<Props> {
             }
             return;
         }
-        if(el.type == "password" && el.autocomplete == "current-password") return;
 
         el.setAttribute("data-mod", '1');
         if(el.value.length == 0){

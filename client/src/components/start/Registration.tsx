@@ -171,7 +171,7 @@ class Registration extends Component<Props> {
                 <span style={{color: "#F00"}}> *</span>
             </div>
             <input className={start.inps} type="text" placeholder="Логин" onChange={this.chStatRb.bind(this)} id="logr"
-                autoComplete="username" required pattern="^[a-zA-Z0-9-]+$"/>
+                autoComplete="username" required pattern="^[a-zA-Z0-9\-]+$"/>
             <div className={start.raz}>
                 Пароль:
                 <span style={{color: "#F00"}}> *</span>
