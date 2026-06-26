@@ -4,32 +4,32 @@
 	"description": "Приложение 'Электронный журнал'. Продолжение следует...",
 	"icons": [
 		{
-			"src": "/EJournal/static/media/fav32.png",
+			"src": "/static/media/fav32.png",
 			"sizes": "32x32",
 			"type": "image/png",
 			"purpose": "any"
 		},
 		{
-			"src": "/EJournal/static/media/fav16.png",
+			"src": "/static/media/fav16.png",
 			"sizes": "16x16",
 			"type": "image/png",
 			"purpose": "any"
 		},
 		{
-			"src": "/EJournal/static/media/fav512.png",
+			"src": "/static/media/fav512.png",
 			"sizes": "512x512",
 			"type": "image/png"
 		},
 		{
-			"src": "/EJournal/static/media/fav32.png",
+			"src": "/static/media/fav32.png",
 			"sizes": "32x32",
 			"type": "image/png",
 			"purpose": "maskable"
 		}
 	],
-	"id": "/EJournal/",
-	"scope": "/EJournal/",
-	"start_url": "/EJournal/",
+	"id": "/EJournal_Client/",
+	"scope": "/EJournal_Client/",
+	"start_url": "/EJournal_Client/",
 	"display": "minimal-ui",
 	"lang": "ru",
 	"dir": "ltr",

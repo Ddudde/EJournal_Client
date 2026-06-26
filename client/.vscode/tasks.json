@@ -6,7 +6,7 @@
 			"script": "start",
 			"problemMatcher": [],
 			"label": "npm: start",
-			"detail": "react-scripts start"
+			"detail": "vite"
 		},
 		{
 			"type": "npm",
@@ -17,7 +17,7 @@
 			},
 			"problemMatcher": [],
 			"label": "npm: build",
-			"detail": "react-scripts build"
+			"detail": "vite build"
 		}
 	]
 }

@@ -5,10 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "command": "npm start",
-            "name": "Run npm start",
+            "name": "Launch Chrome",
             "request": "launch",
-            "type": "node-terminal"
+            "type": "chrome",
+            "url": "http://localhost:5173",
+            "webRoot": "${workspaceFolder}/src",
+            "runtimeExecutable":"C:/Users/DonJun/AppData/Local/Thorium/Application/thorium.exe",
+            "runtimeArgs":[
+                "--new-window",
+                "-user-data-dir=\"/${workspaceFolder}/DevProfile\"",
+                "--remote-debugging-port=9222",
+                "--disable-background-networking"
+            ]
         }
     ]
 }

@@ -1,11 +1,23 @@
 {
     // Рекомендованные расширения
     "recommendations": [
-      "VisualStudioExptTeam.intellicode-api-usage-examples",
       "stylelint.vscode-stylelint",
       "dbaeumer.vscode-eslint",
       "ms-vscode.notepadplusplus-keybindings",
-      "VisualStudioExptTeam.vscodeintellicode"
+      "VisualStudioExptTeam.vscodeintellicode",
+      "visualstudioexptteam.intellicode-api-usage-examples",
+      "bradlc.vscode-tailwindcss",
+      "mhutchie.git-graph",
+      "donjayamanne.githistory",
+      "huizhou.githd",
+      "hediet.vscode-drawio",
+      "aaron-bond.better-comments",
+      "codeium.codeium",
+      "oderwat.indent-rainbow",
+      "ms-vscode.theme-materialkit",
+      "christian-kohler.path-intellisense",
+      "bierner.lit-html",
+      "vitest.explorer"
     ],
   
     // Нежелательные расширения

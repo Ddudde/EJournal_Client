@@ -3,6 +3,12 @@
     "emmet.includeLanguages": {
         "javascript": "javascriptreact"
     },
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact"
+    ],
     "less.validate": false,
     "scss.validate": false,
     "telemetry.enableTelemetry": false,
