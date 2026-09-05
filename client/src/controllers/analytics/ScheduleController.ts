@@ -25,7 +25,7 @@ export default class ScheduleController {
     
     public didMount(getInfoComponent: Function | any): void {
         this.getInfoInComponent = getInfoComponent;
-        if(this.mainApi.getReadyStateSSE() != EventSource.OPEN) this.getInfoInComponent();
+        if(this.mainApi.getReadyStateSSE() == EventSource.OPEN) this.getInfoInComponent();
         this.mainApi.addEventListenerSSE('connect', this.getInfoInComponent);
         this.mainApi.addEventListenerSSE('addLessonC', this.addLessonSSE);
     }

@@ -1,6 +1,6 @@
-import type { Context } from 'react';
+import type { Context, ReactElement } from 'react';
 import { createContext } from 'react';
-import ThemeStore from '../store/ThemeStore';
+import ThemeStore from '../store/main/ThemeStore';
 import PanelStore from '../store/other/PanelStore';
 import DialogStore from '../store/other/DialogStore';
 import EventsStore from '../store/other/EventsStore';
@@ -78,9 +78,12 @@ export interface IControllersContextValue {
     scheduleController: ScheduleController
 }
 
-const ContextStores = createContext<any | null>(
-    null,
-) as Context<any>;
+export interface IDialogContextValue {
+    component: ReactElement,
+    updateComponent: any
+}
+
+const ContextStores = createContext<any | null>(null) as Context<any>;
 export { ContextStores };
 
 export function initContextsValues() {
@@ -114,7 +117,6 @@ export function initContextsValues() {
         mainController: new MainController(
             mainApi,
             stores.statusStore,
-            stores.dialogStore,
             stores.eventsStore
         ),
         notificationController: new NotificationController(),
@@ -170,7 +172,6 @@ export function initContextsValues() {
             new SettingApi(),
             stores.statusStore,
             stores.eventsStore,
-            stores.dialogStore,
             stores.checkboxStore
         ),
         scheduleController: new ScheduleController(
@@ -183,8 +184,14 @@ export function initContextsValues() {
         )
     };
 
+    const dialog: IDialogContextValue = {
+        component: undefined,
+        updateComponent: undefined
+    };
+
     return {
         stores,
         controllers,
+        dialog
     };
 }

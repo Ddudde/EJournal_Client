@@ -42,37 +42,57 @@ class Registration extends Component<Props> {
     private warns: any = {pow: undefined};
     private textNoInv: string = "Приглашение неверно или недействительно.";
     private licField = {
-        obj: <div className={start.lic_text}>
-            <License/>
-        </div>,
         buts: {
             0 : {
                 text: "Прочитал",
-                fun: () => this.dialogInfo.resetDialog(),
+                fun: this.closeDialog.bind(this),
                 enab: true
             }
         }
     }
     private emailCode = {
-        obj: Start.getEmail("Подтвердите E-Mail"),
         buts: {
             0 : {
                 text: "ГОТОВО!",
-                fun: () => this.checkCodeEmail(),
+                fun: this.checkCodeEmail.bind(this),
                 enab: false
             },
             1 : {
                 text: "ОТМЕНА",
-                fun: () => this.dialogInfo.resetDialog(),
+                fun: this.closeDialog.bind(this),
                 enab: true
             }
         }
     }
     public static chStatRb: (e?) => void;
 
-    private preRego(): void {
+    private async checkCodeEmail(): Promise<void> {
+        const successResponce: boolean = await this.startController.checkCodeEmail(this.code, this.elem);
+        if(successResponce) {
+            this.closeDialog();
+            this.initRegistration();
+        }
+    }
+
+    private closeDialog(): void {
+        this.context.dialog.updateComponent(undefined);
+        this.dialogInfo.resetDialog();
+    }
+
+    private showLicense(): void {
+        this.context.dialog.updateComponent(<div className={start.lic_text}>
+            <License/>
+        </div>);
+        this.dialogInfo.cloneDialog(this.licField);
+    }
+
+    private async preRego(): Promise<void> {
         if(this.selEmailR) {
-            this.startController.startEmail(this.code, this.elem.emalR.value, this.emailCode);
+            const successResponce: boolean = await this.startController.startEmail(this.code, this.elem.emalR.value);
+            if(successResponce) {
+                this.context.dialog.updateComponent(Start.getEmail("Подтвердите E-Mail"));
+                this.dialogInfo.cloneDialog(this.emailCode);
+            }
         } else {
             this.initRegistration();
         }
@@ -82,13 +102,6 @@ class Registration extends Component<Props> {
         this.selEmailR = !this.selEmailR;
         this.elem.blockRecR.dataset.selemail = +this.selEmailR;
         this.chStatRb();
-    }
-
-    private async checkCodeEmail(): Promise<void> {
-        const data: boolean = await this.startController.checkCodeEmail(this.code, this.elem);
-        if(data) {
-            this.initRegistration();
-        }
     }
 
     private chStatAv(e): void {
@@ -129,6 +142,7 @@ class Registration extends Component<Props> {
         this.code = props.params;
         this.mod = props.mod;
         HOC.chStatRb = this.chStatRb.bind(this);
+        this.showLicense = this.showLicense.bind(this);
     }
 
     public UNSAFE_componentWillMount(): void {
@@ -222,8 +236,7 @@ class Registration extends Component<Props> {
                 <div className={start.dinpo}>
                     <div className={start.lic}>
                         <CheckBox text={"Принимаю условия "} checkbox_id={"checkbox_lic"}/>
-                        <span className={start.url}
-                            onClick={() => this.dialogInfo.cloneDialog(this.licField)}>
+                        <span className={start.url} onClick={this.showLicense}>
                             соглашения
                         </span>
                         <span style={{color: "#F00"}}> *</span>

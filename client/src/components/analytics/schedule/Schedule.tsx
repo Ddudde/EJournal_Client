@@ -15,7 +15,7 @@ import Main from "../../main/Main";
 import type StatusStore from "../../../store/StatusStore";
 import type ScheduleStore from "../../../store/analytics/ScheduleStore";
 import type GroupStore from "../../../store/GroupStore";
-import type ThemeStore from "../../../store/ThemeStore";
+import type ThemeStore from "../../../store/main/ThemeStore";
 import type EventsStore from "../../../store/other/EventsStore";
 import AnalyticsMain from "../AnalyticsMain";
 import type ScheduleController from "../../../controllers/analytics/ScheduleController";

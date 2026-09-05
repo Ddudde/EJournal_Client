@@ -10,16 +10,14 @@ export default class SettingController {
     private settingApi: SettingApi;
     private statusStore: StatusStore;
     private eventsStore: EventsStore;
-    private dialogStore: DialogStore;
     private checkboxStore: CheckboxStore;
     private getSettingsComponent: any | Function;
 
-    public constructor(mainApi: MainApi, settingApi: SettingApi, statusStore: StatusStore, eventsStore: EventsStore, dialogStore: DialogStore, checkboxStore: CheckboxStore) {
+    public constructor(mainApi: MainApi, settingApi: SettingApi, statusStore: StatusStore, eventsStore: EventsStore, checkboxStore: CheckboxStore) {
         this.mainApi = mainApi;
         this.settingApi = settingApi;
         this.statusStore = statusStore;
         this.eventsStore = eventsStore;
-        this.dialogStore = dialogStore;
         this.checkboxStore = checkboxStore;
     }
     
@@ -38,34 +36,38 @@ export default class SettingController {
         this.getSettingsComponent();
     }
 
-    public async checkCodeEmail(elem: any): Promise<void> {
-        const data: any = await this.settingApi.checkCodeEmail(elem.codEm.value, elem.emal.value);
+    public async checkCodeEmail(emailCode: string, email: string): Promise<boolean> {
+        let successResponce: boolean = false;
+        const data: any = await this.settingApi.checkCodeEmail(emailCode, email);
         if(data.status == 200){
-            this.dialogStore.resetDialog();
+            successResponce = true;
             this.eventsStore.changeEvent("Внимание!", "Почта подтверждена успешно!", 10);
-            elem.emBlock.dataset.mod = '0';
             this.statusStore.changeState("email", true);
         } else {
             this.eventsStore.changeEvent("Внимание!", "Код подтверждения к почте, неверный", 10);
         }
+        return successResponce;
     }
 
-    public async checkPasCodeEmail(elem: any, els: any): Promise<void> {
-        const data: any = await this.settingApi.checkPasCodeEmail(elem.codEm.value, els.npasinp);
+    public async checkPasCodeEmail(emailCode: string, els: any): Promise<boolean> {
+        let successResponce: boolean = false;
+        const data: any = await this.settingApi.checkPasCodeEmail(emailCode, els.npasinp);
         if(data.status == 200){
-            this.dialogStore.resetDialog();
+            successResponce = true;
             this.eventsStore.changeEvent("Внимание!", "Код верный, пароль изменён успешно!", 10);
-            elem.zamBlockFir.dataset.mod = '0';
         } else {
             this.eventsStore.changeEvent("Внимание!", "Код подтверждения, неверный", 10);
         }
+        return successResponce;
     }
 
-    public async startEmail(elem: any, emailCode: any): Promise<void> {
+    public async startEmail(elem: any): Promise<boolean> {
         const data: any = await this.settingApi.startEmail(elem.emal.value);
+        let successResponce: boolean = false;
         if(data.status == 200){
-            this.dialogStore.cloneDialog(emailCode);
+            successResponce = true;
         }
+        return successResponce;
     }
 
     public async getSettings(): Promise<boolean> {
@@ -82,14 +84,14 @@ export default class SettingController {
         return false;
     }
 
-    public async changePassword(emailSt: boolean, els: any, emailCodePas: any): Promise<boolean> {
-        let isOK: boolean = false;
+    public async changePassword(emailSt: boolean, els: any): Promise<boolean> {
+        let successResponce: boolean = false;
         const data: any = await this.settingApi.changePassword(emailSt, els.emInp, els.secinp, els.npasinp);
         if(data.status == 200){
             if(emailSt) {
-                this.dialogStore.cloneDialog(emailCodePas);
+                successResponce = undefined;
             } else {
-                isOK = true;
+                successResponce = true;
             }
             if(els.warnErrSecFr != undefined) {
                 this.eventsStore.deleteEvents(els.warnErrSecFr);
@@ -104,7 +106,7 @@ export default class SettingController {
         } else if(data.body.error == "secFr" && els.warnErrSecFr == undefined){
             els.warnErrSecFr = this.eventsStore.changeEvent("Внимание!", "Секретная фраза неверна, попробуйте воспользоваться электронной почтой");
         }
-        return isOK;
+        return successResponce;
     }
 
     public async changeNotification(id: string): Promise<void> {

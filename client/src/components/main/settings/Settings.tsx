@@ -33,35 +33,54 @@ export default class Settings extends Component {
     private elem: any = {npasinp : undefined, powpasinp : undefined, zambut : undefined, secBut : undefined, emBut : undefined, emInp : undefined, secinp : undefined, emal : undefined, codEm : undefined, emBlock : undefined, zamBlock : undefined, zamBlockFir : undefined};
     private els: any = {emInp: undefined, secinp: undefined, npasinp: undefined, powpasinp: undefined, warnUnsetSecFr: undefined, warnErrSecFr: undefined, warnErrEm: undefined};
     private emailCode = {
-        obj: this.getEmail("Подтвердите E-Mail"),
         buts: {
             0 : {
                 text: "ГОТОВО!",
-                fun: () => this.settingController.checkCodeEmail(this.elem),
+                fun: this.acceptCheckCodeEmail.bind(this),
                 enab: false
             },
             1 : {
                 text: "ОТМЕНА",
-                fun: () => this.dialogStore.resetDialog(),
+                fun: this.closeDialog.bind(this),
                 enab: true
             }
         }
     };
     private emailCodePas = {
-        obj: this.getEmail("Изменение пароля"),
         buts: {
             0 : {
                 text: "ГОТОВО!",
-                fun: () => this.settingController.checkPasCodeEmail(this.elem, this.els),
+                fun: this.acceptCheckCodePassword.bind(this),
                 enab: false
             },
             1 : {
                 text: "ОТМЕНА",
-                fun: () => this.dialogStore.resetDialog(),
+                fun: this.closeDialog.bind(this),
                 enab: true
             }
         }
     };
+
+    private async acceptCheckCodeEmail(): Promise<void> {
+        const successResponce: boolean = await this.settingController.checkCodeEmail(this.elem.codEm.value, this.elem.emal.value);
+        if(successResponce) {
+            this.closeDialog();
+            this.elem.emBlock.dataset.mod = '0';
+        }
+    }
+
+    private async acceptCheckCodePassword(): Promise<void> {
+        const successResponce: boolean = await this.settingController.checkPasCodeEmail(this.elem.codEm.value, this.els);
+        if(successResponce) {
+            this.closeDialog();
+            this.elem.zamBlockFir.dataset.mod = '0';
+        }
+    }
+
+    private closeDialog(): void {
+        this.context.dialog.updateComponent(undefined);
+        this.dialogStore.resetDialog();
+    }
 
     private inpchr(event): void {
         const el: HTMLInputElement = event.target;
@@ -166,9 +185,14 @@ export default class Settings extends Component {
     }
 
     private async onFinChangePassword(e): Promise<void> {
-        const isOK: boolean = await this.settingController.changePassword(this.emailSt, this.els, this.emailCodePas);
-        if(isOK) {
+        const successResponce: boolean = await this.settingController.changePassword(this.emailSt, this.els);
+        if(successResponce) {
             this.onCloseBlock(e);
+            return;
+        }
+        if(successResponce == undefined) {
+            this.context.dialog.updateComponent(this.getEmail("Изменение пароля"));
+            this.dialogStore.cloneDialog(this.emailCodePas);
         }
     }
 
@@ -201,6 +225,14 @@ export default class Settings extends Component {
         const isOK: boolean = await this.settingController.getSettings();
         if(isOK && this.elem.zamBlock) {
             this.elem.zamBlock.dataset.mod = +(this.cState.secFr || false);
+        }
+    }
+
+    private async changeEmail(): Promise<void> {
+        const successResponce: boolean = await this.settingController.startEmail(this.elem);
+        if(successResponce) {
+            this.context.dialog.updateComponent(this.getEmail("Подтвердите E-Mail"));
+            this.dialogStore.cloneDialog(this.emailCode);
         }
     }
 
@@ -328,7 +360,7 @@ export default class Settings extends Component {
                         <div className={settingsCSS.block}>
                             <input className={settingsCSS.inp+" "+settingsCSS.inpPass} ref={el => this.elem.emal = el} onChange={this.chStatEm} onInput={this.inpchr} placeholder="Электронная почта" type="email"/>
                             <div className={settingsCSS.blockKnops}>
-                                <div className={button.button} data-mod="2" ref={el=>this.elem.emBut = el} data-enable="0" onClick={e=>this.settingController.startEmail(this.elem, this.emailCode)}>
+                                <div className={button.button} data-mod="2" ref={el=>this.elem.emBut = el} data-enable="0" onClick={this.changeEmail}>
                                     Подтвердить
                                 </div>
                                 <div className={button.button} data-mod="2" onClick={this.onCloseBlock}>

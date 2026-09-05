@@ -1,7 +1,6 @@
 import {makeAutoObservable} from 'mobx';
 
 export default class DialogStore {
-    public obj = undefined;
     public buts: any = {
         0 : {
             text: "Прочитал"
@@ -15,17 +14,11 @@ export default class DialogStore {
 	public cloneDialog (dialogValue: any): void {
 		if(!dialogValue) return;
 
-		let nameProperty: string;
-		for(nameProperty of Object.getOwnPropertyNames(dialogValue)){
-			this[nameProperty] = dialogValue[nameProperty];
-		}
+		this.buts = dialogValue.buts;
 	}
 
 	public resetDialog (): void {
-		let nameProperty: string;
-		for(nameProperty of Object.getOwnPropertyNames(this)){
-			this[nameProperty] = undefined;
-		}
+		this.buts = undefined;
 	}
 
 	public changeDialogBut (id: number, value: any): void {

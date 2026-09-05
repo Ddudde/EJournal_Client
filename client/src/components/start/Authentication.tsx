@@ -26,27 +26,44 @@ export default class Authentication extends Component {
     private els: any = {logz: 0, pasnz: 0, paspz: 0, logv: 0, pasv: 0, secFrZ: 0, emalZ: 0};
     private warns: any = {pow: undefined};
     private emailCodePas = {
-        obj: Start.getEmail("Восстановление пароля"),
         buts: {
             0 : {
                 text: "ГОТОВО!",
-                fun: () => this.startController.checkPasCodeEmail(this.els, this.elem),
+                fun: this.checkRecoveryCodeEmail.bind(this),
                 enab: false
             },
             1 : {
                 text: "ОТМЕНА",
-                fun: () => this.dialogInfo.resetDialog(),
+                fun: this.closeDialog.bind(this),
                 enab: true
             }
         }
     }
     public static chStatZb: (e?) => void;
 
+    private async checkRecoveryCodeEmail(): Promise<void> {
+        const successResponce: boolean = await this.startController.checkPasCodeEmail(this.els, this.elem);
+        if(successResponce) {
+            this.closeDialog();
+        }
+    }
+
+    private closeDialog(): void {
+        this.context.dialog.updateComponent(undefined);
+        this.dialogInfo.resetDialog();
+    }
+
     private async initRecovery(e): Promise<void> {
-        const data: boolean = await this.startController.initRecovery(this.selEmailZ, this.els, this.emailCodePas);
-        if(data){
+        const successResponce: boolean = await this.startController.initRecovery(this.selEmailZ, this.els);
+        if(successResponce){
             e.target = e.target.parentElement;
             this.goToRecoveryOrVxod(e);
+            return;
+        }
+
+        if(successResponce == undefined) {
+            this.context.dialog.updateComponent(Start.getEmail("Восстановление пароля"));
+            this.dialogInfo.cloneDialog(this.emailCodePas);
         }
     }
 

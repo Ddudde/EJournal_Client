@@ -17,7 +17,7 @@ import copyd from "../../media/copyd.png";
 import copyl from "../../media/copyl.png";
 import type StatusStore from "../../store/StatusStore";
 import type HTeacherStore from "../../store/people/HTeacherStore";
-import type ThemeStore from "../../store/ThemeStore";
+import type ThemeStore from "../../store/main/ThemeStore";
 import type EventsStore from "../../store/other/EventsStore";
 import type HTeacherController from "../../controllers/people/HTeacherController";
 

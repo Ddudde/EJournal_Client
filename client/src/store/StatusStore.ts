@@ -1,4 +1,4 @@
-import {makeAutoObservable} from 'mobx';
+import {makeAutoObservable, toJS} from 'mobx';
 
 export default class StatusStore {
     // public auth: boolean = true;
@@ -32,7 +32,10 @@ export default class StatusStore {
 	}
 
 	public cloneState (value: any): void {
-		if(!value) return;
+		if(!value) {
+			this.stateReset();
+			return;
+		}
 
 		let nameProperty: string;
 		for(nameProperty of Object.getOwnPropertyNames(value)){
@@ -46,7 +49,7 @@ export default class StatusStore {
 	public stateReset (): void {
 		const uuid: string = this.uuid;
 		let nameProperty: string;
-		for(nameProperty of Object.getOwnPropertyNames(this)){
+		for(nameProperty of Object.getOwnPropertyNames(toJS(this))){
 			this[nameProperty] = undefined;
 		}
 		this.auth = false;

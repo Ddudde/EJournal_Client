@@ -16,7 +16,7 @@ import yes from "../../media/yes.png";
 import ErrFound from "../other/error/ErrFound";
 import PeopleMain from "./PeopleMain";
 import type AdminsStore from "../../store/people/AdminsStore";
-import type ThemeStore from "../../store/ThemeStore";
+import type ThemeStore from "../../store/main/ThemeStore";
 import type StatusStore from "../../store/StatusStore";
 import type EventsStore from "../../store/other/EventsStore";
 import type AdminController from "../../controllers/people/AdminController";

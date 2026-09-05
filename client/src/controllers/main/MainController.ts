@@ -1,5 +1,4 @@
 import type MainApi from "../../api/main/MainApi";
-import type DialogStore from "../../store/other/DialogStore";
 import type EventsStore from "../../store/other/EventsStore";
 import type StatusStore from "../../store/StatusStore";
 import { NotifEvent } from "../NotificationController";
@@ -8,16 +7,14 @@ import StartController from "../StartController";
 export default class MainController {
     private mainApi: MainApi;
     private statusStore: StatusStore;
-    private dialogStore: DialogStore;
     private warnErrNet: number | undefined;
     private eventsStore: EventsStore;
     public static awaitInitSSE: Promise<void>;
     private awaitInitAuth: Promise<void>;
 
-    public constructor(mainApi: MainApi, statusStore: StatusStore, dialogStore: DialogStore, eventsStore: EventsStore) {
+    public constructor(mainApi: MainApi, statusStore: StatusStore, eventsStore: EventsStore) {
         this.mainApi = mainApi;
         this.statusStore = statusStore;
-        this.dialogStore = dialogStore;
         this.eventsStore = eventsStore;
         if(!localStorage.getItem("accessToken")) {
             // this.awaitInitAuth = StartController.initTestVxod("nm12:1111");
@@ -39,13 +36,15 @@ export default class MainController {
         }
     }
 
-    public async exitFromAccount(notifToken: string): Promise<void> {
+    public async exitFromAccount(notifToken: string): Promise<boolean> {
+        let successResponce: boolean = false;
         const data: any = await this.mainApi.exitFromAccount(notifToken);
         if(data.status == 200) {
+            successResponce = true;
             console.log(data);
             this.statusStore.stateReset();
-            this.dialogStore.resetDialog();
         }
+        return successResponce;
     }
 
     private async initConnection(notifToken: string, permis: boolean, eventSource:EventSource): Promise<void> {

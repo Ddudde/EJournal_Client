@@ -1,5 +1,5 @@
 import type {NavigateFunction} from "react-router-dom";
-import { Route, Routes, Navigate} from "react-router-dom";
+import { Route, Routes} from "react-router-dom";
 import Main from "./components/main/Main";
 import type { ReactElement} from "react";
 import {Component} from "react";
@@ -26,6 +26,9 @@ import Schedule from "./components/analytics/schedule/Schedule";
 import HTeachers from "./components/people/HTeachers";
 import Settings from "./components/main/settings/Settings";
 import Dnevnik from "./components/dnevnik/Dnevnik";
+import Profile from "./components/main/profile/Profile";
+import TestPanel from "./components/testPanel/TestPanel";
+import Journal from "./components/analytics/journal/Journal";
 
 interface Props {
     navigate?: any;
@@ -39,17 +42,6 @@ class App extends Component {
     private indexComp: ReactElement;
     private path: string | null | undefined;
     private cState: StatusStore;
-
-    public constructor(props: Props) {
-        super(props);
-        this.navigate = props.navigate;
-    }
-
-	public UNSAFE_componentWillMount(): void {
-		const {statusStore} = this.context.stores;
-        this.cState = statusStore;
-        this.getStartPages();
-	}
 
     private getStartPages() {
         if (!this.cState.auth) {
@@ -65,6 +57,17 @@ class App extends Component {
     private navigateWithSkipWarning(path : string): void{
         setTimeout(() => {this.navigate(path)});
     }
+
+    public constructor(props: Props) {
+        super(props);
+        this.navigate = props.navigate;
+    }
+
+	public UNSAFE_componentWillMount(): void {
+		const {statusStore} = this.context.stores;
+        this.cState = statusStore;
+        this.getStartPages();
+	}
 
     public componentDidMount(): void {
         console.log("I was triggered during componentDidMount App");
@@ -102,8 +105,8 @@ class App extends Component {
                     <Route path="zvonki" element={<Zvonki/>} />
                     {/* <Route path="periods" element={<Periods/>} /> */}
                     <Route path="schedule" element={<Schedule/>} />
-                    {/* {(this.cState.auth && this.cState.role < 2) && <Route path="journal" element={<AnalyticsJournal/>} />}
-                    {(this.cState.auth && this.cState.role < 2) && <Route path="marks" element={<Marks/>} />} */}
+                    {(this.cState.auth && this.cState.role < 2) && <Route path="journal" element={<Journal/>} />}
+                    {/* {(this.cState.auth && this.cState.role < 2) && <Route path="marks" element={<Marks/>} />} */}
                 </Route>}
                 <Route path="people" element={<PeopleMain/>}>
                     <Route index element={<Admins/>} />
@@ -114,11 +117,11 @@ class App extends Component {
                     <Route path="admins" element={<Admins/>} />
                 </Route>
                 {(!this.cState.auth || this.cState.role < 4) && <Route path="tutor/:typ" element={<Tutor/>} />}
-                {/* {this.cState.auth && <Route path="profiles" element={<Profile/>} />}
-                {(this.cState.auth && this.cState.role == 2) && <Route path="journal" element={<Journal/>} />}
-                <Route path="profiles/:log" element={<Profile/>} /> */}
+                {this.cState.auth && <Route path="profiles" element={<Profile/>} />}
+                {/* {(this.cState.auth && this.cState.role == 2) && <Route path="journal" element={<Journal/>} />} */}
+                <Route path="profiles/:log" element={<Profile/>} />
                 {this.cState.auth && <Route path="settings" element={<Settings/>} />}
-                {/* {(this.cState.auth && this.cState.role == 4) && <Route path="test" element={<Test/>} />} */}
+                {(this.cState.auth && this.cState.role == 4) && <Route path="test" element={<TestPanel/>} />}
                 <Route path="invite/:code" element={<Start mod="inv"/>} />
                 <Route path="reauth/:code" element={<Start mod="rea"/>} />
                 <Route path="*" element={<ErrFound/>} />

@@ -29,12 +29,12 @@ export default class StartController {
         this.mainApi.removeEventListenerSSE('connect', this.onConnect.bind(this));
     }
 
-    public async initRecovery(selEmailZ: boolean, els: any, emailCodePas: any): Promise<boolean> {
+    public async initRecovery(selEmailZ: boolean, els: any): Promise<boolean> {
         const data: any = await this.startApi.initRecovery(selEmailZ, els);
         if(data.status == 200){
             let callback: boolean = false;
             if(selEmailZ) {
-                this.dialogStore.cloneDialog(emailCodePas);
+                callback = undefined;
             } else {
                 callback = true;
             }
@@ -106,17 +106,18 @@ export default class StartController {
         return false;
     }
 
-    public async startEmail(code: any, value: any, emailCode: any): Promise<void> {
+    public async startEmail(code: any, value: any): Promise<boolean> {
         const data: any = await this.startApi.startEmail(code, value);
+        let successResponce: boolean = false;
         if(data.status == 200){
-            this.dialogStore.cloneDialog(emailCode);
+            successResponce = true;
         }
+        return successResponce;
     }
 
     public async checkCodeEmail(code: any, elem: any): Promise<boolean> {
         const data: any = await this.startApi.checkCodeEmail(code, elem);
         if(data.status == 200){
-            this.dialogStore.resetDialog();
             this.eventsStore.changeEvent("Внимание!", "Почта подтверждена успешно!", 10);
             return true;
         } else {
@@ -125,14 +126,16 @@ export default class StartController {
         return false;
     }
 
-    public async checkPasCodeEmail(els: any, elem: any): Promise<void> {
+    public async checkPasCodeEmail(els: any, elem: any): Promise<boolean> {
         const data: any = await this.startApi.checkPasCodeEmail(els, elem);
+        let successResponce: boolean = false;
         if(data.status == 200){
-            this.dialogStore.resetDialog();
             this.eventsStore.changeEvent("Внимание!", "Код верный, пароль изменён успешно!", 10);
             elem.vxodBlock.dataset.mod = '0';
+            successResponce = true;
         } else {
             this.eventsStore.changeEvent("Внимание!", "Код подтверждения, неверный", 10);
         }
+        return successResponce;
     }
 }

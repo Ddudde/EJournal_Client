@@ -17,10 +17,9 @@ import ls3 from "../../media/ls-icon3.png";
 import type DialogStore from "../../store/other/DialogStore";
 import type StatusStore from "../../store/StatusStore";
 import type PanelStore from "../../store/other/PanelStore";
-import type ThemeStore from "../../store/ThemeStore";
+import type ThemeStore from "../../store/main/ThemeStore";
 import { ContextStores } from "../../utils/context";
 import type MainController from "../../controllers/main/MainController";
-import StartController from "../../controllers/StartController";
 
 interface Props {
 };
@@ -99,23 +98,35 @@ export default class Main extends Component {
 
     private onExit(): void {
         const exitField = {
-            obj: <div>
-                Вы желаете выйти?
-            </div>,
             buts: {
                 0 : {
                     text: "Да",
-                    fun: () => this.mainController.exitFromAccount(localStorage.getItem("notifToken")),
+                    fun: this.acceptExitFromAccount.bind(this),
                     enab: true
                 },
                 1 : {
                     text: "Нет",
-                    fun:() => this.dialogInfo.resetDialog(),
+                    fun: this.closeDialog.bind(this),
                     enab: true
                 }
             }
         };
+        this.context.dialog.updateComponent(<div>
+            Вы желаете выйти?
+        </div>);
         this.dialogInfo.cloneDialog(exitField);
+    }
+
+    private async acceptExitFromAccount(): Promise<void> {
+        const successResponce: boolean = await this.mainController.exitFromAccount(localStorage.getItem("notifToken"));
+        if(successResponce) {
+            this.closeDialog();
+        }
+    }
+
+    private closeDialog(): void {
+        this.context.dialog.updateComponent(undefined);
+        this.dialogInfo.resetDialog();
     }
 
     /* Установка активированного состояния для разделов главной панели */
